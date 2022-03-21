@@ -3,8 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:device_preview/device_preview.dart';
 import 'package:mofu_flutter/ui/view/intro_view/loading_page.dart';
+import 'package:mofu_flutter/ui/view/foodvision_view/foodvision_page.dart';
+import 'package:camera/camera.dart';
 
-void main() {
+List<CameraDescription> cameras = [];
+Future<void> main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  cameras = await availableCameras();
   runApp( DevicePreview(
     enabled: !kReleaseMode,
     builder: (context) => const MyApp(), 
@@ -23,7 +28,7 @@ class MyApp extends StatelessWidget {
       builder: DevicePreview.appBuilder,
       theme: ThemeData.light(),
       darkTheme: ThemeData.dark(),
-      home: LoadingPage(),
+      home: const FoodVisionPage(),
     );
   }
 }
