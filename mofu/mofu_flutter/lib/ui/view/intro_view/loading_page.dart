@@ -3,19 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mofu_flutter/ui/view/intro_view/login_page.dart';
 
-class LoadingPage extends StatefulWidget {
-  const LoadingPage({Key? key}) : super(key: key);
-  @override
-  State<LoadingPage> createState() => _LoadingPageState();
-}
+class LoadingPage extends StatelessWidget {
+  const LoadingPage({ Key? key }) : super(key: key);
 
-class _LoadingPageState extends State<LoadingPage> {
   @override
   Widget build(BuildContext context) {
-    
     Timer(
       const Duration(seconds: 3),()=>
-      Get.to(LoginPage(),transition: Transition.cupertino)
+      Get.to(const LoginPage(),transition: Transition.cupertino)
     );
 
     return Container(

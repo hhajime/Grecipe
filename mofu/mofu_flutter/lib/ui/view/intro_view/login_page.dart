@@ -1,92 +1,100 @@
 import 'package:flutter/material.dart';
+import 'package:mofu_flutter/data/list.dart';
 import 'package:mofu_flutter/ui/view/home_view/home_page.dart';
-import 'package:mofu_flutter/ui/view/intro_view/signin_page.dart';
-import 'package:mofu_flutter/ui/widget/login_textfield.dart';
 import 'package:get/get.dart';
+import 'package:carousel_slider/carousel_slider.dart';
+import 'package:flutter_signin_button/flutter_signin_button.dart';
 
-class LoginPage extends StatelessWidget {
-  final _emailController = TextEditingController();
-  final _passwordController = TextEditingController();
-  LoginPage({Key? key}) : super(key: key);
+
+
+class LoginPage extends StatefulWidget {
+  const LoginPage({Key? key}) : super(key: key);
+
+  @override
+  State<LoginPage> createState() => _LoginPageState();
+}
+
+class _LoginPageState extends State<LoginPage> {
+  int _current = 0;
+  final CarouselController _controller = CarouselController();
+  void _showButtonPressDialog(BuildContext context, String provider) {
+   ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+      content: Text('$provider Button Pressed!'),
+      backgroundColor: Colors.black26,
+      duration: const Duration(milliseconds: 400),
+      
+    ));
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: const EmptyAppBar(),
-        body: Center(
-            child:
-                Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-          const Expanded(
+      appBar: const EmptyAppBar(),
+      body: Center(
+          child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+           Expanded(
               child: Center(
                   child: Image(
-            image: AssetImage('assets/images/logo/logo.png'),
-            height: 170,
+            image: const AssetImage('assets/images/logo/logo.png'),
+            height: displayHeight * 0.25,
           ))),
           Expanded(
-              child: Column(
-            children: [
-              Container(
-                  padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
-                  child: loginTextField(_emailController, 'Email', false)),
-              const Padding(padding: EdgeInsets.only(top: 20)),
-              Container(
-                  padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
-                  child: loginTextField(_passwordController, 'Password', true)),
-              const Padding(padding: EdgeInsets.only(top: 5)),
-              Container(
-                  padding: const EdgeInsets.fromLTRB(250, 0, 0, 0),
-                  child: TextButton(
-                      onPressed: () {
-                        Get.to( const HomePage());
-                      },
-                      child: const Text(
-                        'Sign In',
-                        style: TextStyle(
-                            color: Color(0xffFFBA7D),
-                            fontWeight: FontWeight.bold,
-                            fontSize: 20),
-                      ))),
-              Container(
-                child: const Text('Sign in with', style: TextStyle(color: Colors.black26)),
-                color: const Color(0xffFFFFFF).withOpacity(0.5),
-              ),
-              const Padding(padding: EdgeInsets.fromLTRB(0, 20, 0, 0)),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: const [
-                  Image(
-                    image: AssetImage('assets/images/logo/facebook.png'),
-                    height: 70,
-                  ),
-                  Image(
-                    image: AssetImage('assets/images/logo/google.png'),
-                    height: 70,
-                  )
-                ],
-              ),
-              const Spacer(),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  const Text('Do not have an account?', style: TextStyle(color: Colors.black26),),
-                  const Padding(padding: EdgeInsets.all(10)),
-                  TextButton(
-                      onPressed: () {
-                        Get.to( const SigninPage());
-                      },
-                      child: const Text(
-                        'Sign up',
-                        style: TextStyle(
-                            color: Color(0xffFFBA7D),
-                            fontWeight: FontWeight.bold,
-                            fontSize: 20),
-                      ))
-                ],
-              ),
-              const Padding(padding: EdgeInsets.only(bottom: 10))
-            ],
-          ))
-        ])));
+            child: CarouselSlider(
+              items: imageSliders,
+              carouselController: _controller,
+              options: CarouselOptions(
+                  scrollDirection: Axis.horizontal,
+                  enableInfiniteScroll: true,
+                  autoPlay: true,
+                  enlargeCenterPage: true,
+                  aspectRatio: 1.5,
+                  onPageChanged: (index, reason) {
+                    setState(() {
+                      _current = index;
+                    });
+                  }),
+            ),
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: imgList.asMap().entries.map((entry) {
+              return GestureDetector(
+                onTap: () => _controller.animateToPage(entry.key),
+                child: Container(
+                  width: 12.0,
+                  height: 10.0,
+                  margin: const EdgeInsets.symmetric(
+                      vertical: 8.0, horizontal: 4.0),
+                  decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: (Theme.of(context).brightness == Brightness.dark
+                              ? Colors.white
+                              : Colors.black)
+                          .withOpacity(_current == entry.key ? 0.9 : 0.4)),
+                ),
+              );
+            }).toList(),
+          ),
+          Padding(padding: EdgeInsets.only(bottom: 50)),
+          Container(
+            child: Text('3초만에 빠른 로그인!',
+                style: TextStyle(fontSize: 15, color: Color(0xffFFBA7D))),
+          ),
+          Padding(padding: EdgeInsets.only(bottom: 5)),
+          Container(
+            child: SignInButton(
+              Buttons.Google,
+              onPressed: () {
+                _showButtonPressDialog(context, 'Google');
+              },
+            ),
+          ),
+          Padding(padding: EdgeInsets.only(bottom: 50))
+        ],
+      )),
+    );
   }
 }
 
@@ -102,3 +110,24 @@ class EmptyAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Size get preferredSize => const Size(0.0, 0.0);
 }
+
+final List<String> imgList = [
+  'assets/images/banners/display_01.png',
+  'assets/images/banners/display_02.png',
+  'assets/images/banners/display_03.png'
+];
+
+final List<Widget> imageSliders = imgList
+    .map((item) => Container(
+          child: Container(
+            margin: EdgeInsets.all(1.0),
+            child: ClipRRect(
+                borderRadius: BorderRadius.all(Radius.circular(20.0)),
+                child: Stack(
+                  children: <Widget>[
+                    Image.network(item, fit: BoxFit.fitHeight, width: 1000.0),
+                  ],
+                )),
+          ),
+        ))
+    .toList();
