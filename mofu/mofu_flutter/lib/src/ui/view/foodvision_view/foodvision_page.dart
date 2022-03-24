@@ -1,6 +1,6 @@
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
-import 'package:mofu_flutter/ui/widget/image_detection.dart';
+import 'package:mofu_flutter/src/ui/widget/image_detection.dart';
 List<CameraDescription> cameras = [];
 
 
