@@ -5,16 +5,9 @@ import 'package:get/get.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter_signin_button/flutter_signin_button.dart';
 
+class LoginPage extends StatelessWidget {
+  LoginPage({ Key? key }) : super(key: key);
 
-
-class LoginPage extends StatefulWidget {
-  const LoginPage({Key? key}) : super(key: key);
-
-  @override
-  State<LoginPage> createState() => _LoginPageState();
-}
-
-class _LoginPageState extends State<LoginPage> {
   int _current = 0;
   final CarouselController _controller = CarouselController();
   void _showButtonPressDialog(BuildContext context, String provider) {
@@ -25,7 +18,6 @@ class _LoginPageState extends State<LoginPage> {
       
     ));
   }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -51,11 +43,9 @@ class _LoginPageState extends State<LoginPage> {
                   enlargeCenterPage: true,
                   aspectRatio: 1.5,
                   onPageChanged: (index, reason) {
-                    setState(() {
                       _current = index;
-                    });
-                  }),
-            ),
+                  })
+            )
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -73,25 +63,22 @@ class _LoginPageState extends State<LoginPage> {
                               ? Colors.white
                               : Colors.black)
                           .withOpacity(_current == entry.key ? 0.9 : 0.4)),
-                ),
+                )
               );
             }).toList(),
           ),
-          Padding(padding: EdgeInsets.only(bottom: 50)),
-          Container(
-            child: Text('3초만에 빠른 로그인!',
-                style: TextStyle(fontSize: 15, color: Color(0xffFFBA7D))),
+          const Padding(padding: EdgeInsets.only(bottom: 50)),
+          const Text('3초만에 빠른 로그인!',
+                style: TextStyle(fontSize: 15, color: Color(0xffFFBA7D)),
           ),
-          Padding(padding: EdgeInsets.only(bottom: 5)),
-          Container(
-            child: SignInButton(
+          const Padding(padding: EdgeInsets.only(bottom: 5)),
+          SignInButton(
               Buttons.Google,
               onPressed: () {
                 _showButtonPressDialog(context, 'Google');
               },
             ),
-          ),
-          Padding(padding: EdgeInsets.only(bottom: 50))
+          const Padding(padding: EdgeInsets.only(bottom: 50))
         ],
       )),
     );
@@ -119,15 +106,14 @@ final List<String> imgList = [
 
 final List<Widget> imageSliders = imgList
     .map((item) => Container(
-          child: Container(
-            margin: EdgeInsets.all(1.0),
+            margin: const EdgeInsets.all(1.0),
             child: ClipRRect(
-                borderRadius: BorderRadius.all(Radius.circular(20.0)),
+                borderRadius: const BorderRadius.all(Radius.circular(20.0)),
                 child: Stack(
                   children: <Widget>[
-                    Image.network(item, fit: BoxFit.fitHeight, width: 1000.0),
+                    Image.asset(item, fit: BoxFit.fitHeight, width: 1000.0)
                   ],
                 )),
           ),
-        ))
+        )
     .toList();

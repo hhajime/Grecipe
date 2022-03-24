@@ -25,5 +25,6 @@ flutter:
   uses-material-design: true
   assets:
     - assets/images/logo/
+    - assets/images/banners/
     - assets/models/model.tflite
     - assets/models/label.txt

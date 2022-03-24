@@ -126,7 +126,7 @@ class _StaticImageState extends State<StaticImage> {
 
     if (_busy!) {
       stackChildren.add(
-        Center(
+        const Center(
           child: CircularProgressIndicator(),
         )
       );
@@ -134,20 +134,20 @@ class _StaticImageState extends State<StaticImage> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text("Object Detector"),
+        title: const Text("Object Detector"),
       ),
       floatingActionButton: Row(
         mainAxisAlignment: MainAxisAlignment.end,
         children: <Widget>[
           FloatingActionButton(
             heroTag: "Fltbtn2",
-            child: Icon(Icons.camera_alt),
+            child: const Icon(Icons.camera_alt),
             onPressed: getImageFromCamera,
           ),
-          SizedBox(width: 10,),
+          const SizedBox(width: 10,),
           FloatingActionButton(
             heroTag: "Fltbtn1",
-            child: Icon(Icons.photo),
+            child: const Icon(Icons.photo),
             onPressed: getImageFromGallery,
           ),
         ],
