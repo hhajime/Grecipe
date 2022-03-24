@@ -32,7 +32,7 @@ class LoginPage extends StatelessWidget {
               child: Center(
                   child: Image(
             image: const AssetImage('assets/images/logo/logo.png'),
-            height: displayHeight * 0.25,
+            height: displayHeight * 0.20,
           ))),
           Expanded(
             child: CarouselSlider(
@@ -41,6 +41,7 @@ class LoginPage extends StatelessWidget {
               options: CarouselOptions(
                   scrollDirection: Axis.horizontal,
                   enableInfiniteScroll: true,
+                  viewportFraction : 0.3,
                   autoPlay: true,
                   enlargeCenterPage: true,
                   aspectRatio: 1.5,
@@ -79,7 +80,7 @@ class LoginPage extends StatelessWidget {
               onPressed: () {
                 _showButtonPressDialog(context, 'Google');
                 controller.loginWithGoogle();
-                
+
               },
             ),
           const Padding(padding: EdgeInsets.only(bottom: 50))
