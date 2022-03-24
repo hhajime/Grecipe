@@ -4,10 +4,12 @@ import 'package:mofu_flutter/src/ui/view/home_view/home_page.dart';
 import 'package:get/get.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter_signin_button/flutter_signin_button.dart';
+import 'package:mofu_flutter/src/getx/login_controller.dart';
 
 class LoginPage extends StatelessWidget {
   LoginPage({ Key? key }) : super(key: key);
-
+  
+  final LoginController controller = Get.put(LoginController());
   int _current = 0;
   final CarouselController _controller = CarouselController();
   void _showButtonPressDialog(BuildContext context, String provider) {
@@ -76,6 +78,8 @@ class LoginPage extends StatelessWidget {
               Buttons.Google,
               onPressed: () {
                 _showButtonPressDialog(context, 'Google');
+                controller.loginWithGoogle();
+                
               },
             ),
           const Padding(padding: EdgeInsets.only(bottom: 50))

@@ -1,3 +1,4 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -11,6 +12,8 @@ import 'package:camera/camera.dart';
 List<CameraDescription> cameras = [];
 Future<void> main() async{
   WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+  );
   cameras = await availableCameras();
   runApp( DevicePreview(
     enabled: !kReleaseMode,
