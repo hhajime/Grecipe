@@ -7,19 +7,19 @@ import 'package:flutter_signin_button/flutter_signin_button.dart';
 import 'package:mofu_flutter/src/getx/login_controller.dart';
 
 class LoginPage extends StatelessWidget {
-  LoginPage({ Key? key }) : super(key: key);
-  
+  LoginPage({Key? key}) : super(key: key);
+
   final LoginController controller = Get.put(LoginController());
   int _current = 0;
   final CarouselController _controller = CarouselController();
   void _showButtonPressDialog(BuildContext context, String provider) {
-   ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
       content: Text('$provider Button Pressed!'),
       backgroundColor: Colors.black26,
       duration: const Duration(milliseconds: 400),
-      
     ));
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,28 +28,26 @@ class LoginPage extends StatelessWidget {
           child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-           Expanded(
+          Expanded(
               child: Center(
                   child: Image(
             image: const AssetImage('assets/images/logo/logo.png'),
             height: displayHeight * 0.20,
           ))),
           Expanded(
-            child: CarouselSlider(
-              items: imageSliders,
-              carouselController: _controller,
-              options: CarouselOptions(
-                  scrollDirection: Axis.horizontal,
-                  enableInfiniteScroll: true,
-                  viewportFraction : 0.3,
-                  autoPlay: true,
-                  enlargeCenterPage: true,
-                  aspectRatio: 1.5,
-                  onPageChanged: (index, reason) {
-                      _current = index;
-                  })
-            )
-          ),
+              child: CarouselSlider(
+                  items: imageSliders,
+                  carouselController: _controller,
+                  options: CarouselOptions(
+                      scrollDirection: Axis.horizontal,
+                      enableInfiniteScroll: true,
+                      viewportFraction: 0.3,
+                      autoPlay: true,
+                      enlargeCenterPage: true,
+                      aspectRatio: 1.5,
+                      onPageChanged: (index, reason) {
+                        _current = index;
+                      }))),
           /**Row( getx 적용
             mainAxisAlignment: MainAxisAlignment.center,
             children: imgList.asMap().entries.map((entry) {
@@ -71,18 +69,18 @@ class LoginPage extends StatelessWidget {
             }).toList(),
           ),**/
           const Padding(padding: EdgeInsets.only(bottom: 50)),
-          const Text('3초만에 빠른 로그인!',
-                style: TextStyle(fontSize: 15, color: Color(0xffFFBA7D)),
+          const Text(
+            '3초만에 빠른 로그인!',
+            style: TextStyle(fontSize: 15, color: Color(0xffFFBA7D)),
           ),
           const Padding(padding: EdgeInsets.only(bottom: 5)),
           SignInButton(
-              Buttons.Google,
-              onPressed: () {
-                _showButtonPressDialog(context, 'Google');
-                controller.loginWithGoogle();
-
-              },
-            ),
+            Buttons.Google,
+            onPressed: () {
+              _showButtonPressDialog(context, 'Google');
+              controller.loginWithGoogle();
+            },
+          ),
           const Padding(padding: EdgeInsets.only(bottom: 50))
         ],
       )),
@@ -110,15 +108,16 @@ final List<String> imgList = [
 ];
 
 final List<Widget> imageSliders = imgList
-    .map((item) => Container(
-            margin: const EdgeInsets.all(1.0),
-            child: ClipRRect(
-                borderRadius: const BorderRadius.all(Radius.circular(20.0)),
-                child: Stack(
-                  children: <Widget>[
-                    Image.asset(item, fit: BoxFit.fitHeight, width: 1000.0)
-                  ],
-                )),
-          ),
-        )
+    .map(
+      (item) => Container(
+        margin: const EdgeInsets.all(1.0),
+        child: ClipRRect(
+            borderRadius: const BorderRadius.all(Radius.circular(20.0)),
+            child: Stack(
+              children: <Widget>[
+                Image.asset(item, fit: BoxFit.fitHeight, width: 1000.0)
+              ],
+            )),
+      ),
+    )
     .toList();
