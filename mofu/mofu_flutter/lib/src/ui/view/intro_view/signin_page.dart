@@ -6,6 +6,17 @@ class SignInPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Color getColor(Set<MaterialState> states) {
+      const Set<MaterialState> interactiveStates = <MaterialState>{
+        MaterialState.pressed,
+        MaterialState.hovered,
+        MaterialState.focused,
+      };
+      if (states.any(interactiveStates.contains)) {
+        return Colors.white;
+      }
+      return mainColor;
+    }
     return SafeArea(
       child: Scaffold(
           body: SingleChildScrollView(child: Center(
@@ -102,18 +113,21 @@ class SignInPage extends StatelessWidget {
             Container(
               alignment: Alignment.bottomRight,
               padding: EdgeInsets.only(
-                  right: displayWidth * 0.1),
+                  right: displayWidth * 0.1,
+                  top: displayHeight * 0.3),
               child: ElevatedButton(
                 onPressed: () => {},
                 style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.all(mainColor),
+                  overlayColor:  MaterialStateProperty.all(mainColor),
+                  backgroundColor: MaterialStateProperty.all(Colors.white),
+                  foregroundColor: MaterialStateProperty.resolveWith(getColor),
                   shape: MaterialStateProperty.all(RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10))),
+                      borderRadius: BorderRadius.circular(10),
+                      side: BorderSide(color: mainColor, width: 2))),
                 ),
                 child: Text(
                   '가입완료',
                   style: TextStyle(
-                      color: Colors.white,
                       fontWeight: FontWeight.bold,
                       fontSize: displayHeight * 0.025),
                 ),
@@ -123,5 +137,8 @@ class SignInPage extends StatelessWidget {
         ),
       )),
     ));
+
+
+    
   }
 }
