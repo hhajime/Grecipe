@@ -8,7 +8,7 @@ class SignInPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-          body: Center(
+          body: SingleChildScrollView(child: Center(
         child: Column(
           children: [
             Container(
@@ -43,23 +43,85 @@ class SignInPage extends StatelessWidget {
                   left: displayWidth * 0.12, top: displayHeight * 0.03),
             ),
             Container(
-              child: TextFormField(
-                decoration: InputDecoration(
-                  hintText: '10자 내외 글자/숫자/특수문자를 입력해주세요',
-                  hintStyle: TextStyle(
-                      fontSize: displayHeight * 0.013, color: Colors.black38),
-                ),
+              child: Stack(
+                children: [
+                  Container(
+                    child: TextButton(
+                        onPressed: () => {},
+                        child: Text(
+                          '중복확인',
+                          style: TextStyle(
+                              fontSize: displayHeight * 0.014,
+                              fontWeight: FontWeight.bold,
+                              color: mainColor),
+                        )),
+                    alignment: Alignment.bottomRight,
+                  ),
+                  TextFormField(
+                    maxLength: 10,
+                    decoration: InputDecoration(
+                      focusedBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(color: mainColor)),
+                      hintText: '10자 내외 글자/숫자/특수문자를 입력해주세요',
+                      hintStyle: TextStyle(
+                          fontSize: displayHeight * 0.013,
+                          color: Colors.black38),
+                      counterText: '',
+                    ),
+                  ),
+                ],
               ),
               alignment: Alignment.topLeft,
               padding: EdgeInsets.only(
-                  left: displayWidth * 0.12,
-                  top: displayHeight * 0.01,
-                  right: displayWidth * 0.12),
+                  left: displayWidth * 0.12, right: displayWidth * 0.12),
             ),
-            Container()
+            Container(
+              child: Text(
+                '사용 가능한 닉네임 입니다!',
+                style: TextStyle(
+                    fontSize: displayHeight * 0.01,
+                    color: Colors.green,
+                    fontWeight: FontWeight.bold),
+              ),
+              alignment: Alignment.topLeft,
+              padding: EdgeInsets.only(
+                  left: displayWidth * 0.12, top: displayHeight * 0.01),
+            ),
+            Container(
+              child: Text(
+                '이미 존재하는 닉네임 입니다!',
+                style: TextStyle(
+                    fontSize: displayHeight * 0.01,
+                    color: Colors.red,
+                    fontWeight: FontWeight.bold),
+              ),
+              alignment: Alignment.topLeft,
+              padding: EdgeInsets.only(
+                  left: displayWidth * 0.12, top: displayHeight * 0.01),
+            ),
+            Container(
+              alignment: Alignment.bottomRight,
+              padding: EdgeInsets.only(
+                  right: displayWidth * 0.1),
+              child: ElevatedButton(
+                onPressed: () => {},
+                style: ButtonStyle(
+                  backgroundColor: MaterialStateProperty.all(mainColor),
+                  shape: MaterialStateProperty.all(RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10))),
+                ),
+                child: Text(
+                  '가입완료',
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                      fontSize: displayHeight * 0.025),
+                ),
+              ),
+            ),
           ],
         ),
       )),
-    );
+    ));
   }
 }
