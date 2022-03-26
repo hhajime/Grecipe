@@ -32,5 +32,6 @@ flutter:
   assets:
     - assets/images/logo/
     - assets/images/banners/
+    - assets/images/icons/ingredient_icon/
     - assets/models/model.tflite
     - assets/models/label.txt

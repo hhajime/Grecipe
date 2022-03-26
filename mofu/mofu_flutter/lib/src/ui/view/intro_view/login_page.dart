@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:mofu_flutter/data/list.dart';
-import 'package:mofu_flutter/src/ui/view/home_view/home_page.dart';
 import 'package:get/get.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter_signin_button/flutter_signin_button.dart';

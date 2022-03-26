@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mofu_flutter/data/list.dart';
-
+import 'package:mofu_flutter/src/ui/view/home_view/home_page.dart';
+import 'package:get/get.dart';
 class SignInPage extends StatelessWidget {
   const SignInPage({Key? key}) : super(key: key);
 
@@ -74,6 +75,8 @@ class SignInPage extends StatelessWidget {
                       focusedBorder: UnderlineInputBorder(
                           borderSide: BorderSide(color: mainColor)),
                       hintText: '10자 내외 글자/숫자/특수문자를 입력해주세요',
+                      contentPadding: EdgeInsets.only(top: 15),
+                      isDense: true,
                       hintStyle: TextStyle(
                           fontSize: displayHeight * 0.013,
                           color: Colors.black38),
@@ -114,9 +117,10 @@ class SignInPage extends StatelessWidget {
               alignment: Alignment.bottomRight,
               padding: EdgeInsets.only(
                   right: displayWidth * 0.1,
-                  top: displayHeight * 0.3),
+                  top: displayHeight * 0.35),
               child: ElevatedButton(
-                onPressed: () => {},
+                onPressed: () => {Get.to(const HomePage(),
+          transition: Transition.cupertino)},
                 style: ButtonStyle(
                   overlayColor:  MaterialStateProperty.all(mainColor),
                   backgroundColor: MaterialStateProperty.all(Colors.white),
