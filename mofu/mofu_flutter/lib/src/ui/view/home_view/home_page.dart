@@ -4,6 +4,7 @@ import 'package:custom_radio_grouped_button/custom_radio_grouped_button.dart';
 
 class HomePage extends StatelessWidget {
   int _selectedIndex = 0;
+  final List<String> entries = <String>['A', 'B', 'C'];
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -207,6 +208,21 @@ class HomePage extends StatelessWidget {
                       fontSize: displayHeight * 0.02),
                 ),
               ),
+              /**Container(
+                  child: ListView.builder(
+                      scrollDirection: Axis.horizontal,
+                      itemCount: 3,
+                      itemBuilder: (BuildContext context, int index) {
+                        return Container(
+                          color: Colors.white,
+                            decoration: BoxDecoration(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(10)),
+                              color: Colors.white,
+                              border: Border.all(color: mainColor, width: 2),
+                            ),
+                            child: Center(child: Text('Entry ${entries[index]}')));
+                      }))**/
             ],
           ),
         ],
