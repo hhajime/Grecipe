@@ -119,7 +119,7 @@ class SignInPage extends StatelessWidget {
                   right: displayWidth * 0.1,
                   top: displayHeight * 0.35),
               child: ElevatedButton(
-                onPressed: () => {Get.to(const HomePage(),
+                onPressed: () => {Get.to(HomePage(),
           transition: Transition.cupertino)},
                 style: ButtonStyle(
                   overlayColor:  MaterialStateProperty.all(mainColor),

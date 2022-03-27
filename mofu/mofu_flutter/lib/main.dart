@@ -31,12 +31,13 @@ class MyApp extends StatelessWidget {
     displayRatio = displayHeight / displayWidth;
 
     return GetMaterialApp(
+
       debugShowCheckedModeBanner: false,
       useInheritedMediaQuery: true,
       title: 'Flutter Demo',
       locale: DevicePreview.locale(context),
       builder: DevicePreview.appBuilder,
-      theme: ThemeData.light(),
+      theme: ThemeData(fontFamily: 'Roboto'),
       darkTheme: ThemeData.dark(),
       home: LoginPage(),
     );

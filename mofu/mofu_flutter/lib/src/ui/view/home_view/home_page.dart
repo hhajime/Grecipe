@@ -2,14 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:mofu_flutter/data/list.dart';
 import 'package:custom_radio_grouped_button/custom_radio_grouped_button.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({Key? key}) : super(key: key);
-
-  @override
-  _HomePageState createState() => _HomePageState();
-}
-
-class _HomePageState extends State<HomePage> {
+class HomePage extends StatelessWidget {
+  int _selectedIndex = 0;
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -17,7 +11,11 @@ class _HomePageState extends State<HomePage> {
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
         backgroundColor: mainColor,
+        unselectedItemColor: Colors.white54,
         selectedItemColor: Colors.white,
+        onTap: (int index) {
+          _selectedIndex = index;
+        },
         items: [
           BottomNavigationBarItem(
             label: 'fridge',
@@ -49,8 +47,8 @@ class _HomePageState extends State<HomePage> {
           SizedBox(
             height: displayHeight * 0.06,
             child: Container(
+              width: displayWidth * 0.8,
               alignment: Alignment.centerLeft,
-              margin: EdgeInsets.only(left: displayWidth * 0.1),
               child: Text(
                 '등록된 재료 목록',
                 style: TextStyle(
@@ -63,24 +61,24 @@ class _HomePageState extends State<HomePage> {
             child: Column(
               children: [
                 Container(
+                  
+                width: displayWidth * 0.8,
                   child: Text(
                     'Order by : life',
                     style: TextStyle(
-                        color: Colors.black54, fontWeight: FontWeight.bold),
+                        color: Colors.black54, fontWeight: FontWeight.bold,
+                        fontSize: displayHeight * 0.01),
                   ),
                   alignment: Alignment.bottomRight,
-                  padding: EdgeInsets.only(right: 15),
                 ),
                 Container(
                     child: Stack(
                   children: [
                     Container(
-                      padding: EdgeInsets.only(right: displayWidth * 0.1),
                       child: CustomRadioButton(
-                        wrapAlignment: WrapAlignment.start,
                         defaultSelected: "All",
                         autoWidth: false,
-                        width: displayWidth * 0.16,
+                        width: displayWidth * 0.17,
                         height: displayHeight * 0.03,
                         customShape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(20),
@@ -108,61 +106,64 @@ class _HomePageState extends State<HomePage> {
                         buttonTextStyle: ButtonTextStyle(
                             selectedColor: Colors.white,
                             unSelectedColor: mainColor,
-                            textStyle:
-                                TextStyle(fontSize: displayHeight * 0.013)),
+                            textStyle: TextStyle(
+                                fontSize: displayHeight * 0.013,
+                                fontWeight: FontWeight.bold)),
                         radioButtonValue: (value) {
                           print(value);
                         },
                         selectedColor: mainColor,
                       ),
                     ),
-                    Row(
+                    /** 
+                    Row(//left align needed
                       children: [
                         Container(
                             padding: EdgeInsets.fromLTRB(
-                                displayWidth * 0.13, 8, 0, 0),
+                                displayWidth*0.13, 8, 0, 0),
                             child: const Image(
                                 image: AssetImage(
                                     'assets/images/icons/expiration_icon/good.png'))),
                         Container(
                             padding: EdgeInsets.fromLTRB(
-                                displayWidth * 0.13, 8, 0, 0),
+                                0, 8, 0, 0),
                             child: Image(
                                 image: const AssetImage(
                                     'assets/images/icons/expiration_icon/fridged.png'))),
                         Container(
                           padding:
-                              EdgeInsets.fromLTRB(displayWidth * 0.13, 8, 0, 0),
+                              EdgeInsets.fromLTRB(0, 8, 0, 0),
                           child: Image(
                               image: const AssetImage(
                                   'assets/images/icons/expiration_icon/danger.png')),
                         ),
                         Container(
                             padding: EdgeInsets.fromLTRB(
-                                displayWidth * 0.13, 8, 0, 0),
+                                0, 8, 0, 0),
                             child: const Image(
                                 image: AssetImage(
                                     'assets/images/icons/expiration_icon/good.png'))),
                       ],
-                    ),
+                    ),*/
                   ],
                 )),
                 Container(
-                  decoration: BoxDecoration(
-                      color: Colors.white,
-                      border: Border(
-                        top: BorderSide(color: mainColor, width: 1),
-                        bottom: BorderSide(color: mainColor, width: 1),
-                      )),
+                  height: 2,
+                  width: displayWidth * 0.8,
+                  color: mainColor,
+                ),
+                Container(
+                  width: displayWidth * 0.8,
+                  decoration: const BoxDecoration(
+                    color: Colors.white,
+                  ),
                   margin: EdgeInsets.only(
                       left: displayWidth * 0.02, right: displayWidth * 0.02),
                   padding: EdgeInsets.only(
-                      top: displayHeight * 0.01,
-                      left: displayWidth * 0.02,
-                      right: displayWidth * 0.02),
+                      top: displayHeight * 0.01),
                   height: displayHeight * 0.2,
                   child: GridView.builder(
-                      itemCount: 31,
+                      itemCount: 7,
                       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                           crossAxisCount: 5,
                           crossAxisSpacing: displayWidth * 0.02,
@@ -177,15 +178,15 @@ class _HomePageState extends State<HomePage> {
                                 color: Colors.white,
                                 border: Border.all(color: mainColor, width: 2),
                               ),
-                              child: Image(
-                                image: const AssetImage(
+                              child: const Image(
+                                image: AssetImage(
                                     'assets/images/icons/ingredient_icon/bacon.png'),
                               ),
                             ),
                             Container(
                                 alignment: Alignment.bottomRight,
-                                child: Image(
-                                    image: const AssetImage(
+                                child: const Image(
+                                    image: AssetImage(
                                         'assets/images/icons/expiration_icon/fridged.png')))
                           ],
                         );
@@ -194,6 +195,23 @@ class _HomePageState extends State<HomePage> {
               ],
             ),
           ),
+          Container(
+            margin: EdgeInsets.only(top: displayHeight * 0.03),
+            height: 1,
+            width: displayWidth * 0.8,
+            color: mainColor,
+          ),
+          Container(
+            width: displayWidth * 0.8,
+            alignment: Alignment.centerLeft,
+            padding: EdgeInsets.only(top: displayHeight * 0.05),
+            child: Text(
+              '레시피 즐겨찾기',
+              style: TextStyle(
+                  fontWeight: FontWeight.bold, fontSize: displayHeight * 0.02),
+            ),
+          ),
+          Container()
         ],
       ),
     ));
