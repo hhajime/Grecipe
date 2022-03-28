@@ -1,37 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:mofu_flutter/data/list.dart';
+import 'package:mofu_flutter/src/data/list.dart';
 import 'package:custom_radio_grouped_button/custom_radio_grouped_button.dart';
 
+import 'package:mofu_flutter/src/ui/widget/bottom_navigator.dart';
+import 'package:mofu_flutter/src/ui/view/mypage_view/mypage_page.dart';
+
 class HomePage extends StatelessWidget {
-  int _selectedIndex = 0;
   final List<String> entries = <String>['A', 'B', 'C'];
   @override
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
-      bottomNavigationBar: BottomNavigationBar(
-        type: BottomNavigationBarType.fixed,
-        backgroundColor: mainColor,
-        unselectedItemColor: Colors.white54,
-        selectedItemColor: Colors.white,
-        onTap: (int index) {
-          _selectedIndex = index;
-        },
-        items: [
-          BottomNavigationBarItem(
-            label: 'fridge',
-            icon: Icon(Icons.favorite),
-          ),
-          BottomNavigationBarItem(
-            label: 'food vision',
-            icon: Icon(Icons.music_note),
-          ),
-          BottomNavigationBarItem(
-            label: 'my page',
-            icon: Icon(Icons.location_on),
-          ),
-        ],
-      ),
+      bottomNavigationBar: myBNBar(),
       body: Column(
         children: [
           SizedBox(
@@ -174,7 +154,7 @@ class HomePage extends StatelessWidget {
                             decoration: BoxDecoration(
                               borderRadius:
                                   BorderRadius.all(Radius.circular(10)),
-                              color: Colors.white,
+                              color: subColor,
                               border: Border.all(color: mainColor, width: 2),
                             ),
                             child: const Image(
@@ -208,21 +188,27 @@ class HomePage extends StatelessWidget {
                       fontSize: displayHeight * 0.02),
                 ),
               ),
-              /**Container(
+              Container(
+                width: displayWidth * 0.8,
+                height: displayHeight * 0.2,
                   child: ListView.builder(
-                      scrollDirection: Axis.horizontal,
-                      itemCount: 3,
+                      scrollDirection: Axis.vertical,
+                      itemCount: entries.length,
                       itemBuilder: (BuildContext context, int index) {
                         return Container(
-                          color: Colors.white,
+                          width: displayWidth * 0.1,
+                          height: displayHeight * 0.05,
+                          margin: EdgeInsets.only(
+                              bottom: displayHeight * 0.01),
                             decoration: BoxDecoration(
                               borderRadius:
-                                  BorderRadius.all(Radius.circular(10)),
-                              color: Colors.white,
+                                  const BorderRadius.all(Radius.circular(20)),
+                              color: subColor,
                               border: Border.all(color: mainColor, width: 2),
                             ),
-                            child: Center(child: Text('Entry ${entries[index]}')));
-                      }))**/
+                            child: 
+                            Row(children : [Text(' Recipe ${entries[index]}')] ));
+                      }))
             ],
           ),
         ],

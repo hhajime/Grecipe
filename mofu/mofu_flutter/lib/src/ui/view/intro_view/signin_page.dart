@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mofu_flutter/data/list.dart';
+import 'package:mofu_flutter/src/data/list.dart';
 import 'package:mofu_flutter/src/ui/view/home_view/home_page.dart';
 import 'package:get/get.dart';
 class SignInPage extends StatelessWidget {
@@ -141,8 +141,5 @@ class SignInPage extends StatelessWidget {
         ),
       )),
     ));
-
-
-    
   }
 }
