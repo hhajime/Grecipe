@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:mofu_flutter/src/data/list.dart';
 import 'package:mofu_flutter/src/ui/view/intro_view/login_page.dart';
 
 class LoadingPage extends StatelessWidget {
@@ -14,12 +15,14 @@ class LoadingPage extends StatelessWidget {
     );
 
     return Container(
-      color: const Color(0xffFFBA7D),
+      color: mainColor,
+      child: SafeArea(child: Container(
+      color: mainColor,
       child: const Center(
                   child: Image(
             image: AssetImage('assets/images/logo/logo_white.png'),
             height: 170,
           )),
-    );
+    )));
   }
 }

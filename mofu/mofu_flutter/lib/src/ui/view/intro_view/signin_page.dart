@@ -18,7 +18,11 @@ class SignInPage extends StatelessWidget {
       }
       return mainColor;
     }
-    return SafeArea(
+    return 
+    Container(
+      color: mainColor,
+      child:
+    SafeArea(
       child: Scaffold(
           body: SingleChildScrollView(child: Center(
         child: Column(
@@ -140,6 +144,6 @@ class SignInPage extends StatelessWidget {
           ],
         ),
       )),
-    ));
+    )));
   }
 }

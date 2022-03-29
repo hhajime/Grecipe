@@ -21,7 +21,11 @@ class LoginPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return 
+    Container(
+      color: mainColor,
+      child:
+    SafeArea(child:Scaffold(
       appBar: const EmptyAppBar(),
       body: Center(
           child: Column(
@@ -86,7 +90,7 @@ class LoginPage extends StatelessWidget {
           const Padding(padding: EdgeInsets.only(bottom: 50))
         ],
       )),
-    );
+    )));
   }
 }
 
