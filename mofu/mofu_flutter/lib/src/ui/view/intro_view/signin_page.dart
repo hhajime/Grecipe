@@ -78,7 +78,7 @@ class SignInPage extends StatelessWidget {
                     decoration: InputDecoration(
                       focusedBorder: UnderlineInputBorder(
                           borderSide: BorderSide(color: mainColor)),
-                      hintText: '10자 내외 글자/숫자/특수문자를 입력해주세요',
+                      //hintText: '10자 내외 글자/숫자/특수문자를 입력해주세요',
                       contentPadding: EdgeInsets.only(top: 15),
                       isDense: true,
                       hintStyle: TextStyle(
