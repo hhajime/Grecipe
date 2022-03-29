@@ -1,11 +1,11 @@
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:mofu_flutter/src/ui/widget/image_detection.dart';
+
 List<CameraDescription> cameras = [];
 
-
 class FoodVisionPage extends StatefulWidget {
-  const FoodVisionPage({ Key? key }) : super(key: key);
+  const FoodVisionPage({Key? key}) : super(key: key);
 
   @override
   State<FoodVisionPage> createState() => _FoodVisionPageState();
@@ -25,7 +25,7 @@ class _FoodVisionPageState extends State<FoodVisionPage> {
         ],
       ),
       body: Container(
-        child:Center(
+        child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
@@ -34,8 +34,10 @@ class _FoodVisionPageState extends State<FoodVisionPage> {
                 child: RaisedButton(
                   child: Text("Detect in Image"),
                   onPressed: () {
-                    Navigator.push(context, MaterialPageRoute(
-                      builder: (context) => StaticImage(),
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => StaticImage(),
                       ),
                     );
                   },
@@ -48,8 +50,8 @@ class _FoodVisionPageState extends State<FoodVisionPage> {
     );
   }
 
-  aboutDialog(){
-     showAboutDialog(
+  aboutDialog() {
+    showAboutDialog(
       context: context,
       applicationName: "Object Detector App",
       applicationLegalese: "By Rupak Karki",
@@ -59,5 +61,4 @@ class _FoodVisionPageState extends State<FoodVisionPage> {
       ],
     );
   }
-
 }

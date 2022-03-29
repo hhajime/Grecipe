@@ -142,7 +142,7 @@ class HomePage extends StatelessWidget {
                 padding: EdgeInsets.only(top: displayHeight * 0.01),
                 height: displayHeight * 0.2,
                 child: GridView.builder(
-                    itemCount: 7,
+                    itemCount: 15,
                     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                         crossAxisCount: 5,
                         crossAxisSpacing: displayWidth * 0.02,
@@ -189,25 +189,25 @@ class HomePage extends StatelessWidget {
                 ),
               ),
               Container(
-                width: displayWidth * 0.8,
-                height: displayHeight * 0.2,
+                  width: displayWidth * 0.8,
+                  height: displayHeight * 0.2,
                   child: ListView.builder(
                       scrollDirection: Axis.vertical,
                       itemCount: entries.length,
                       itemBuilder: (BuildContext context, int index) {
                         return Container(
-                          width: displayWidth * 0.1,
-                          height: displayHeight * 0.05,
-                          margin: EdgeInsets.only(
-                              bottom: displayHeight * 0.01),
+                            width: displayWidth * 0.1,
+                            height: displayHeight * 0.05,
+                            margin:
+                                EdgeInsets.only(bottom: displayHeight * 0.01),
                             decoration: BoxDecoration(
                               borderRadius:
                                   const BorderRadius.all(Radius.circular(20)),
                               color: subColor,
                               border: Border.all(color: mainColor, width: 2),
                             ),
-                            child: 
-                            Row(children : [Text(' Recipe ${entries[index]}')] ));
+                            child: Row(
+                                children: [Text(' Recipe ${entries[index]}')]));
                       }))
             ],
           ),

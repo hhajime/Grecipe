@@ -10,36 +10,35 @@ import 'package:mofu_flutter/src/ui/view/foodvision_view/foodvision_page.dart';
 import 'package:camera/camera.dart';
 
 List<CameraDescription> cameras = [];
-Future<void> main() async{
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(
-  );
+  await Firebase.initializeApp();
   cameras = await availableCameras();
-  runApp( DevicePreview(
-    enabled: !kReleaseMode,
-    builder: (context) => const MyApp(), 
-  ),);
+  runApp(
+    DevicePreview(
+      enabled: !kReleaseMode,
+      builder: (context) => const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-
     displayWidth = Get.width;
-    displayHeight =Get.height;
+    displayHeight = Get.height;
     displayRatio = displayHeight / displayWidth;
 
     return GetMaterialApp(
-
       debugShowCheckedModeBanner: false,
       useInheritedMediaQuery: true,
       title: 'Flutter Demo',
       locale: DevicePreview.locale(context),
       builder: DevicePreview.appBuilder,
       theme: ThemeData(fontFamily: 'Roboto'),
-      darkTheme: ThemeData.dark(),
-      home: LoginPage(),
+      themeMode: ThemeMode.light,
+      home: const LoadingPage(),
     );
   }
 }
