@@ -9,7 +9,11 @@ class HomePage extends StatelessWidget {
   final List<String> entries = <String>['A', 'B', 'C'];
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
+    return 
+    Container(
+      color: mainColor,
+      child:
+    SafeArea(
         child: Scaffold(
       bottomNavigationBar: myBNBar(),
       body: Column(
@@ -213,6 +217,6 @@ class HomePage extends StatelessWidget {
           ),
         ],
       ),
-    ));
+    )));
   }
 }
