@@ -2,9 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:mofu_flutter/src/data/list.dart';
 import 'package:custom_radio_grouped_button/custom_radio_grouped_button.dart';
 
-import 'package:mofu_flutter/src/ui/widget/bottom_navigator.dart';
-import 'package:mofu_flutter/src/ui/view/mypage_view/mypage_page.dart';
-
 class HomePage extends StatelessWidget {
   final List<String> entries = <String>['A', 'B', 'C'];
   @override
@@ -12,11 +9,10 @@ class HomePage extends StatelessWidget {
     return 
     Container(
       color: mainColor,
-      child:
-    SafeArea(
-        child: Scaffold(
-      bottomNavigationBar: myBNBar(),
-      body: Column(
+      child: SafeArea(
+      child: Container(
+        color: Colors.white,
+        child: Column(
         children: [
           SizedBox(
             height: displayHeight * 0.06,
