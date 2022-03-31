@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:mofu_flutter/src/data/list.dart';
+import 'package:mofu_flutter/src/ui/view/home_view/ingredient_add_page.dart';
 import 'package:custom_radio_grouped_button/custom_radio_grouped_button.dart';
+import 'package:get/get.dart';
 
 class HomePage extends StatelessWidget {
   final List<String> entries = <String>['A', 'B', 'C'];
@@ -148,7 +150,15 @@ class HomePage extends StatelessWidget {
                         crossAxisSpacing: displayWidth * 0.02,
                         mainAxisSpacing: displayHeight * 0.02),
                     itemBuilder: (BuildContext context, int index) {
-                      return Stack(
+                      return 
+                      InkResponse(
+                        onTap: () {
+                          if(index == 14){
+                            print('last item selected');
+                            {Get.to(()=>IngredientAddPage(), transition: Transition.cupertino);}
+                          }
+                        },
+                      child: Stack(
                         children: [
                           Container(
                             decoration: BoxDecoration(
@@ -168,7 +178,7 @@ class HomePage extends StatelessWidget {
                                   image: AssetImage(
                                       'assets/images/icons/expiration_icon/fridged.png')))
                         ],
-                      );
+                      ));
                     }),
               ),
               Container(
