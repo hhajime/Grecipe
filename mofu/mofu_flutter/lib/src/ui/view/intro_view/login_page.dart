@@ -25,7 +25,9 @@ class LoginPage extends StatelessWidget {
     Container(
       color: mainColor,
       child:
-    SafeArea(child:Scaffold(
+    SafeArea(
+      bottom: false,
+      child:Scaffold(
       appBar: const EmptyAppBar(),
       body: Center(
           child: Column(

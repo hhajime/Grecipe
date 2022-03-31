@@ -7,6 +7,7 @@ class IngredientAddPage extends StatelessWidget {
     return Container(
       color: mainColor,
       child: SafeArea(
+        bottom: false,
           child: Container(
         color: Colors.white,
         child: Scaffold(

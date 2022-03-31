@@ -24,6 +24,7 @@ class SignInPage extends StatelessWidget {
     return Container(
         color: mainColor,
         child: SafeArea(
+          bottom: false,
           child: Scaffold(body:
           SingleChildScrollView(
               child: Center(

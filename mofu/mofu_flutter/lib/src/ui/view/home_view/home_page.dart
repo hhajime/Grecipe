@@ -12,6 +12,7 @@ class HomePage extends StatelessWidget {
     Container(
       color: mainColor,
       child: SafeArea(
+        bottom: false,
       child: Container(
         color: Colors.white,
         child: Column(

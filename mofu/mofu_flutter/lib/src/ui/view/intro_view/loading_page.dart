@@ -16,7 +16,9 @@ class LoadingPage extends StatelessWidget {
 
     return Container(
       color: mainColor,
-      child: SafeArea(child: Container(
+      child: SafeArea(
+        bottom: false,
+        child: Container(
       color: mainColor,
       child: const Center(
                   child: Image(
