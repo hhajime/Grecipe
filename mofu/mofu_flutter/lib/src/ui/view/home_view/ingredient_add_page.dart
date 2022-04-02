@@ -21,7 +21,7 @@ class IngredientAddPage extends StatelessWidget {
                 leading: BackButton(
                   color: mainColor,
                   onPressed: () {
-                    () => Get.to(HomePage());
+                    () => Get.back();
                   },
                 ),
                 centerTitle: true,
@@ -110,7 +110,7 @@ class IngredientAddPage extends StatelessWidget {
                       children: [
                         Container(child: Text('유통기한 설정')),
                         Container(
-                            //child: ShelfLifeToggleBtn(context, shelfLifeController),
+                            //child: Obx(()=>ShelfLifeToggleBtn()),
                             ),
                       ],
                     ),

@@ -1,10 +1,18 @@
 import 'package:get/get.dart';
 
 class ShelfLifeController extends GetxController {
-  var tabIndex = 0.obs;
 
-  void changeTabIndex(int index) {
+  static changeTabIndex(int index) {
+  RxList<bool> isSelected = <bool>[].obs; 
+  var tabIndex = 0.obs;
     tabIndex.value = index;
+          for(int buttonIndex = 0; buttonIndex < isSelected.length; buttonIndex++){
+            if(buttonIndex == index){
+              isSelected[buttonIndex] = true;
+            } else {
+              isSelected[buttonIndex] = false;
+            }
+          }
   }
 
   @override
