@@ -99,7 +99,7 @@ class HomePage extends StatelessWidget {
                     ),
                   ),
                   /** 
-                  Row(//left align needed
+                  Row( //left align needed
                     children: [
                       Container(
                           padding: EdgeInsets.fromLTRB(
