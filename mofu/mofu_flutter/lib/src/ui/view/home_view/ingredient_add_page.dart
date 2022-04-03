@@ -4,6 +4,8 @@ import 'package:mofu_flutter/src/data/list.dart';
 import 'package:mofu_flutter/src/ui/view/home_view/home_page.dart';
 import 'package:custom_radio_grouped_button/custom_radio_grouped_button.dart';
 import 'package:get/get.dart';
+import 'package:mofu_flutter/src/ui/widget/LandingPage.dart';
+import 'package:mofu_flutter/src/ui/widget/ingredient_add_icons.dart';
 import 'package:mofu_flutter/src/ui/widget/shelf_life_toggle.dart';
 
 class IngredientAddPage extends StatelessWidget {
@@ -21,7 +23,7 @@ class IngredientAddPage extends StatelessWidget {
                 leading: BackButton(
                   color: mainColor,
                   onPressed: () {
-                    () => Get.back();
+                    Get.to(()=>LandingPage(), transition: Transition.cupertino);
                   },
                 ),
                 centerTitle: true,
@@ -83,7 +85,11 @@ class IngredientAddPage extends StatelessWidget {
                                         alignment: Alignment.centerLeft,
                                         child: Text('아이콘으로 등록하기'),
                                       ),
-                                      Container(
+                                      InkResponse(
+                                        onTap: (){
+                                          ingredientAddIconsDialog();
+                                        },
+                                        child: Container(
                                         height: displayHeight * 0.06,
                                         width: displayHeight * 0.06,
                                         decoration: BoxDecoration(
@@ -97,7 +103,7 @@ class IngredientAddPage extends StatelessWidget {
                                           image: AssetImage(
                                               'assets/images/icons/ingredient_icon/bacon.png'),
                                         ),
-                                      )
+                                      ))
                                     ],
                                   ))
                                 ],

@@ -5,6 +5,7 @@ import 'package:mofu_flutter/src/data/list.dart';
 import 'package:mofu_flutter/src/ui/view/mypage_view/mypage_page.dart';
 import 'package:mofu_flutter/src/ui/view/home_view/home_page.dart';
 import 'package:mofu_flutter/src/ui/view/foodvision_view/foodvision_page.dart';
+import 'package:mofu_flutter/src/ui/widget/image_detection.dart';
 
 class LandingPage extends StatelessWidget {
   final TextStyle unselectedLabelStyle = TextStyle(
@@ -83,7 +84,7 @@ class LandingPage extends StatelessWidget {
                 index: landingPageController.tabIndex.value,
                 children: [
                   HomePage(),
-                  const FoodVisionPage(),
+                  StaticImage(),
                   const MyPage(),
                 ],
               )),

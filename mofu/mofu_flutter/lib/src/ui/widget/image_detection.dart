@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:mofu_flutter/src/data/list.dart';
 import 'package:tflite/tflite.dart';
 
 class StaticImage extends StatefulWidget {
@@ -111,7 +112,7 @@ class _StaticImageState extends State<StaticImage> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              Text("Please Select an Image"),
+              Text("이미지를 선택하세요"),
             ],
           ),
         )
@@ -134,18 +135,23 @@ class _StaticImageState extends State<StaticImage> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Object Detector"),
+        centerTitle: true,
+        title: const Text("Food Vision"),
+        automaticallyImplyLeading: false,
+        backgroundColor: mainColor,
       ),
       floatingActionButton: Row(
         mainAxisAlignment: MainAxisAlignment.end,
         children: <Widget>[
           FloatingActionButton(
+            backgroundColor: mainColor,
             heroTag: "Fltbtn2",
             child: const Icon(Icons.camera_alt),
             onPressed: getImageFromCamera,
           ),
           const SizedBox(width: 10,),
           FloatingActionButton(
+            backgroundColor: mainColor,
             heroTag: "Fltbtn1",
             child: const Icon(Icons.photo),
             onPressed: getImageFromGallery,
