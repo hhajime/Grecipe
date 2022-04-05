@@ -131,7 +131,7 @@ class IngredientAddPage extends StatelessWidget {
                         Container(
                           padding:
                               EdgeInsets.only(bottom: displayHeight * 0.03),
-                          child: Obx(() => ToggleButtons(
+                          child: ToggleButtons(
                               borderRadius: BorderRadius.circular(20),
                               borderWidth: 2,
                               borderColor: mainColor,
@@ -161,7 +161,7 @@ class IngredientAddPage extends StatelessWidget {
                               onPressed: (int index) {
                                 shelfLifeController.changeTabIndex(index);
                               },
-                              isSelected: shelfLifeController.isSelected)),
+                              isSelected: shelfLifeController.isSelected),
                         ),
                       ],
                     ),

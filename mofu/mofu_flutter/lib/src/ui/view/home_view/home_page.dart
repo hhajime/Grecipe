@@ -3,30 +3,28 @@ import 'package:mofu_flutter/src/data/list.dart';
 import 'package:mofu_flutter/src/ui/view/home_view/ingredient_add_page.dart';
 import 'package:custom_radio_grouped_button/custom_radio_grouped_button.dart';
 import 'package:get/get.dart';
+import 'package:mofu_flutter/src/controller/shelf_life_index_controller.dart';
 
 class HomePage extends StatelessWidget {
-  final List<String> entries = <String>['A', 'B', 'C'];
+  final shelfLifeIndexController = Get.put(ShelfLifeIndexController(), permanent: false);
+  final List<String> entries = <String>['스팸 김치 볶음밥', '스팸 김치찌개'];
   @override
   Widget build(BuildContext context) {
     return Container(
         color: mainColor,
         child: SafeArea(
             bottom: false,
-            child: Container(
+            child: Scaffold(
+              appBar: AppBar(automaticallyImplyLeading: false,
+                title: Text('우리집 냉장고',style: TextStyle(color: Colors.black),),
+                centerTitle: true,
+                backgroundColor: Colors.white,
+              ),
+              body:SingleChildScrollView(child: Container(
               color: Colors.white,
               child: Column(
                 children: [
-                  SizedBox(
-                    height: displayHeight * 0.06,
-                    child: Center(
-                      child: Text(
-                        '우리집 냉장고',
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: displayHeight * 0.02),
-                      ),
-                    ),
-                  ),
+                  Container(child: Image.asset('assets/images/banners/temp.png'),),
                   SizedBox(
                     height: displayHeight * 0.06,
                     child: Container(
@@ -54,81 +52,74 @@ class HomePage extends StatelessWidget {
                         alignment: Alignment.bottomRight,
                       ),
                       Container(
-                          child: Stack(
-                        children: [
-                          Container(
-                            child: CustomRadioButton(
-                              defaultSelected: "All",
-                              autoWidth: false,
-                              width: displayWidth * 0.17,
-                              height: displayHeight * 0.03,
-                              customShape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(20),
-                                  side: BorderSide(color: mainColor)),
-                              enableShape: true,
-                              elevation: 0,
-                              absoluteZeroSpacing: false,
-                              spacing: displayWidth * 0.01,
-                              padding: displayHeight * 0.004,
+                      width: displayWidth * 0.8,
+                          padding:
+                              EdgeInsets.only(bottom: displayHeight * 0.005,top: displayHeight * 0.01),
+                          child: ToggleButtons(
+                            constraints: BoxConstraints(maxHeight: 20),
+                              borderRadius: BorderRadius.circular(20),
+                              borderWidth: 2,
+                              borderColor: mainColor,
                               selectedBorderColor: mainColor,
-                              unSelectedColor: Colors.white,
-                              unSelectedBorderColor: mainColor,
-                              buttonLables: [
-                                'All',
-                                'Good',
-                                'Fridged',
-                                'Danger',
+                              color: mainColor,
+                              hoverColor: mainColor,
+                              selectedColor: Colors.white,
+                              focusColor: mainColor,
+                              fillColor: mainColor,
+                              disabledColor: mainColor,
+                              textStyle: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: displayHeight * 0.01),
+                              children: [
+                                Container(
+                                  padding: EdgeInsets.only(left: 10, right: 10),
+                                  child: Text('All')),
+                                Container(
+                                  padding: EdgeInsets.only(left: 10, right: 10),
+                                  child: Row(
+                                  children: [
+                                    Image.asset(
+                                  "assets/images/icons/expiration_icon/good_1.png",
+                                  height: 15,
+                                  width: 15,
+                                ),
+                                Padding(padding: EdgeInsets.only(right: 5))
+                                    ,Text('5 items')],
+                                )),
+                               Container(child: Row(
+                                  children: [
+                                Padding(padding: EdgeInsets.only(right: 10)),
+                                    
+                                    Image.asset(
+                                  "assets/images/icons/expiration_icon/fridged_1.png",
+                                  height: 15,
+                                  width: 15,
+                                ),
+                                Padding(padding: EdgeInsets.only(right: 5))
+                                    
+                                    ,Text('2 items'),
+                                    
+                                Padding(padding: EdgeInsets.only(right: 10)),],
+                                )),
+                                Container(child: Row(
+                                  children: [
+                                Padding(padding: EdgeInsets.only(right: 10)),
+                                    Image.asset(
+                                  "assets/images/icons/expiration_icon/danger_1.png",
+                                  height: 15,
+                                  width: 15,
+                                ),
+                                Padding(padding: EdgeInsets.only(right: 5)),
+                                    Text('5 items'),
+                                    
+                                Padding(padding: EdgeInsets.only(right: 10)),],
+                                )),
                               ],
-                              buttonValues: [
-                                'All',
-                                "Good",
-                                "Fridged",
-                                "Danger",
-                              ],
-                              buttonTextStyle: ButtonTextStyle(
-                                  selectedColor: Colors.white,
-                                  unSelectedColor: mainColor,
-                                  textStyle: TextStyle(
-                                      fontSize: displayHeight * 0.013,
-                                      fontWeight: FontWeight.bold)),
-                              radioButtonValue: (value) {
-                                print(value);
+                              onPressed: (int index) {
+                                shelfLifeIndexController.changeTabIndex(index);
                               },
-                              selectedColor: mainColor,
-                            ),
-                          ),
-                          /** 
-                  Row( //left align needed
-                    children: [
-                      Container(
-                          padding: EdgeInsets.fromLTRB(
-                              displayWidth*0.13, 8, 0, 0),
-                          child: const Image(
-                              image: AssetImage(
-                                  'assets/images/icons/expiration_icon/good.png'))),
-                      Container(
-                          padding: EdgeInsets.fromLTRB(
-                              0, 8, 0, 0),
-                          child: Image(
-                              image: const AssetImage(
-                                  'assets/images/icons/expiration_icon/fridged.png'))),
-                      Container(
-                        padding:
-                            EdgeInsets.fromLTRB(0, 8, 0, 0),
-                        child: Image(
-                            image: const AssetImage(
-                                'assets/images/icons/expiration_icon/danger.png')),
-                      ),
-                      Container(
-                          padding: EdgeInsets.fromLTRB(
-                              0, 8, 0, 0),
-                          child: const Image(
-                              image: AssetImage(
-                                  'assets/images/icons/expiration_icon/good.png'))),
-                    ],
-                  ),**/
-                        ],
-                      )),
+                              isSelected: shelfLifeIndexController.isSelected),
+                        ),
                       Container(
                         height: 2,
                         width: displayWidth * 0.8,
@@ -195,7 +186,7 @@ class HomePage extends StatelessWidget {
                       Container(
                         width: displayWidth * 0.8,
                         alignment: Alignment.centerLeft,
-                        padding: EdgeInsets.only(top: displayHeight * 0.05),
+                        padding: EdgeInsets.only(top: displayHeight * 0.05,bottom: displayHeight * 0.02),
                         child: Text(
                           '레시피 즐겨찾기',
                           style: TextStyle(
@@ -223,13 +214,13 @@ class HomePage extends StatelessWidget {
                                           color: mainColor, width: 2),
                                     ),
                                     child: Row(children: [
-                                      Text(' Recipe ${entries[index]}')
+                                      Text(' ${entries[index]} ')
                                     ]));
                               }))
                     ],
                   ),
                 ],
               ),
-            )));
+            )))));
   }
 }

@@ -40,7 +40,7 @@ class MyApp extends StatelessWidget {
       builder: DevicePreview.appBuilder,
       theme: ThemeData(fontFamily: 'Roboto'),
       themeMode: ThemeMode.light,
-      home: IngredientAddPage(),
+      home: LoadingPage(),
     );
   }
 }

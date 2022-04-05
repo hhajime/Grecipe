@@ -2,7 +2,7 @@ import 'package:get/get.dart';
 
 class ShelfLifeIndexController extends GetxController {
 
-  RxList<bool> isSelected = [false, true, false].obs;
+  RxList<bool> isSelected = [false, false, true, false].obs;
   void changeTabIndex(int index) {
   RxInt tabIndex = 0.obs;
     tabIndex.value = index;
