@@ -71,6 +71,8 @@ class IngredientAddPage extends StatelessWidget {
                                               decoration: InputDecoration(
                                                 border: InputBorder.none,
                                                 hintText: '이름을 입력하세요.',
+                                                hintStyle: TextStyle(
+                                                    fontSize: displayHeight * 0.015),
                                               ),
                                             )),
                                       )

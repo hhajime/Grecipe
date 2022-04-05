@@ -109,10 +109,15 @@ class _StaticImageState extends State<StaticImage> {
         // using ternary operator
         child: _image == null ? 
         Container(
+          padding: EdgeInsets.only(top: displayHeight * 0.3),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
-              Text("이미지를 선택하세요"),
+              Text("아직 촬영한 기록이 없네요!"),
+              Text("촬영하기를 눌러 시작하거나"),
+              Text("저장된 사진을 업로드 해보세요 :)"),
+              
             ],
           ),
         )
@@ -134,12 +139,6 @@ class _StaticImageState extends State<StaticImage> {
     }
 
     return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        title: const Text("Food Vision"),
-        automaticallyImplyLeading: false,
-        backgroundColor: mainColor,
-      ),
       floatingActionButton: Row(
         mainAxisAlignment: MainAxisAlignment.end,
         children: <Widget>[
@@ -158,12 +157,24 @@ class _StaticImageState extends State<StaticImage> {
           ),
         ],
       ),
-      body: Container(
+      body: Column(children: [
+          SizedBox(
+            height: displayHeight * 0.06,
+            child: Center(
+              child: Text(
+                '푸드 비전',
+                style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: displayHeight * 0.02),
+              ),
+            ),
+          ),
+        Container(
         alignment: Alignment.center,
         child:Stack(
         children: stackChildren,
       ),
-      ),
+      )]),
     );
   }
   // gets image from camera and runs detectObject

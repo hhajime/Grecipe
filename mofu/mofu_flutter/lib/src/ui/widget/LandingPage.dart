@@ -40,18 +40,18 @@ class LandingPage extends StatelessWidget {
                     size: 20.0,
                   ),
                 ),
-                label: 'Home',
+                label: 'fridge',
                 backgroundColor: Color.fromRGBO(36, 54, 101, 1.0),
               ),
               BottomNavigationBarItem(
                 icon: Container(
                   margin: EdgeInsets.only(bottom: 7),
                   child: Icon(
-                    Icons.search,
+                    Icons.remove_red_eye,
                     size: 20.0,
                   ),
                 ),
-                label: 'Explore',
+                label: 'food vision',
                 backgroundColor: Color.fromRGBO(36, 54, 101, 1.0),
               ),
               BottomNavigationBarItem(
