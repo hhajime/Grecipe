@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-TextField loginTextField(controller,text,boolean) {
+TextField loginTextField(controller, text, boolean) {
   return TextField(
       controller: controller,
       obscureText: boolean,

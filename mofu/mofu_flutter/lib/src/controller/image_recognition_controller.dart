@@ -11,26 +11,25 @@ class ImageRecognitionController extends GetxController {
   final picker = ImagePicker();
 
   void ImageSize(ImageInfo info) {
-            _imageWidth = info.image.width.toDouble();
-            _imageHeight = info.image.height.toDouble();
+    _imageWidth = info.image.width.toDouble();
+    _imageHeight = info.image.height.toDouble();
   }
-  
+
   void Recognitions(List recognitions) {
-      _recognitions = recognitions;
+    _recognitions = recognitions;
   }
 
   void Busy(bool busy) {
-      _busy = true;
+    _busy = true;
   }
 
-  void PickFile(pick){
-      if(pick != null) {
-        _image = File(pick.path);
-      } else {
-        print("No image Selected");
-      }
+  void PickFile(pick) {
+    if (pick != null) {
+      _image = File(pick.path);
+    } else {
+      print("No image Selected");
+    }
   }
-
 
   @override
   void onInit() {

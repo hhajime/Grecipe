@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-TextField recipeTextField(controller,text,boolean) {
+TextField recipeTextField(controller, text, boolean) {
   return TextField(
       controller: controller,
       obscureText: boolean,

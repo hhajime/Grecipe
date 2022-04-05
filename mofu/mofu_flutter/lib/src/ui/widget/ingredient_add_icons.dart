@@ -54,7 +54,7 @@ void ingredientAddIconsDialog() {
                     children: [
                       Container(
                         padding: EdgeInsets.all(5),
-                        margin: EdgeInsets.only(right: displayWidth * 0.63),
+                        margin: EdgeInsets.only(right: displayWidth * 0.6),
                         child: Text(
                           '채소',
                           style: TextStyle(
@@ -69,7 +69,7 @@ void ingredientAddIconsDialog() {
                       Padding(padding: EdgeInsets.all(5)),
                       Container(
                         padding: EdgeInsets.all(5),
-                        margin: EdgeInsets.only(right: displayWidth * 0.5),
+                        margin: EdgeInsets.only(right: displayWidth * 0.4),
                         child: Text(
                           '과일·견과·쌀',
                           style: TextStyle(
@@ -84,7 +84,7 @@ void ingredientAddIconsDialog() {
                       Padding(padding: EdgeInsets.all(5)),
                       Container(
                         padding: EdgeInsets.all(5),
-                        margin: EdgeInsets.only(right: displayWidth * 0.43),
+                        margin: EdgeInsets.only(right: displayWidth * 0.32),
                         child: Text(
                           '수산·해산·건어물',
                           style: TextStyle(
@@ -99,7 +99,7 @@ void ingredientAddIconsDialog() {
                       Padding(padding: EdgeInsets.all(5)),
                       Container(
                         padding: EdgeInsets.all(5),
-                        margin: EdgeInsets.only(right: displayWidth * 0.55),
+                        margin: EdgeInsets.only(right: displayWidth * 0.49),
                         child: Text(
                           '정육·계란',
                           style: TextStyle(
@@ -114,7 +114,7 @@ void ingredientAddIconsDialog() {
                       Padding(padding: EdgeInsets.all(5)),
                       Container(
                         padding: EdgeInsets.all(5),
-                        margin: EdgeInsets.only(right: displayWidth * 0.5),
+                        margin: EdgeInsets.only(right: displayWidth * 0.42),
                         child: Text(
                           '면·양념·오일',
                           style: TextStyle(
@@ -131,6 +131,7 @@ void ingredientAddIconsDialog() {
               Container(
                 child: Center(
                   child: Container(
+                    height: displayHeight * 0.05,
                     child: ElevatedButton(
                       onPressed: () => Get.back(),
                       style: ButtonStyle(
@@ -144,7 +145,7 @@ void ingredientAddIconsDialog() {
                             side: BorderSide(color: mainColor, width: 2))),
                       ),
                       child: Text(
-                        '등록완료',
+                        '확인',
                         style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: displayHeight * 0.025),

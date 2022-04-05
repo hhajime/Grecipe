@@ -35,14 +35,15 @@ class IngredientAddPage extends StatelessWidget {
                       fontWeight: FontWeight.w800, color: Colors.black),
                 ),
               ),
-              body: Column(
+              body: SingleChildScrollView(
+                  child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Center(
                       child: Container(
                           height: displayHeight * 0.15,
                           width: displayWidth * 0.8,
-                          padding: EdgeInsets.only(top: displayHeight * 0.02),
+                          padding: EdgeInsets.only(top: displayHeight * 0.03),
                           child: Container(
                               height: displayHeight * 0.2,
                               child: Row(
@@ -54,6 +55,8 @@ class IngredientAddPage extends StatelessWidget {
                                     children: [
                                       Container(
                                         child: Text('이름 입력'),
+                                        padding: EdgeInsets.only(
+                                            bottom: displayHeight * 0.01),
                                       ),
                                       Container(
                                         child: Container(
@@ -73,7 +76,7 @@ class IngredientAddPage extends StatelessWidget {
                                                 hintText: '이름을 입력하세요.',
                                                 hintStyle: TextStyle(
                                                     fontSize:
-                                                        displayHeight * 0.015),
+                                                        displayHeight * 0.013),
                                               ),
                                             )),
                                       )
@@ -85,6 +88,8 @@ class IngredientAddPage extends StatelessWidget {
                                         CrossAxisAlignment.start,
                                     children: [
                                       Container(
+                                        padding: EdgeInsets.only(
+                                            bottom: displayHeight * 0.01),
                                         alignment: Alignment.centerLeft,
                                         child: Text('아이콘으로 등록하기'),
                                       ),
@@ -118,21 +123,39 @@ class IngredientAddPage extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Container(child: Text('유통기한 설정')),
                         Container(
+                          child: Text('유통기한 설정'),
+                          padding:
+                              EdgeInsets.only(bottom: displayHeight * 0.01),
+                        ),
+                        Container(
+                          padding:
+                              EdgeInsets.only(bottom: displayHeight * 0.03),
                           child: Obx(() => ToggleButtons(
-                              children: const [
-                                Icon(
-                                  Icons.ac_unit,
-                                  size: 20.0,
+                              borderRadius: BorderRadius.circular(20),
+                              borderWidth: 2,
+                              borderColor: mainColor,
+                              selectedBorderColor: mainColor,
+                              color: mainColor,
+                              hoverColor: mainColor,
+                              selectedColor: mainColor,
+                              focusColor: mainColor,
+                              fillColor: mainColor,
+                              children: [
+                                Image.asset(
+                                  "assets/images/icons/expiration_icon/danger_1.png",
+                                  height: 20,
+                                  width: 20,
                                 ),
-                                Icon(
-                                  Icons.airport_shuttle,
-                                  size: 20.0,
+                                Image.asset(
+                                  "assets/images/icons/expiration_icon/good_1.png",
+                                  height: 20,
+                                  width: 20,
                                 ),
-                                Icon(
-                                  Icons.all_inclusive,
-                                  size: 20.0,
+                                Image.asset(
+                                  "assets/images/icons/expiration_icon/fridged_1.png",
+                                  height: 20,
+                                  width: 20,
                                 ),
                               ],
                               onPressed: (int index) {
@@ -150,6 +173,8 @@ class IngredientAddPage extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Container(
+                          padding:
+                              EdgeInsets.only(bottom: displayHeight * 0.01),
                           child: Text('메모'),
                         ),
                         Container(
@@ -172,9 +197,22 @@ class IngredientAddPage extends StatelessWidget {
                             )),
                       ],
                     ),
-                  ))
+                  )),
+                  Padding(
+                    padding: EdgeInsets.only(top: displayHeight * 0.2),
+                  ),
+                  Center(
+                      child: Container(
+                          child: TextButton(
+                              onPressed: () => {Get.back()},
+                              child: Text(
+                                '등록하기',
+                                style: TextStyle(
+                                    color: Colors.black,
+                                    fontSize: displayHeight * 0.02),
+                              ))))
                 ],
-              ),
+              )),
             ),
           )),
     );
