@@ -6,7 +6,6 @@ import 'package:custom_radio_grouped_button/custom_radio_grouped_button.dart';
 import 'package:get/get.dart';
 import 'package:mofu_flutter/src/ui/widget/LandingPage.dart';
 import 'package:mofu_flutter/src/ui/widget/ingredient_add_icons.dart';
-import 'package:mofu_flutter/src/ui/widget/shelf_life_toggle.dart';
 
 class IngredientAddPage extends StatelessWidget {
   final shelfLifeController = Get.put(ShelfLifeController(), permanent: false);
@@ -23,7 +22,8 @@ class IngredientAddPage extends StatelessWidget {
                 leading: BackButton(
                   color: mainColor,
                   onPressed: () {
-                    Get.to(()=>LandingPage(), transition: Transition.cupertino);
+                    Get.to(() => LandingPage(),
+                        transition: Transition.cupertino);
                   },
                 ),
                 centerTitle: true,
@@ -72,7 +72,8 @@ class IngredientAddPage extends StatelessWidget {
                                                 border: InputBorder.none,
                                                 hintText: '이름을 입력하세요.',
                                                 hintStyle: TextStyle(
-                                                    fontSize: displayHeight * 0.015),
+                                                    fontSize:
+                                                        displayHeight * 0.015),
                                               ),
                                             )),
                                       )
@@ -88,24 +89,25 @@ class IngredientAddPage extends StatelessWidget {
                                         child: Text('아이콘으로 등록하기'),
                                       ),
                                       InkResponse(
-                                        onTap: (){
-                                          ingredientAddIconsDialog();
-                                        },
-                                        child: Container(
-                                        height: displayHeight * 0.06,
-                                        width: displayHeight * 0.06,
-                                        decoration: BoxDecoration(
-                                          borderRadius: const BorderRadius.all(
-                                              Radius.circular(10)),
-                                          color: subColor,
-                                          border: Border.all(
-                                              color: mainColor, width: 2),
-                                        ),
-                                        child: const Image(
-                                          image: AssetImage(
-                                              'assets/images/icons/ingredient_icon/bacon.png'),
-                                        ),
-                                      ))
+                                          onTap: () {
+                                            ingredientAddIconsDialog();
+                                          },
+                                          child: Container(
+                                            height: displayHeight * 0.06,
+                                            width: displayHeight * 0.06,
+                                            decoration: BoxDecoration(
+                                              borderRadius:
+                                                  const BorderRadius.all(
+                                                      Radius.circular(10)),
+                                              color: subColor,
+                                              border: Border.all(
+                                                  color: mainColor, width: 2),
+                                            ),
+                                            child: const Image(
+                                              image: AssetImage(
+                                                  'assets/images/icons/ingredient_icon/bacon.png'),
+                                            ),
+                                          ))
                                     ],
                                   ))
                                 ],
@@ -118,8 +120,26 @@ class IngredientAddPage extends StatelessWidget {
                       children: [
                         Container(child: Text('유통기한 설정')),
                         Container(
-                            //child: Obx(()=>ShelfLifeToggleBtn()),
-                            ),
+                          child: Obx(() => ToggleButtons(
+                              children: const [
+                                Icon(
+                                  Icons.ac_unit,
+                                  size: 20.0,
+                                ),
+                                Icon(
+                                  Icons.airport_shuttle,
+                                  size: 20.0,
+                                ),
+                                Icon(
+                                  Icons.all_inclusive,
+                                  size: 20.0,
+                                ),
+                              ],
+                              onPressed: (int index) {
+                                shelfLifeController.changeTabIndex(index);
+                              },
+                              isSelected: shelfLifeController.isSelected)),
+                        ),
                       ],
                     ),
                   )),
