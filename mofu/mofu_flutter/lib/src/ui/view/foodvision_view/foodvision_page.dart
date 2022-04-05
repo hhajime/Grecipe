@@ -111,7 +111,9 @@ class FoodVisionPage extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
-                  Text("아직 촬영한 기록이 없네요!"),
+                  Text("아직 촬영한 기록이 없네요!",
+                  style: TextStyle(fontWeight: FontWeight.bold,
+                  fontSize: 20),),
                   Text("촬영하기를 눌러 시작하거나"),
                   Text("저장된 사진을 업로드 해보세요 :)"),
                 ],
