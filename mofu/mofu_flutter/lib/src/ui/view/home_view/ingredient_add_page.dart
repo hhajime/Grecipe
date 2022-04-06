@@ -161,7 +161,7 @@ class IngredientAddPage extends StatelessWidget {
                               onPressed: (int index) {
                                 shelfLifeController.changeTabIndex(index);
                               },
-                              isSelected: shelfLifeController.isSelected)),
+                              isSelected: shelfLifeController.isSelected.toList())),
                         ),
                       ],
                     ),
