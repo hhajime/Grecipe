@@ -7,6 +7,7 @@ import 'package:mofu_flutter/src/ui/view/home_view/home_page.dart';
 import 'package:mofu_flutter/src/ui/view/intro_view/loading_page.dart';
 import 'package:mofu_flutter/src/data/list.dart';
 import 'package:mofu_flutter/src/ui/view/intro_view/login_page.dart';
+import 'package:mofu_flutter/src/ui/view/mypage_view/mypage_page.dart';
 import 'package:mofu_flutter/src/ui/view/home_view/ingredient_add_page.dart';
 import 'package:mofu_flutter/src/ui/view/foodvision_view/foodvision_page.dart';
 import 'package:camera/camera.dart';
@@ -40,7 +41,7 @@ class MyApp extends StatelessWidget {
       builder: DevicePreview.appBuilder,
       theme: ThemeData(fontFamily: 'Roboto'),
       themeMode: ThemeMode.light,
-      home: LoadingPage(),
+      home: const LoadingPage(),
     );
   }
 }

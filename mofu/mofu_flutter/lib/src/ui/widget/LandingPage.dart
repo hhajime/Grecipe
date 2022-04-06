@@ -85,7 +85,7 @@ class LandingPage extends StatelessWidget {
                 children: [
                   HomePage(),
                   StaticImage(),
-                  const MyPage(),
+                  MyPage(),
                 ],
               )),
         )));
