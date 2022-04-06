@@ -55,7 +55,7 @@ class HomePage extends StatelessWidget {
                       width: displayWidth * 0.8,
                           padding:
                               EdgeInsets.only(bottom: displayHeight * 0.005,top: displayHeight * 0.01),
-                          child: ToggleButtons(
+                          child: Obx(()=>ToggleButtons(
                             constraints: BoxConstraints(maxHeight: 20),
                               borderRadius: BorderRadius.circular(20),
                               borderWidth: 2,
@@ -118,7 +118,7 @@ class HomePage extends StatelessWidget {
                               onPressed: (int index) {
                                 shelfLifeIndexController.changeTabIndex(index);
                               },
-                              isSelected: shelfLifeIndexController.isSelected),
+                              isSelected: shelfLifeIndexController.isSelected.toList())),
                         ),
                       Container(
                         height: 2,
