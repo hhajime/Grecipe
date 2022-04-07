@@ -4,13 +4,13 @@ import 'package:image_picker/image_picker.dart';
 import 'package:mofu_flutter/src/data/list.dart';
 import 'package:tflite/tflite.dart';
 
-class StaticImage extends StatefulWidget {
+class FoodVision extends StatefulWidget {
 
   @override
-  _StaticImageState createState() => _StaticImageState();
+  _FoodVisionState createState() => _FoodVisionState();
 }
 
-class _StaticImageState extends State<StaticImage> {
+class _FoodVisionState extends State<FoodVision> {
   File? _image;
   List? _recognitions;
   bool? _busy;

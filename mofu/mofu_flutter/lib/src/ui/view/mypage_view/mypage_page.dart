@@ -105,23 +105,54 @@ class MyPage extends StatelessWidget {
                                   ))),
                     ],
                   )),
-                  Container(
-                    alignment: Alignment.bottomCenter,
-                    height: displayHeight * 0.1,
-                    child: Text('문의하기', style: TextStyle(fontWeight: FontWeight.bold,fontSize: displayHeight *0.015,decoration: TextDecoration.underline),),),
-                    Container(
-                    alignment: Alignment.bottomCenter,
-                    height: displayHeight * 0.07,
-                    child: Text('로그아웃', style: TextStyle(fontWeight: FontWeight.bold,fontSize: displayHeight *0.015,decoration: TextDecoration.underline),),),
-                    Spacer(),
-                    Container(
-                      decoration: BoxDecoration(border: Border(top: BorderSide(color: mainColor,width: 1))),
-                      width: displayWidth * 0.7, height: displayHeight *0.1,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [Text('탈퇴하기', style: TextStyle(fontWeight: FontWeight.bold,fontSize: displayHeight *0.015,decoration: TextDecoration.underline),),
-                        Text('버전정보 v1.0.0', style: TextStyle(fontWeight: FontWeight.bold,fontSize: displayHeight *0.015),)],
-                      ),)
+              Container(
+                alignment: Alignment.bottomCenter,
+                height: displayHeight * 0.1,
+                child: Text(
+                  '문의하기',
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: displayHeight * 0.015,
+                      decoration: TextDecoration.underline),
+                ),
+              ),
+              Container(
+                alignment: Alignment.bottomCenter,
+                height: displayHeight * 0.07,
+                child: Text(
+                  '로그아웃',
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: displayHeight * 0.015,
+                      decoration: TextDecoration.underline),
+                ),
+              ),
+              Spacer(),
+              Container(
+                decoration: BoxDecoration(
+                    border:
+                        Border(top: BorderSide(color: mainColor, width: 1))),
+                width: displayWidth * 0.7,
+                height: displayHeight * 0.1,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      '탈퇴하기',
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: displayHeight * 0.015,
+                          decoration: TextDecoration.underline),
+                    ),
+                    Text(
+                      '버전정보 v1.0.0',
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: displayHeight * 0.015),
+                    )
+                  ],
+                ),
+              )
             ],
           ),
         ),

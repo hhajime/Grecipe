@@ -1,14 +1,10 @@
 import 'dart:io';
-import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
-import 'package:mofu_flutter/src/ui/widget/image_detection.dart';
 import 'package:mofu_flutter/src/controller/image_recognition_controller.dart';
 import 'package:mofu_flutter/src/data/list.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:tflite/tflite.dart';
 import 'package:get/get.dart';
-
-List<CameraDescription> cameras = [];
 
 class FoodVisionPage extends StatelessWidget {
   final myController = Get.put(ImageRecognitionController());
@@ -30,7 +26,8 @@ class FoodVisionPage extends StatelessWidget {
 
   // this function detects the objects on the image
   detectObject(File image) async {
-    print('hello ' + image.path);
+    print('hello ImagePath' + image.path);
+    print('hello ImageSize' + myController.ImageSize.toString());
     var recognitions = await Tflite.detectObjectOnImage(
         path: image.path, // required
         model: "SSDMobileNet",

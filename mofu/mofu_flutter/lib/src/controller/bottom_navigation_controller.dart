@@ -5,6 +5,7 @@ class BottomNavigationBarController extends GetxController {
 
   void changeTabIndex(int index) {
     tabIndex.value = index;
+    update();
   }
 
   @override
