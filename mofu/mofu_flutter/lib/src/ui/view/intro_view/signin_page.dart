@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:mofu_flutter/src/data/list.dart';
 import 'package:mofu_flutter/src/ui/view/home_view/home_page.dart';
 import 'package:get/get.dart';
-import 'package:mofu_flutter/src/ui/widget/LandingPage.dart';
+import 'package:mofu_flutter/src/ui/widget/landing_page.dart';
 
 class SignInPage extends StatelessWidget {
   const SignInPage({Key? key}) : super(key: key);

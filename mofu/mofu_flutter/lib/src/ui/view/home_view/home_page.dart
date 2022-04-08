@@ -8,7 +8,8 @@ import 'package:mofu_flutter/src/controller/shelf_life_index_controller.dart';
 class HomePage extends StatelessWidget {
   final shelfLifeIndexController = Get.put(ShelfLifeIndexController(), permanent: false);
   final List<String> entries = <String>['스팸 김치 볶음밥', '스팸 김치찌개'];
-  @override
+  final List<String> ingResult = <String>['kimchi','bacon','onion','rice','salt','pepper','egg','olive_oil','sugar','water'];
+    @override
   Widget build(BuildContext context) {
     return Container(
         color: mainColor,
@@ -136,16 +137,17 @@ class HomePage extends StatelessWidget {
                         padding: EdgeInsets.only(top: displayHeight * 0.01),
                         height: displayHeight * 0.2,
                         child: GridView.builder(
-                            itemCount: 15,
+                            itemCount: ingResult.length,
                             gridDelegate:
                                 SliverGridDelegateWithFixedCrossAxisCount(
                                     crossAxisCount: 5,
                                     crossAxisSpacing: displayWidth * 0.02,
+                                    mainAxisExtent: displayHeight * 0.09,
                                     mainAxisSpacing: displayHeight * 0.02),
                             itemBuilder: (BuildContext context, int index) {
                               return InkResponse(
                                   onTap: () {
-                                    if (index == 14) {
+                                    if (index == ingResult.length + 1) {
                                       print('last item selected');
                                       {
                                         Get.to(() => IngredientAddPage(),
@@ -155,19 +157,7 @@ class HomePage extends StatelessWidget {
                                   },
                                   child: Stack(
                                     children: [
-                                      Container(
-                                        decoration: BoxDecoration(
-                                          borderRadius: BorderRadius.all(
-                                              Radius.circular(10)),
-                                          color: subColor,
-                                          border: Border.all(
-                                              color: mainColor, width: 2),
-                                        ),
-                                        child: const Image(
-                                          image: AssetImage(
-                                              'assets/images/icons/ingredient_icon/bacon.png'),
-                                        ),
-                                      ),
+                                      Condicon(index),
                                       Container(
                                           alignment: Alignment.bottomRight,
                                           child: const Image(
@@ -188,7 +178,7 @@ class HomePage extends StatelessWidget {
                         alignment: Alignment.centerLeft,
                         padding: EdgeInsets.only(top: displayHeight * 0.05,bottom: displayHeight * 0.02),
                         child: Text(
-                          '레시피 즐겨찾기',
+                          '가능한 레시피 목록',
                           style: TextStyle(
                               fontWeight: FontWeight.bold,
                               fontSize: displayHeight * 0.02),
@@ -223,4 +213,36 @@ class HomePage extends StatelessWidget {
               ),
             )))));
   }
+
+ Condicon(index){
+   if(index < ingResult.length){
+return Column(children :[ Container(
+                                        decoration: BoxDecoration(
+                                          borderRadius: BorderRadius.all(
+                                              Radius.circular(10)),
+                                          color: subColor,
+                                          border: Border.all(
+                                              color: mainColor, width: 2),
+                                        ),
+                                        child: Image(
+                                          image: AssetImage(
+                                              'assets/images/icons/ingredient_icon/${ingResult[index]}.png'),
+                                        ),
+                                      ),
+                                      Container(
+        child:FittedBox(
+          fit: BoxFit.fitWidth,
+          child: Text(ingResult[index]),
+        ))]);
+
+   }return Container(decoration: BoxDecoration(
+                                          borderRadius: BorderRadius.all(
+                                              Radius.circular(10)),
+                                          color: subColor,
+                                          border: Border.all(
+                                              color: mainColor, width: 2),
+                                        ),
+                                        child: Icon(Icons.add,color: mainColor,),);
+ }
+
 }
