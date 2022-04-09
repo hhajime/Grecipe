@@ -5,10 +5,12 @@ import 'package:custom_radio_grouped_button/custom_radio_grouped_button.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:get/get.dart';
 import 'package:mofu_flutter/src/controller/shelf_life_index_controller.dart';
+import 'package:mofu_flutter/src/controller/mytabcontroller.dart';
 
 class HomePage extends StatelessWidget {
   final shelfLifeIndexController =
       Get.put(ShelfLifeIndexController(), permanent: false);
+  final MyTabController _tabx = Get.put(MyTabController());
   final List<String> entries = <String>['스팸 김치 볶음밥', '스팸 김치찌개'];
   final List<String> ingResult = <String>[
     'kimchi',
@@ -59,8 +61,6 @@ class HomePage extends StatelessWidget {
                           ),
                         ),
                       ),
-                      Column(
-                        children: [
                           Container(
                             width: displayWidth * 0.8,
                             child: Text(
@@ -74,125 +74,196 @@ class HomePage extends StatelessWidget {
                           ),
                           Container(
                             width: displayWidth * 0.8,
-                            padding: EdgeInsets.only(
-                                bottom: displayHeight * 0.005,
-                                top: displayHeight * 0.01),
-                            child: Obx(() => ToggleButtons(
-                                constraints: BoxConstraints(maxHeight: 20),
-                                borderRadius: BorderRadius.circular(20),
-                                borderWidth: 2,
-                                borderColor: mainColor,
-                                selectedBorderColor: mainColor,
-                                color: mainColor,
-                                hoverColor: mainColor,
-                                selectedColor: Colors.white,
-                                focusColor: mainColor,
-                                fillColor: mainColor,
-                                disabledColor: mainColor,
-                                textStyle: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: displayHeight * 0.01),
-                                children: [
-                                  Container(
-                                      padding:
-                                          EdgeInsets.only(left: 10, right: 10),
-                                      child: Text('All')),
-                                  Container(
-                                      padding:
-                                          EdgeInsets.only(left: 10, right: 10),
-                                      child: Row(
-                                        children: [
-                                          Image.asset(
-                                            "assets/images/icons/expiration_icon/good_1.png",
-                                            height: 15,
-                                            width: 15,
-                                          ),
-                                          Padding(
-                                              padding:
-                                                  EdgeInsets.only(right: 5)),
-                                          Text('5 items')
-                                        ],
-                                      )),
-                                  Container(
-                                      child: Row(
-                                    children: [
-                                      Padding(
-                                          padding: EdgeInsets.only(right: 10)),
-                                      Image.asset(
-                                        "assets/images/icons/expiration_icon/fridged_1.png",
-                                        height: 15,
-                                        width: 15,
-                                      ),
-                                      Padding(
-                                          padding: EdgeInsets.only(right: 5)),
-                                      Text('2 items'),
-                                      Padding(
-                                          padding: EdgeInsets.only(right: 10)),
-                                    ],
-                                  )),
-                                  Container(
-                                      child: Row(
-                                    children: [
-                                      Padding(
-                                          padding: EdgeInsets.only(right: 10)),
-                                      Image.asset(
-                                        "assets/images/icons/expiration_icon/danger_1.png",
-                                        height: 15,
-                                        width: 15,
-                                      ),
-                                      Padding(
-                                          padding: EdgeInsets.only(right: 5)),
-                                      Text('5 items'),
-                                      Padding(
-                                          padding: EdgeInsets.only(right: 10)),
-                                    ],
-                                  )),
-                                ],
-                                onPressed: (int index) {
-                                  shelfLifeIndexController
-                                      .changeTabIndex(index);
-                                },
-                                isSelected: shelfLifeIndexController.isSelected
-                                    .toList())),
-                          ),
+                            height: displayHeight * 0.018,
+                              child: Container(
+                                width: displayWidth * 0.6,
+                                child:TabBar(
+                                  unselectedLabelColor: mainColor,
+                                  labelPadding: EdgeInsets.only(left:5, right: 5),
+                                indicator: BoxDecoration(borderRadius: BorderRadius.circular(20),
+                                color: mainColor),
+                                indicatorSize: TabBarIndicatorSize.label,
+                                isScrollable: false,
+                                  controller: _tabx.controller,
+                                  tabs: _tabx.myTabs)),
+                            alignment: Alignment.bottomLeft,),
+                          Padding(padding:EdgeInsets.only(top: 5)),
                           Container(
                             height: 2,
                             width: displayWidth * 0.8,
                             color: mainColor,
                           ),
-                          Container(
+                          SizedBox(
                             width: displayWidth * 0.8,
-                            decoration: const BoxDecoration(
-                              color: Colors.white,
-                            ),
-                            margin: EdgeInsets.only(
-                                left: displayWidth * 0.02,
-                                right: displayWidth * 0.02),
-                            padding: EdgeInsets.only(top: displayHeight * 0.01),
-                            height: displayHeight * 0.2,
-                            child: GridView.builder(
-                                itemCount: ingResult.length + 1,
-                                gridDelegate:
-                                    SliverGridDelegateWithFixedCrossAxisCount(
-                                        crossAxisCount: 5,
-                                        crossAxisSpacing: displayWidth * 0.02,
-                                        mainAxisExtent: displayHeight * 0.09,
-                                        mainAxisSpacing: displayHeight * 0.02),
-                                itemBuilder: (BuildContext context, int index) {
-                                  return InkResponse(
-                                    onTap: () {
-                                      if (index == ingResult.length) {
-                                        print('last item selected');
-                                        {
-                                          Get.to(() => IngredientAddPage(),
-                                              transition: Transition.cupertino);
-                                        }
-                                      }
-                                    },
-                                    child: Condicon(index),
-                                  );
-                                }),
-                          ),
+                              height: displayHeight * 0.2,
+                              child: TabBarView(
+                                  controller: _tabx.controller,
+                                  children: [
+                                    Container(
+                                      width: displayWidth * 0.8,
+                                      decoration: const BoxDecoration(
+                                        color: Colors.white,
+                                      ),
+                                      margin: EdgeInsets.only(
+                                          left: displayWidth * 0.02,
+                                          right: displayWidth * 0.02),
+                                      padding: EdgeInsets.only(
+                                          top: displayHeight * 0.01),
+                                      height: displayHeight * 0.2,
+                                      child: GridView.builder(
+                                          itemCount: ingResult.length + 1,
+                                          gridDelegate:
+                                              SliverGridDelegateWithFixedCrossAxisCount(
+                                                  crossAxisCount: 5,
+                                                  crossAxisSpacing:
+                                                      displayWidth * 0.02,
+                                                  mainAxisExtent:
+                                                      displayHeight * 0.09,
+                                                  mainAxisSpacing:
+                                                      displayHeight * 0.02),
+                                          itemBuilder: (BuildContext context,
+                                              int index) {
+                                            return InkResponse(
+                                              onTap: () {
+                                                if (index == ingResult.length) {
+                                                  print('last item selected');
+                                                  {
+                                                    Get.to(
+                                                        () =>
+                                                            IngredientAddPage(),
+                                                        transition: Transition
+                                                            .cupertino);
+                                                  }
+                                                }
+                                              },
+                                              child: Condicon(index),
+                                            );
+                                          }),
+                                    ),
+                                    Container(
+                                      width: displayWidth * 0.8,
+                                      decoration: const BoxDecoration(
+                                        color: Colors.white,
+                                      ),
+                                      margin: EdgeInsets.only(
+                                          left: displayWidth * 0.02,
+                                          right: displayWidth * 0.02),
+                                      padding: EdgeInsets.only(
+                                          top: displayHeight * 0.01),
+                                      height: displayHeight * 0.2,
+                                      child: GridView.builder(
+                                          itemCount: ingResult.length + 1,
+                                          gridDelegate:
+                                              SliverGridDelegateWithFixedCrossAxisCount(
+                                                  crossAxisCount: 5,
+                                                  crossAxisSpacing:
+                                                      displayWidth * 0.02,
+                                                  mainAxisExtent:
+                                                      displayHeight * 0.09,
+                                                  mainAxisSpacing:
+                                                      displayHeight * 0.02),
+                                          itemBuilder: (BuildContext context,
+                                              int index) {
+                                            return InkResponse(
+                                              onTap: () {
+                                                if (index == ingResult.length) {
+                                                  print('last item selected');
+                                                  {
+                                                    Get.to(
+                                                        () =>
+                                                            IngredientAddPage(),
+                                                        transition: Transition
+                                                            .cupertino);
+                                                  }
+                                                }
+                                              },
+                                              child: Condicon(index),
+                                            );
+                                          }),
+                                    ),
+                                    Container(
+                                      width: displayWidth * 0.8,
+                                      decoration: const BoxDecoration(
+                                        color: Colors.white,
+                                      ),
+                                      margin: EdgeInsets.only(
+                                          left: displayWidth * 0.02,
+                                          right: displayWidth * 0.02),
+                                      padding: EdgeInsets.only(
+                                          top: displayHeight * 0.01),
+                                      height: displayHeight * 0.2,
+                                      child: GridView.builder(
+                                          itemCount: ingResult.length + 1,
+                                          gridDelegate:
+                                              SliverGridDelegateWithFixedCrossAxisCount(
+                                                  crossAxisCount: 5,
+                                                  crossAxisSpacing:
+                                                      displayWidth * 0.02,
+                                                  mainAxisExtent:
+                                                      displayHeight * 0.09,
+                                                  mainAxisSpacing:
+                                                      displayHeight * 0.02),
+                                          itemBuilder: (BuildContext context,
+                                              int index) {
+                                            return InkResponse(
+                                              onTap: () {
+                                                if (index == ingResult.length) {
+                                                  print('last item selected');
+                                                  {
+                                                    Get.to(
+                                                        () =>
+                                                            IngredientAddPage(),
+                                                        transition: Transition
+                                                            .cupertino);
+                                                  }
+                                                }
+                                              },
+                                              child: Condicon(index),
+                                            );
+                                          }),
+                                    ),
+                                    Container(
+                                      width: displayWidth * 0.8,
+                                      decoration: const BoxDecoration(
+                                        color: Colors.white,
+                                      ),
+                                      margin: EdgeInsets.only(
+                                          left: displayWidth * 0.02,
+                                          right: displayWidth * 0.02),
+                                      padding: EdgeInsets.only(
+                                          top: displayHeight * 0.01),
+                                      height: displayHeight * 0.2,
+                                      child: GridView.builder(
+                                          itemCount: ingResult.length + 1,
+                                          gridDelegate:
+                                              SliverGridDelegateWithFixedCrossAxisCount(
+                                                  crossAxisCount: 5,
+                                                  crossAxisSpacing:
+                                                      displayWidth * 0.02,
+                                                  mainAxisExtent:
+                                                      displayHeight * 0.09,
+                                                  mainAxisSpacing:
+                                                      displayHeight * 0.02),
+                                          itemBuilder: (BuildContext context,
+                                              int index) {
+                                            return InkResponse(
+                                              onTap: () {
+                                                if (index == ingResult.length) {
+                                                  print('last item selected');
+                                                  {
+                                                    Get.to(
+                                                        () =>
+                                                            IngredientAddPage(),
+                                                        transition: Transition
+                                                            .cupertino);
+                                                  }
+                                                }
+                                              },
+                                              child: Condicon(index),
+                                            );
+                                          }),
+                                    )
+                                  ])),
                           Container(
                             margin: EdgeInsets.only(top: displayHeight * 0.03),
                             height: 1,
@@ -217,6 +288,7 @@ class HomePage extends StatelessWidget {
                               height: displayHeight * 0.2,
                               child: ListView.builder(
                                   scrollDirection: Axis.vertical,
+                                  shrinkWrap: true,
                                   itemCount: entries.length,
                                   itemBuilder:
                                       (BuildContext context, int index) {
@@ -237,8 +309,6 @@ class HomePage extends StatelessWidget {
                                         ]));
                                   }))
                         ],
-                      ),
-                    ],
                   ),
                 )))));
   }
@@ -250,7 +320,7 @@ class HomePage extends StatelessWidget {
           children: [
             Container(
               height: displayHeight * 0.066,
-      width: displayWidth * 0.16,
+              width: displayWidth * 0.16,
               padding: EdgeInsets.all(5),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.all(Radius.circular(10)),
@@ -263,7 +333,7 @@ class HomePage extends StatelessWidget {
               ),
             ),
             Container(
-      height: displayHeight * 0.066,
+                height: displayHeight * 0.066,
                 color: Colors.transparent,
                 alignment: Alignment.bottomRight,
                 child: const Image(
