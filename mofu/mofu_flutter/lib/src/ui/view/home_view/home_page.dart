@@ -263,7 +263,8 @@ class HomePage extends StatelessWidget {
               ),
             ),
             Container(
-                color: mainColor,
+      height: displayHeight * 0.066,
+                color: Colors.transparent,
                 alignment: Alignment.bottomRight,
                 child: const Image(
                     image: AssetImage(
@@ -278,7 +279,7 @@ class HomePage extends StatelessWidget {
       ]);
     }
     return Container(
-              height: displayHeight * 0.066,
+      height: displayHeight * 0.066,
       width: displayWidth * 0.16,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.all(Radius.circular(10)),
