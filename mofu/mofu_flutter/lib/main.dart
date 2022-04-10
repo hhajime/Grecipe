@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:device_preview/device_preview.dart';
 import 'package:mofu_flutter/src/ui/view/home_view/home_page.dart';
+import 'package:mofu_flutter/src/ui/view/home_view/recipe_page.dart';
 import 'package:mofu_flutter/src/ui/view/intro_view/loading_page.dart';
 import 'package:mofu_flutter/src/data/list.dart';
 import 'package:mofu_flutter/src/ui/view/intro_view/login_page.dart';
@@ -42,7 +43,7 @@ class MyApp extends StatelessWidget {
       builder: DevicePreview.appBuilder,
       theme: ThemeData(fontFamily: 'Roboto'),
       themeMode: ThemeMode.light,
-      home: const LoadingPage(),
+      home: RecipePage(),
     );
   }
 }

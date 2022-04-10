@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:mofu_flutter/src/data/list.dart';
 import 'package:mofu_flutter/src/ui/view/home_view/ingredient_add_page.dart';
+import 'package:mofu_flutter/src/ui/view/home_view/ingredient_modify_page.dart';
+import 'package:mofu_flutter/src/ui/view/home_view/recipe_page.dart';
 import 'package:custom_radio_grouped_button/custom_radio_grouped_button.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:get/get.dart';
@@ -99,170 +101,10 @@ class HomePage extends StatelessWidget {
                               child: TabBarView(
                                   controller: _tabx.controller,
                                   children: [
-                                    Container(
-                                      width: displayWidth * 0.8,
-                                      decoration: const BoxDecoration(
-                                        color: Colors.white,
-                                      ),
-                                      margin: EdgeInsets.only(
-                                          left: displayWidth * 0.02,
-                                          right: displayWidth * 0.02),
-                                      padding: EdgeInsets.only(
-                                          top: displayHeight * 0.01),
-                                      height: displayHeight * 0.2,
-                                      child: GridView.builder(
-                                          itemCount: ingResult.length + 1,
-                                          gridDelegate:
-                                              SliverGridDelegateWithFixedCrossAxisCount(
-                                                  crossAxisCount: 5,
-                                                  crossAxisSpacing:
-                                                      displayWidth * 0.02,
-                                                  mainAxisExtent:
-                                                      displayHeight * 0.09,
-                                                  mainAxisSpacing:
-                                                      displayHeight * 0.02),
-                                          itemBuilder: (BuildContext context,
-                                              int index) {
-                                            return InkResponse(
-                                              onTap: () {
-                                                if (index == ingResult.length) {
-                                                  print('last item selected');
-                                                  {
-                                                    Get.to(
-                                                        () =>
-                                                            IngredientAddPage(),
-                                                        transition: Transition
-                                                            .cupertino);
-                                                  }
-                                                }
-                                              },
-                                              child: Condicon(index),
-                                            );
-                                          }),
-                                    ),
-                                    Container(
-                                      width: displayWidth * 0.8,
-                                      decoration: const BoxDecoration(
-                                        color: Colors.white,
-                                      ),
-                                      margin: EdgeInsets.only(
-                                          left: displayWidth * 0.02,
-                                          right: displayWidth * 0.02),
-                                      padding: EdgeInsets.only(
-                                          top: displayHeight * 0.01),
-                                      height: displayHeight * 0.2,
-                                      child: GridView.builder(
-                                          itemCount: ingResult.length + 1,
-                                          gridDelegate:
-                                              SliverGridDelegateWithFixedCrossAxisCount(
-                                                  crossAxisCount: 5,
-                                                  crossAxisSpacing:
-                                                      displayWidth * 0.02,
-                                                  mainAxisExtent:
-                                                      displayHeight * 0.09,
-                                                  mainAxisSpacing:
-                                                      displayHeight * 0.02),
-                                          itemBuilder: (BuildContext context,
-                                              int index) {
-                                            return InkResponse(
-                                              onTap: () {
-                                                if (index == ingResult.length) {
-                                                  print('last item selected');
-                                                  {
-                                                    Get.to(
-                                                        () =>
-                                                            IngredientAddPage(),
-                                                        transition: Transition
-                                                            .cupertino);
-                                                  }
-                                                }
-                                              },
-                                              child: Condicon(index),
-                                            );
-                                          }),
-                                    ),
-                                    Container(
-                                      width: displayWidth * 0.8,
-                                      decoration: const BoxDecoration(
-                                        color: Colors.white,
-                                      ),
-                                      margin: EdgeInsets.only(
-                                          left: displayWidth * 0.02,
-                                          right: displayWidth * 0.02),
-                                      padding: EdgeInsets.only(
-                                          top: displayHeight * 0.01),
-                                      height: displayHeight * 0.2,
-                                      child: GridView.builder(
-                                          itemCount: ingResult.length + 1,
-                                          gridDelegate:
-                                              SliverGridDelegateWithFixedCrossAxisCount(
-                                                  crossAxisCount: 5,
-                                                  crossAxisSpacing:
-                                                      displayWidth * 0.02,
-                                                  mainAxisExtent:
-                                                      displayHeight * 0.09,
-                                                  mainAxisSpacing:
-                                                      displayHeight * 0.02),
-                                          itemBuilder: (BuildContext context,
-                                              int index) {
-                                            return InkResponse(
-                                              onTap: () {
-                                                if (index == ingResult.length) {
-                                                  print('last item selected');
-                                                  {
-                                                    Get.to(
-                                                        () =>
-                                                            IngredientAddPage(),
-                                                        transition: Transition
-                                                            .cupertino);
-                                                  }
-                                                }
-                                              },
-                                              child: Condicon(index),
-                                            );
-                                          }),
-                                    ),
-                                    Container(
-                                      width: displayWidth * 0.8,
-                                      decoration: const BoxDecoration(
-                                        color: Colors.white,
-                                      ),
-                                      margin: EdgeInsets.only(
-                                          left: displayWidth * 0.02,
-                                          right: displayWidth * 0.02),
-                                      padding: EdgeInsets.only(
-                                          top: displayHeight * 0.01),
-                                      height: displayHeight * 0.2,
-                                      child: GridView.builder(
-                                          itemCount: ingResult.length + 1,
-                                          gridDelegate:
-                                              SliverGridDelegateWithFixedCrossAxisCount(
-                                                  crossAxisCount: 5,
-                                                  crossAxisSpacing:
-                                                      displayWidth * 0.02,
-                                                  mainAxisExtent:
-                                                      displayHeight * 0.09,
-                                                  mainAxisSpacing:
-                                                      displayHeight * 0.02),
-                                          itemBuilder: (BuildContext context,
-                                              int index) {
-                                            return InkResponse(
-                                              onTap: () {
-                                                if (index == ingResult.length) {
-                                                  print('last item selected');
-                                                  {
-                                                    Get.to(
-                                                        () =>
-                                                            IngredientAddPage(),
-                                                        transition: Transition
-                                                            .cupertino);
-                                                  }
-                                                }
-                                              },
-                                              child: Condicon(index),
-                                            );
-                                          }),
-                                    )
+                                    ingGridContainer('good'),
+                                    ingGridContainer('good'),
+                                    ingGridContainer('fridged'),
+                                    ingGridContainer('danger'),
                                   ])),
                           Container(
                             margin: EdgeInsets.only(top: displayHeight * 0.03),
@@ -305,7 +147,18 @@ class HomePage extends StatelessWidget {
                                               color: mainColor, width: 2),
                                         ),
                                         child: Row(children: [
-                                          Text(' ${entries[index]} ')
+                                          Text(' ${entries[index]} '),
+                                          Container(child: Row(children: [
+                                          AvailRecipeIcons('kimchi'),
+                                          AvailRecipeIcons('rice'),
+                                          AvailRecipeIcons('onion'),
+                                          AvailRecipeIcons('green_onion'),
+                                          AvailRecipeIcons('sausage')])),
+                                          Spacer(),
+                                          IconButton(onPressed: () {
+Get.to(() => RecipePage(),
+                        transition: Transition.cupertino);
+                                          }, icon: Icon(Icons.arrow_forward_rounded,color: mainColor,),)
                                         ]));
                                   }))
                         ],
@@ -313,7 +166,7 @@ class HomePage extends StatelessWidget {
                 )))));
   }
 
-  Condicon(index) {
+  Condicon(index,life) {
     if (index < ingResult.length) {
       return Column(children: [
         Stack(
@@ -336,9 +189,9 @@ class HomePage extends StatelessWidget {
                 height: displayHeight * 0.066,
                 color: Colors.transparent,
                 alignment: Alignment.bottomRight,
-                child: const Image(
+                child: Image(
                     image: AssetImage(
-                        'assets/images/icons/expiration_icon/fridged.png')))
+                        'assets/images/icons/expiration_icon/${life}.png')))
           ],
         ),
         Container(
@@ -362,4 +215,69 @@ class HomePage extends StatelessWidget {
       ),
     );
   }
+
+  ingGridContainer(life){
+    return Container(
+                                      width: displayWidth * 0.8,
+                                      decoration: const BoxDecoration(
+                                        color: Colors.white,
+                                      ),
+                                      margin: EdgeInsets.only(
+                                          left: displayWidth * 0.02,
+                                          right: displayWidth * 0.02),
+                                      padding: EdgeInsets.only(
+                                          top: displayHeight * 0.01),
+                                      height: displayHeight * 0.2,
+                                      child: GridView.builder(
+                                          itemCount: ingResult.length + 1,
+                                          gridDelegate:
+                                              SliverGridDelegateWithFixedCrossAxisCount(
+                                                  crossAxisCount: 5,
+                                                  crossAxisSpacing:
+                                                      displayWidth * 0.02,
+                                                  mainAxisExtent:
+                                                      displayHeight * 0.09,
+                                                  mainAxisSpacing:
+                                                      displayHeight * 0.02),
+                                          itemBuilder: (BuildContext context,
+                                              int index) {
+                                            return InkResponse(
+                                              onTap: () {
+                                                 if (index < ingResult.length) {
+
+                                                  print('item selected');
+                                                  {
+                                                    Get.to(
+                                                        () =>
+                                                            IngredientModifyPage(),
+                                                        transition: Transition
+                                                            .cupertino);
+                                                  }
+                                                }else if (index == ingResult.length) {
+
+                                                  print('last item selected');
+                                                  {
+                                                    Get.to(
+                                                        () =>
+                                                            IngredientAddPage(),
+                                                        transition: Transition
+                                                            .cupertino);
+                                                  }
+                                                }
+                                                
+                                              },
+                                              child: Condicon(index,life),
+                                            );
+                                          }),
+                                    );
+  }
+
+  AvailRecipeIcons(ingredients){
+    return Image.asset(
+          "assets/images/icons/ingredient_icon/${ingredients}.png",
+          height: 15,
+          width: 15,
+        );
+  }
+
 }
