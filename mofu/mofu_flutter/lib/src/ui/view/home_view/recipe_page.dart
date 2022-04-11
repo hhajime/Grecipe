@@ -18,29 +18,39 @@ class RecipePage extends StatelessWidget {
           color: Colors.white,
           child: Scaffold(
             appBar: AppBar(
-                leading: BackButton(
-                  color: mainColor,
-                  onPressed: () {
-                    Get.to(() => LandingPage(),
-                        transition: Transition.cupertino);
-                  },
-                ),
-                centerTitle: true,
-                backgroundColor: Colors.white,
-                elevation: 0,
-                title: Text(
-                  '레시피 이름',
-                  style: TextStyle(
-                      fontWeight: FontWeight.w800, color: Colors.black),
-                ),
+              leading: BackButton(
+                color: mainColor,
+                onPressed: () {
+                  Get.to(() => LandingPage(), transition: Transition.cupertino);
+                },
               ),
+              centerTitle: true,
+              backgroundColor: Colors.white,
+              elevation: 0,
+              title: Text(
+                '레시피 이름',
+                style:
+                    TextStyle(fontWeight: FontWeight.w800, color: Colors.black),
+              ),
+            ),
             body: Center(
               child: FutureBuilder<Recipes>(
                 future: recipeController.recipe,
                 builder: (context, snapshot) {
                   if (snapshot.hasData) {
-                    return Text(
-                        snapshot.data!.COOKRCP02.row.first.RCPPARTSDTLS);
+                    return Column(
+                      children: [
+                        Text(snapshot.data!.COOKRCP02.row.first.RCPNM),
+                        Text(snapshot.data!.COOKRCP02.row.first.RCPPARTSDTLS),
+                        Text(snapshot.data!.COOKRCP02.row.first.MANUAL01),
+                        Image.network(snapshot.data!.COOKRCP02.row.first.MANUALIMG01),
+                        Text(snapshot.data!.COOKRCP02.row.first.MANUAL02),
+                        Image.network(snapshot.data!.COOKRCP02.row.first.MANUALIMG02),
+                        Text(snapshot.data!.COOKRCP02.row.first.MANUAL03),
+                        Image.network(snapshot.data!.COOKRCP02.row.first.MANUALIMG03),
+                        Text(snapshot.data!.COOKRCP02.row.first.MANUAL04),//이미지 없으면 표시되지 않게
+                      ],
+                    );
                   } else if (snapshot.hasError) {
                     return Text("${snapshot.error}");
                   }

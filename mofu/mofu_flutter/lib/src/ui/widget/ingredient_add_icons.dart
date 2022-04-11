@@ -16,7 +16,7 @@ void ingredientAddIconsDialog() {
     return mainColor;
   }
 
-  cusExpansionTile(title) {
+  cusExpansionTile(title,ingredientList) {
     return ExpansionTile(
       textColor: mainColor,
       title: Text('$title'),
@@ -25,7 +25,7 @@ void ingredientAddIconsDialog() {
           height: displayHeight * 0.2,
           width: displayWidth * 0.7,
           child: GridView.builder(
-              itemCount: 15,
+              itemCount: ingredientList.length,
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 4,
                   crossAxisSpacing: displayWidth * 0.02,
@@ -44,7 +44,7 @@ void ingredientAddIconsDialog() {
                   ),
                   child: Image(
                     image: AssetImage(
-                        'assets/images/icons/ingredient_icon/bacon.png'),
+                        'assets/images/icons/ingredient_icon/${ingredientList[index]}.png'),
                   ),
                 ));
               }),
@@ -89,11 +89,13 @@ void ingredientAddIconsDialog() {
                   height: displayHeight * 0.4,
                   child: ListView(
                     children: [
-                      cusExpansionTile('채소'),
-                      cusExpansionTile('과일·견과·쌀'),
-                      cusExpansionTile('수산·해산·건어물'),
-                      cusExpansionTile('정육·계란'),
-                      cusExpansionTile('면·양념·오일'),
+                      cusExpansionTile('채소',ingList_vegetable),
+                      cusExpansionTile('과일·견과·쌀',ingList_fruit),
+                      cusExpansionTile('수산·해산·건어물',ingList_fisheries),
+                      cusExpansionTile('정육·계란',ingList_meat),
+                      cusExpansionTile('양념·오일',ingList_seasoning),
+                      cusExpansionTile('면·가공식품',ingList_processedfood),
+                      cusExpansionTile('생수·음료',ingList_beverage),
                     ],
                   )),
               Container(
