@@ -16,6 +16,43 @@ void ingredientAddIconsDialog() {
     return mainColor;
   }
 
+  cusExpansionTile(title) {
+    return ExpansionTile(
+      textColor: mainColor,
+      title: Text('$title'),
+      children: [
+        Container(
+          height: displayHeight * 0.2,
+          width: displayWidth * 0.7,
+          child: GridView.builder(
+              itemCount: 15,
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 4,
+                  crossAxisSpacing: displayWidth * 0.02,
+                  mainAxisExtent: displayHeight * 0.09,
+                  mainAxisSpacing: displayHeight * 0.02),
+              itemBuilder: (BuildContext context, int index) {
+                return InkResponse(
+                    child: Container(
+                  height: displayHeight * 0.066,
+                  width: displayWidth * 0.16,
+                  padding: EdgeInsets.all(5),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.all(Radius.circular(10)),
+                    color: subColor,
+                    border: Border.all(color: mainColor, width: 2),
+                  ),
+                  child: Image(
+                    image: AssetImage(
+                        'assets/images/icons/ingredient_icon/bacon.png'),
+                  ),
+                ));
+              }),
+        )
+      ],
+    );
+  }
+
   Get.dialog(Dialog(
       shape: RoundedRectangleBorder(
           side: BorderSide(color: mainColor, width: 2),
@@ -52,23 +89,11 @@ void ingredientAddIconsDialog() {
                   height: displayHeight * 0.4,
                   child: ListView(
                     children: [
-                      ExpansionTile(
-                        textColor: mainColor,
-                        title: Text('채소'),
-                      ),
-                      ExpansionTile(
-                        title: Text('과일·견과·쌀'),
-                      ),
-                      ExpansionTile(
-                        title: Text('수산·해산·건어물'),
-                      ),
-                      Padding(padding: EdgeInsets.all(5)),
-                      ExpansionTile(
-                        title: Text('정육·계란'),
-                      ),
-                      ExpansionTile(
-                        title: Text('면·양념·오일'),
-                      ),
+                      cusExpansionTile('채소'),
+                      cusExpansionTile('과일·견과·쌀'),
+                      cusExpansionTile('수산·해산·건어물'),
+                      cusExpansionTile('정육·계란'),
+                      cusExpansionTile('면·양념·오일'),
                     ],
                   )),
               Container(
