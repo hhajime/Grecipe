@@ -52,79 +52,22 @@ void ingredientAddIconsDialog() {
                   height: displayHeight * 0.4,
                   child: ListView(
                     children: [
-                      Container(
-                        padding: EdgeInsets.all(5),
-                        margin: EdgeInsets.only(right: displayWidth * 0.6),
-                        child: Text(
-                          '채소',
-                          style: TextStyle(
-                              fontSize: displayHeight * 0.02,
-                              color: mainColor,
-                              fontWeight: FontWeight.bold),
-                        ),
-                        decoration: BoxDecoration(
-                            border: Border.all(color: mainColor, width: 2),
-                            borderRadius: BorderRadius.circular(15)),
+                      ExpansionTile(
+                        textColor: mainColor,
+                        title: Text('채소'),
+                      ),
+                      ExpansionTile(
+                        title: Text('과일·견과·쌀'),
+                      ),
+                      ExpansionTile(
+                        title: Text('수산·해산·건어물'),
                       ),
                       Padding(padding: EdgeInsets.all(5)),
-                      Container(
-                        padding: EdgeInsets.all(5),
-                        margin: EdgeInsets.only(right: displayWidth * 0.4),
-                        child: Text(
-                          '과일·견과·쌀',
-                          style: TextStyle(
-                              fontSize: displayHeight * 0.02,
-                              color: mainColor,
-                              fontWeight: FontWeight.bold),
-                        ),
-                        decoration: BoxDecoration(
-                            border: Border.all(color: mainColor, width: 2),
-                            borderRadius: BorderRadius.circular(15)),
+                      ExpansionTile(
+                        title: Text('정육·계란'),
                       ),
-                      Padding(padding: EdgeInsets.all(5)),
-                      Container(
-                        padding: EdgeInsets.all(5),
-                        margin: EdgeInsets.only(right: displayWidth * 0.32),
-                        child: Text(
-                          '수산·해산·건어물',
-                          style: TextStyle(
-                              fontSize: displayHeight * 0.02,
-                              color: mainColor,
-                              fontWeight: FontWeight.bold),
-                        ),
-                        decoration: BoxDecoration(
-                            border: Border.all(color: mainColor, width: 2),
-                            borderRadius: BorderRadius.circular(15)),
-                      ),
-                      Padding(padding: EdgeInsets.all(5)),
-                      Container(
-                        padding: EdgeInsets.all(5),
-                        margin: EdgeInsets.only(right: displayWidth * 0.49),
-                        child: Text(
-                          '정육·계란',
-                          style: TextStyle(
-                              fontSize: displayHeight * 0.02,
-                              color: mainColor,
-                              fontWeight: FontWeight.bold),
-                        ),
-                        decoration: BoxDecoration(
-                            border: Border.all(color: mainColor, width: 2),
-                            borderRadius: BorderRadius.circular(15)),
-                      ),
-                      Padding(padding: EdgeInsets.all(5)),
-                      Container(
-                        padding: EdgeInsets.all(5),
-                        margin: EdgeInsets.only(right: displayWidth * 0.42),
-                        child: Text(
-                          '면·양념·오일',
-                          style: TextStyle(
-                              fontSize: displayHeight * 0.02,
-                              color: mainColor,
-                              fontWeight: FontWeight.bold),
-                        ),
-                        decoration: BoxDecoration(
-                            border: Border.all(color: mainColor, width: 2),
-                            borderRadius: BorderRadius.circular(15)),
+                      ExpansionTile(
+                        title: Text('면·양념·오일'),
                       ),
                     ],
                   )),
