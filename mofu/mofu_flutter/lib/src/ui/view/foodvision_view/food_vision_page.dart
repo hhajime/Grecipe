@@ -136,68 +136,76 @@ class _FoodVisionState extends State<FoodVision> {
                     decoration: BoxDecoration(
                         color: Colors.transparent,
                         borderRadius: BorderRadius.all(Radius.circular(15)),
-                        border: Border.all(color: mainColor,width: 2)),
+                        border: Border.all(color: mainColor, width: 2)),
                     height: displayHeight * 0.25,
                     width: displayWidth * 0.8,
                     child: Image.file(_image!)),
                 Padding(padding: EdgeInsets.only(top: displayHeight * 0.023)),
                 Stack(
                   alignment: Alignment.center,
-                  children: [Container(
-                  decoration: BoxDecoration(
-                      color: Colors.transparent,
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(15),
-                      ),
-                      border: Border.all(color: mainColor, width: 2)),
-                  height: displayHeight * 0.27,
-                  width: displayWidth * 0.8,
-                ),
-                  Container(
-                    padding: EdgeInsets.only(top: 2, bottom: 2, left: displayWidth * 0.02, right: displayWidth * 0.02),
-                    margin: EdgeInsets.only(right: displayWidth * 0.4, bottom: displayHeight * 0.28),
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(15),
-                      ),
-                      border: Border.all(color: mainColor, width: 2)),
-                    child: FittedBox(
-                      fit: BoxFit.fitWidth,
-                      child:Text('${recgResult.length}건의 인식된 재료',)),),
-                  Container(
-                    height: displayHeight * 0.2,
-                    width: displayWidth*0.8,
-                   padding: EdgeInsets.only(
-                            left: displayWidth * 0.03,
-                            right: displayWidth * 0.04),
-                    child: GridView.builder(
-                            itemCount: recgResult.length+1,
-                            gridDelegate:
-                                SliverGridDelegateWithFixedCrossAxisCount(
-                                    crossAxisCount: 4,
-                                    mainAxisExtent: displayHeight * 0.1,
-                                    crossAxisSpacing: displayWidth * 0.02,
-                                    mainAxisSpacing: displayHeight * 0.02),
-                            itemBuilder: (BuildContext context, int index) {
-                              return InkResponse(
-                                  onTap: () {
-                                    if (index == recgResult.length+1) {
-                                      print('last item selected');
-                                      {
-                                        //Get.to(() => IngredientAddPage(),
-                                            //transition: Transition.cupertino);
-                                      }
+                  children: [
+                    Container(
+                      decoration: BoxDecoration(
+                          color: Colors.transparent,
+                          borderRadius: BorderRadius.all(
+                            Radius.circular(15),
+                          ),
+                          border: Border.all(color: mainColor, width: 2)),
+                      height: displayHeight * 0.27,
+                      width: displayWidth * 0.8,
+                    ),
+                    Container(
+                      padding: EdgeInsets.only(
+                          top: 2,
+                          bottom: 2,
+                          left: displayWidth * 0.02,
+                          right: displayWidth * 0.02),
+                      margin: EdgeInsets.only(
+                          right: displayWidth * 0.4,
+                          bottom: displayHeight * 0.28),
+                      decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.all(
+                            Radius.circular(15),
+                          ),
+                          border: Border.all(color: mainColor, width: 2)),
+                      child: FittedBox(
+                          fit: BoxFit.fitWidth,
+                          child: Text(
+                            '${recgResult.length}건의 인식된 재료',
+                          )),
+                    ),
+                    Container(
+                      height: displayHeight * 0.2,
+                      width: displayWidth * 0.8,
+                      padding: EdgeInsets.only(
+                          left: displayWidth * 0.03,
+                          right: displayWidth * 0.04),
+                      child: GridView.builder(
+                          itemCount: recgResult.length + 1,
+                          gridDelegate:
+                              SliverGridDelegateWithFixedCrossAxisCount(
+                                  crossAxisCount: 4,
+                                  mainAxisExtent: displayHeight * 0.1,
+                                  crossAxisSpacing: displayWidth * 0.02,
+                                  mainAxisSpacing: displayHeight * 0.02),
+                          itemBuilder: (BuildContext context, int index) {
+                            return InkResponse(
+                                onTap: () {
+                                  if (index == recgResult.length + 1) {
+                                    print('last item selected');
+                                    {
+                                      //Get.to(() => IngredientAddPage(),
+                                      //transition: Transition.cupertino);
                                     }
-                                  },
-                                  child: 
-                                      CondiCon(index)
-                                  );
-                            }),
-                  ),
-                  //Container(child:Text('${recgResult.map((e) => e["detectedClass"])}'))
-                  ],),
-                
+                                  }
+                                },
+                                child: CondiCon(index));
+                          }),
+                    ),
+                    //Container(child:Text('${recgResult.map((e) => e["detectedClass"])}'))
+                  ],
+                ),
               ],
             ),
     ));
@@ -279,38 +287,38 @@ class _FoodVisionState extends State<FoodVision> {
     detectObject(_image!);
   }
 
-  CondiCon(index){
-    if(index < recgResult.length){
-      return Column(children :[ Container(
-                                        decoration: BoxDecoration(
-                                          borderRadius: BorderRadius.all(
-                                              Radius.circular(10)),
-                                          color: subColor,
-                                          border: Border.all(
-                                              color: mainColor, width: 2),
-                                        ),
-                                        child: Image(
-                                          image: AssetImage(
-                                              'assets/images/icons/ingredient_icon/${recgResult[index]['detectedClass']}.png'),
-                                        ),
-                                      ),
-                                      Container(
-        child:FittedBox(
+  CondiCon(index) {
+    if (index < recgResult.length) {
+      return Column(children: [
+        Container(
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.all(Radius.circular(10)),
+            color: subColor,
+            border: Border.all(color: mainColor, width: 2),
+          ),
+          child: Image(
+            image: AssetImage(
+                'assets/images/icons/ingredient_icon/${recgResult[index]['detectedClass']}.png'),
+          ),
+        ),
+        Container(
+            child: FittedBox(
           fit: BoxFit.fitWidth,
           child: Text('${recgResult[index]['detectedClass']}'),
-        ))]);
-    }return Container(
+        ))
+      ]);
+    }
+    return Container(
       height: displayHeight * 0.06,
-        decoration: BoxDecoration(
-                                          borderRadius: BorderRadius.all(
-                                              Radius.circular(10)),
-                                          color: subColor,
-                                          border: Border.all(
-                                              color: mainColor, width: 2),
-                                        ),
-                                        child: Icon(Icons.add,color: mainColor,),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.all(Radius.circular(10)),
+        color: subColor,
+        border: Border.all(color: mainColor, width: 2),
+      ),
+      child: Icon(
+        Icons.add,
+        color: mainColor,
+      ),
     );
-
   }
-  
 }
