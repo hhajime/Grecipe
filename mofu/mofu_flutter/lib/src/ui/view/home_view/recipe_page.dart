@@ -19,9 +19,6 @@ class RecipePage extends StatelessWidget {
           child: Scaffold(
             extendBodyBehindAppBar: true,
             body: Stack(children: [
-              Center(
-                child: SingleChildScrollView(child: Recipe(0)),
-              ),
               AppBar(
                 leading: BackButton(
                   color: mainColor,
@@ -34,7 +31,10 @@ class RecipePage extends StatelessWidget {
                 backgroundColor: Colors.transparent,
                 elevation: 0,
                 actions: [IconButton(onPressed: (){}, icon: Icon(Icons.star_border_outlined,color: mainColor,))],
-              )
+              ),
+              Container(
+                child: SingleChildScrollView(child: Recipe(0)),
+              ),
             ]),
           ),
         ),
