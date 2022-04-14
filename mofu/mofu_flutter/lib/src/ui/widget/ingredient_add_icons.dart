@@ -16,7 +16,7 @@ void ingredientAddIconsDialog() {
     return mainColor;
   }
 
-  cusExpansionTile(title,ingredientList) {
+  cusExpansionTile(title, ingredientList) {
     return ExpansionTile(
       textColor: mainColor,
       title: Text('$title'),
@@ -89,13 +89,13 @@ void ingredientAddIconsDialog() {
                   height: displayHeight * 0.4,
                   child: ListView(
                     children: [
-                      cusExpansionTile('채소',ingList_vegetable),
-                      cusExpansionTile('과일·견과·쌀',ingList_fruit),
-                      cusExpansionTile('수산·해산·건어물',ingList_fisheries),
-                      cusExpansionTile('정육·계란',ingList_meat),
-                      cusExpansionTile('양념·오일',ingList_seasoning),
-                      cusExpansionTile('면·가공식품',ingList_processedfood),
-                      cusExpansionTile('생수·음료',ingList_beverage),
+                      cusExpansionTile('채소', ingList_vegetable),
+                      cusExpansionTile('과일·견과·쌀', ingList_fruit),
+                      cusExpansionTile('수산·해산·건어물', ingList_fisheries),
+                      cusExpansionTile('정육·계란', ingList_meat),
+                      cusExpansionTile('양념·오일', ingList_seasoning),
+                      cusExpansionTile('면·가공식품', ingList_processedfood),
+                      cusExpansionTile('생수·음료', ingList_beverage),
                     ],
                   )),
               Container(
