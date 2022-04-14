@@ -33,7 +33,7 @@ class RecipePage extends StatelessWidget {
                 actions: [IconButton(onPressed: (){}, icon: Icon(Icons.star_border_outlined,color: mainColor,))],
               ),
               Container(
-                child: SingleChildScrollView(child: Recipe(0)),
+                child: SingleChildScrollView(child: Recipe(500)),
               ),
             ]),
           ),

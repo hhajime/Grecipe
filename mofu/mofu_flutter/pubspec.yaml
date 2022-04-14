@@ -39,6 +39,7 @@ flutter:
     - assets/images/icons/expiration_icon/
     - assets/models/model.tflite
     - assets/models/label.txt
+    - assets/json/recipe.json
 
 fonts:
     - family: Roboto
