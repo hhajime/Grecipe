@@ -17,3 +17,16 @@ List ingList_meat = ['beef','chicken','egg','pork'];//축산물(정육, 계란)
 List ingList_seasoning = ['olive_oil','salt','sugar'];//양념, 오일
 List ingList_processedfood = ['bacon','bread','butter','cheese','fish_cake','ham','kimchi','milk','nori','pasta','ramen','sausage'];//면, 가공식품
 List ingList_beverage = ['water'];//물
+
+final List<String> ingResult = <String>[
+    'kimchi',
+    'bacon',
+    'onion',
+    'rice',
+    'salt',
+    'pepper',
+    'egg',
+    'olive_oil',
+    'sugar',
+    'water'
+  ];

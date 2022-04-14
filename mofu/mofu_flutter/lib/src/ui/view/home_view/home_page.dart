@@ -14,18 +14,6 @@ class HomePage extends StatelessWidget {
       Get.put(ShelfLifeIndexController(), permanent: false);
   final MyTabController _tabx = Get.put(MyTabController());
   final List<String> entries = <String>['스팸 김치 볶음밥', '스팸 김치찌개'];
-  final List<String> ingResult = <String>[
-    'kimchi',
-    'bacon',
-    'onion',
-    'rice',
-    'salt',
-    'pepper',
-    'egg',
-    'olive_oil',
-    'sugar',
-    'water'
-  ];
   @override
   Widget build(BuildContext context) {
     return Container(

@@ -42,6 +42,10 @@ class RecipePage extends StatelessWidget {
     );
   }
 
+  Algorithm(){
+    int a = 0;
+  }
+
   Recipe(index) {
     return FutureBuilder<Recipes>(
       future: recipeController.recipe,
@@ -65,6 +69,7 @@ class RecipePage extends StatelessWidget {
                 child: Column(
                   children: [
                     Padding(padding: EdgeInsets.only(bottom: 10)),
+                    Text(recipeController.recipe.asStream().toString()),
                     Text(
                       snapshot.data!.COOKRCP02.row.elementAt(index).RCPNM,
                       style: TextStyle(
