@@ -140,11 +140,11 @@ class HomePage extends StatelessWidget {
                                       Text(' ${entries[index]} '),
                                       Container(
                                           child: Row(children: [
-                                        AvailRecipeIcons('kimchi'),
-                                        AvailRecipeIcons('rice'),
-                                        AvailRecipeIcons('onion'),
-                                        AvailRecipeIcons('green_onion'),
-                                        AvailRecipeIcons('sausage')
+                                        AvailRecipeIcons('김치'),
+                                        AvailRecipeIcons('쌀'),
+                                        AvailRecipeIcons('양파'),
+                                        AvailRecipeIcons('파'),
+                                        AvailRecipeIcons('소시지')
                                       ])),
                                       Spacer(),
                                       IconButton(

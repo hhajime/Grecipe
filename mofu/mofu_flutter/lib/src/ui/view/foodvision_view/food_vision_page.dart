@@ -298,7 +298,7 @@ class _FoodVisionState extends State<FoodVision> {
           ),
           child: Image(
             image: AssetImage(
-                'assets/images/icons/ingredient_icon/${recgResult[index]['detectedClass']}.png'),
+                'assets/images/icons/ingredient_icon/${toKorean(recgResult[index]['detectedClass'])}.png'), //to Korean
           ),
         ),
         Container(
@@ -321,4 +321,13 @@ class _FoodVisionState extends State<FoodVision> {
       ),
     );
   }
+}
+
+toKorean(a) {
+  for (int i = 0; i < ingList_en.length; i++) {
+    if (a == ingList_en[i]) {
+      a = ingList_ko[i];
+    }
+  }
+  return a;
 }

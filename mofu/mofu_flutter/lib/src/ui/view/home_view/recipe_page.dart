@@ -30,7 +30,14 @@ class RecipePage extends StatelessWidget {
                 centerTitle: true,
                 backgroundColor: Colors.transparent,
                 elevation: 0,
-                actions: [IconButton(onPressed: (){}, icon: Icon(Icons.star_border_outlined,color: mainColor,))],
+                actions: [
+                  IconButton(
+                      onPressed: () {},
+                      icon: Icon(
+                        Icons.star_border_outlined,
+                        color: mainColor,
+                      ))
+                ],
               ),
               Container(
                 child: SingleChildScrollView(child: Recipe(500)),
@@ -42,7 +49,7 @@ class RecipePage extends StatelessWidget {
     );
   }
 
-  Algorithm(){
+  Algorithm() {
     int a = 0;
   }
 
@@ -51,6 +58,26 @@ class RecipePage extends StatelessWidget {
       future: recipeController.recipe,
       builder: (context, snapshot) {
         if (snapshot.hasData) {
+          List<String> result = [];
+          for (int i = 0; i < 1358; i++) {
+            int count = 0;
+            result = snapshot.data!.COOKRCP02.row
+                .elementAt(i)
+                .RCPPARTSDTLS
+                .split(',');
+            for (int j = 0; j < result.length; j++) {
+              for (int k = 0; k < ingResult.length; k++) {
+                if (result[j].contains(ingResult[k])) {
+                  // include로 변경
+                  count++;
+                }
+              }
+              if (count == result.length) {
+                print(
+                    'here2 ${result}, ${result.length}, ${snapshot.data!.COOKRCP02.row.elementAt(i).RCPNM}');
+              }
+            }
+          }
           return Column(
             children: [
               Container(
@@ -114,3 +141,5 @@ class RecipePage extends StatelessWidget {
     );
   }
 }
+
+RecipeAlgorithm() {}
