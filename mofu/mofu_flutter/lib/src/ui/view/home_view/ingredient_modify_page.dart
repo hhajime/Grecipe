@@ -131,7 +131,7 @@ class IngredientModifyPage extends StatelessWidget {
                         Container(
                           padding:
                               EdgeInsets.only(bottom: displayHeight * 0.03),
-                          child: Obx(()=>ToggleButtons(
+                          child: Obx(() => ToggleButtons(
                               borderRadius: BorderRadius.circular(20),
                               borderWidth: 2,
                               borderColor: mainColor,
@@ -161,7 +161,8 @@ class IngredientModifyPage extends StatelessWidget {
                               onPressed: (int index) {
                                 shelfLifeController.changeTabIndex(index);
                               },
-                              isSelected: shelfLifeController.isSelected.toList())),
+                              isSelected:
+                                  shelfLifeController.isSelected.toList())),
                         ),
                       ],
                     ),
@@ -201,29 +202,31 @@ class IngredientModifyPage extends StatelessWidget {
                   Padding(
                     padding: EdgeInsets.only(top: displayHeight * 0.2),
                   ),
-                  Center(child: Container(
-                    width: displayWidth * 0.8,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                        Container(
-                          child: TextButton(
-                              onPressed: () => {Get.back()},
-                              child: Text(
-                                '삭제하기',
-                                style: TextStyle(
-                                    color: Colors.red,
-                                    fontSize: displayHeight * 0.02),
-                              ))),
-                        Container(
-                          child: TextButton(
-                              onPressed: () => {Get.back()},
-                              child: Text(
-                                '등록하기',
-                                style: TextStyle(
-                                    color: Colors.black,
-                                    fontSize: displayHeight * 0.02),
-                              )))])))
+                  Center(
+                      child: Container(
+                          width: displayWidth * 0.8,
+                          child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Container(
+                                    child: TextButton(
+                                        onPressed: () => {Get.back()},
+                                        child: Text(
+                                          '삭제하기',
+                                          style: TextStyle(
+                                              color: Colors.red,
+                                              fontSize: displayHeight * 0.02),
+                                        ))),
+                                Container(
+                                    child: TextButton(
+                                        onPressed: () => {Get.back()},
+                                        child: Text(
+                                          '등록하기',
+                                          style: TextStyle(
+                                              color: Colors.black,
+                                              fontSize: displayHeight * 0.02),
+                                        )))
+                              ])))
                 ],
               )),
             ),
