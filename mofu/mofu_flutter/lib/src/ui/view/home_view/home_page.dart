@@ -8,12 +8,24 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:get/get.dart';
 import 'package:mofu_flutter/src/controller/shelf_life_index_controller.dart';
 import 'package:mofu_flutter/src/controller/mytabcontroller.dart';
+import 'package:mofu_flutter/src/data/model/recipe_model.dart' hide Row;
+import 'package:mofu_flutter/src/controller/recipe_controller.dart';
 
 class HomePage extends StatelessWidget {
+  final recipeController = Get.put(RecipeController(), permanent: false);
   final shelfLifeIndexController =
       Get.put(ShelfLifeIndexController(), permanent: false);
   final MyTabController _tabx = Get.put(MyTabController());
   final List<String> entries = <String>['스팸 김치 볶음밥', '스팸 김치찌개'];
+  final List<List> avaliableRecipes = <List>[
+    [['인덱스'],
+    ['레시피 이름'],
+    [
+      '재료목록'
+    ],
+    ['메뉴얼'],
+    ['이미지링크']
+  ]];
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -116,49 +128,7 @@ class HomePage extends StatelessWidget {
                               fontSize: displayHeight * 0.02),
                         ),
                       ),
-                      Container(
-                          width: displayWidth * 0.8,
-                          height: displayHeight * 0.2,
-                          child: ListView.builder(
-                              scrollDirection: Axis.vertical,
-                              shrinkWrap: true,
-                              itemCount: entries.length,
-                              itemBuilder: (BuildContext context, int index) {
-                                return Container(
-                                    width: displayWidth * 0.1,
-                                    height: displayHeight * 0.05,
-                                    margin: EdgeInsets.only(
-                                        bottom: displayHeight * 0.01),
-                                    decoration: BoxDecoration(
-                                      borderRadius: const BorderRadius.all(
-                                          Radius.circular(20)),
-                                      color: subColor,
-                                      border: Border.all(
-                                          color: mainColor, width: 2),
-                                    ),
-                                    child: Row(children: [
-                                      Text(' ${entries[index]} '),
-                                      Container(
-                                          child: Row(children: [
-                                        AvailRecipeIcons('김치'),
-                                        AvailRecipeIcons('쌀'),
-                                        AvailRecipeIcons('양파'),
-                                        AvailRecipeIcons('파'),
-                                        AvailRecipeIcons('소시지')
-                                      ])),
-                                      Spacer(),
-                                      IconButton(
-                                        onPressed: () {
-                                          Get.to(() => RecipePage(),
-                                              transition: Transition.cupertino);
-                                        },
-                                        icon: Icon(
-                                          Icons.arrow_forward_rounded,
-                                          color: mainColor,
-                                        ),
-                                      )
-                                    ]));
-                              }))
+                      RecipeList()
                     ],
                   ),
                 )))));
@@ -229,7 +199,7 @@ class HomePage extends StatelessWidget {
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 5,
               crossAxisSpacing: displayWidth * 0.02,
-              mainAxisExtent: displayHeight * 0.09,
+              mainAxisExtent: displayHeight * 0.092,
               mainAxisSpacing: displayHeight * 0.02),
           itemBuilder: (BuildContext context, int index) {
             return InkResponse(
@@ -260,5 +230,79 @@ class HomePage extends StatelessWidget {
       height: 15,
       width: 15,
     );
+  }
+
+  RecipeList() {
+    return FutureBuilder<Recipes>(
+        future: recipeController.recipe,
+        builder: (context, snapshot) {
+          if (snapshot.hasData) {
+            recipeController.snapshots = snapshot;
+            List<String> result = [];
+            for (int i = 0; i < 1358; i++) {
+              int count = 0;
+              result = snapshot.data!.COOKRCP02.row
+                  .elementAt(i)
+                  .RCPPARTSDTLS
+                  .split(',');
+              for (int j = 0; j < result.length; j++) {
+                for (int k = 0; k < ingResult.length; k++) {
+                  if (result[j].contains(ingResult[k])) {
+                    // include로 변경
+                    count++;
+                  }
+                }
+                if (count == result.length) {
+                  recipeController.elementat.value = i;
+                  recipeController.recipeListGenetator();
+                }
+              }
+            }
+            return Container(
+                width: displayWidth * 0.8,
+                height: displayHeight * 0.2,
+                child: Obx(()=>ListView.builder(
+                    scrollDirection: Axis.vertical,
+                    shrinkWrap: true,
+                    itemCount: recipeController.avaliableRecipe.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      return Container(
+                          width: displayWidth * 0.1,
+                          height: displayHeight * 0.05,
+                          margin: EdgeInsets.only(bottom: displayHeight * 0.01),
+                          decoration: BoxDecoration(
+                            borderRadius:
+                                const BorderRadius.all(Radius.circular(20)),
+                            color: subColor,
+                            border: Border.all(color: mainColor, width: 2),
+                          ),
+                          child: Row(children: [
+                            Text(' check${recipeController.avaliableRecipe[index][1].toString()} '),
+                            Container(
+                                child: Row(children: [
+                              AvailRecipeIcons('김치'),
+                              AvailRecipeIcons('쌀'),
+                              AvailRecipeIcons('양파'),
+                              AvailRecipeIcons('파'),
+                              AvailRecipeIcons('소시지')
+                            ])),
+                            Spacer(),
+                            IconButton(
+                              onPressed: () {
+                                Get.to(() => RecipePage(),
+                                    transition: Transition.cupertino);
+                              },
+                              icon: Icon(
+                                Icons.arrow_forward_rounded,
+                                color: mainColor,
+                              ),
+                            )
+                          ]));
+                    })));
+          } else if (snapshot.hasError) {
+            return Text("${snapshot.error}");
+          }
+          return CircularProgressIndicator();
+        });
   }
 }
