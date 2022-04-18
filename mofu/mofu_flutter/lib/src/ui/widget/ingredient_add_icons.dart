@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mofu_flutter/src/data/list.dart';
-import 'package:mofu_flutter/src/ui/widget/LandingPage.dart';
+import 'package:mofu_flutter/src/ui/widget/landing_page.dart';
 
 void ingredientAddIconsDialog() {
   Color getColor(Set<MaterialState> states) {
@@ -14,6 +14,43 @@ void ingredientAddIconsDialog() {
       return Colors.white;
     }
     return mainColor;
+  }
+
+  cusExpansionTile(title, ingredientList) {
+    return ExpansionTile(
+      textColor: mainColor,
+      title: Text('$title'),
+      children: [
+        Container(
+          height: displayHeight * 0.2,
+          width: displayWidth * 0.7,
+          child: GridView.builder(
+              itemCount: ingredientList.length,
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 4,
+                  crossAxisSpacing: displayWidth * 0.02,
+                  mainAxisExtent: displayHeight * 0.09,
+                  mainAxisSpacing: displayHeight * 0.02),
+              itemBuilder: (BuildContext context, int index) {
+                return InkResponse(
+                    child: Container(
+                  height: displayHeight * 0.066,
+                  width: displayWidth * 0.16,
+                  padding: EdgeInsets.all(5),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.all(Radius.circular(10)),
+                    color: subColor,
+                    border: Border.all(color: mainColor, width: 2),
+                  ),
+                  child: Image(
+                    image: AssetImage(
+                        'assets/images/icons/ingredient_icon/${ingredientList[index]}.png'),
+                  ),
+                ));
+              }),
+        )
+      ],
+    );
   }
 
   Get.dialog(Dialog(
@@ -52,80 +89,13 @@ void ingredientAddIconsDialog() {
                   height: displayHeight * 0.4,
                   child: ListView(
                     children: [
-                      Container(
-                        padding: EdgeInsets.all(5),
-                        margin: EdgeInsets.only(right: displayWidth * 0.6),
-                        child: Text(
-                          '채소',
-                          style: TextStyle(
-                              fontSize: displayHeight * 0.02,
-                              color: mainColor,
-                              fontWeight: FontWeight.bold),
-                        ),
-                        decoration: BoxDecoration(
-                            border: Border.all(color: mainColor, width: 2),
-                            borderRadius: BorderRadius.circular(15)),
-                      ),
-                      Padding(padding: EdgeInsets.all(5)),
-                      Container(
-                        padding: EdgeInsets.all(5),
-                        margin: EdgeInsets.only(right: displayWidth * 0.4),
-                        child: Text(
-                          '과일·견과·쌀',
-                          style: TextStyle(
-                              fontSize: displayHeight * 0.02,
-                              color: mainColor,
-                              fontWeight: FontWeight.bold),
-                        ),
-                        decoration: BoxDecoration(
-                            border: Border.all(color: mainColor, width: 2),
-                            borderRadius: BorderRadius.circular(15)),
-                      ),
-                      Padding(padding: EdgeInsets.all(5)),
-                      Container(
-                        padding: EdgeInsets.all(5),
-                        margin: EdgeInsets.only(right: displayWidth * 0.32),
-                        child: Text(
-                          '수산·해산·건어물',
-                          style: TextStyle(
-                              fontSize: displayHeight * 0.02,
-                              color: mainColor,
-                              fontWeight: FontWeight.bold),
-                        ),
-                        decoration: BoxDecoration(
-                            border: Border.all(color: mainColor, width: 2),
-                            borderRadius: BorderRadius.circular(15)),
-                      ),
-                      Padding(padding: EdgeInsets.all(5)),
-                      Container(
-                        padding: EdgeInsets.all(5),
-                        margin: EdgeInsets.only(right: displayWidth * 0.49),
-                        child: Text(
-                          '정육·계란',
-                          style: TextStyle(
-                              fontSize: displayHeight * 0.02,
-                              color: mainColor,
-                              fontWeight: FontWeight.bold),
-                        ),
-                        decoration: BoxDecoration(
-                            border: Border.all(color: mainColor, width: 2),
-                            borderRadius: BorderRadius.circular(15)),
-                      ),
-                      Padding(padding: EdgeInsets.all(5)),
-                      Container(
-                        padding: EdgeInsets.all(5),
-                        margin: EdgeInsets.only(right: displayWidth * 0.42),
-                        child: Text(
-                          '면·양념·오일',
-                          style: TextStyle(
-                              fontSize: displayHeight * 0.02,
-                              color: mainColor,
-                              fontWeight: FontWeight.bold),
-                        ),
-                        decoration: BoxDecoration(
-                            border: Border.all(color: mainColor, width: 2),
-                            borderRadius: BorderRadius.circular(15)),
-                      ),
+                      cusExpansionTile('채소', ingList_vegetable),
+                      cusExpansionTile('과일·견과·쌀', ingList_fruit),
+                      cusExpansionTile('수산·해산·건어물', ingList_fisheries),
+                      cusExpansionTile('정육·계란', ingList_meat),
+                      cusExpansionTile('양념·오일', ingList_seasoning),
+                      cusExpansionTile('면·가공식품', ingList_processedfood),
+                      cusExpansionTile('생수·음료', ingList_beverage),
                     ],
                   )),
               Container(

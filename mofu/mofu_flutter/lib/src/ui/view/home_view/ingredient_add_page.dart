@@ -4,7 +4,7 @@ import 'package:mofu_flutter/src/data/list.dart';
 import 'package:mofu_flutter/src/ui/view/home_view/home_page.dart';
 import 'package:custom_radio_grouped_button/custom_radio_grouped_button.dart';
 import 'package:get/get.dart';
-import 'package:mofu_flutter/src/ui/widget/LandingPage.dart';
+import 'package:mofu_flutter/src/ui/widget/landing_page.dart';
 import 'package:mofu_flutter/src/ui/widget/ingredient_add_icons.dart';
 
 class IngredientAddPage extends StatelessWidget {
@@ -131,7 +131,7 @@ class IngredientAddPage extends StatelessWidget {
                         Container(
                           padding:
                               EdgeInsets.only(bottom: displayHeight * 0.03),
-                          child: ToggleButtons(
+                          child: Obx(()=>ToggleButtons(
                               borderRadius: BorderRadius.circular(20),
                               borderWidth: 2,
                               borderColor: mainColor,
@@ -161,7 +161,7 @@ class IngredientAddPage extends StatelessWidget {
                               onPressed: (int index) {
                                 shelfLifeController.changeTabIndex(index);
                               },
-                              isSelected: shelfLifeController.isSelected),
+                              isSelected: shelfLifeController.isSelected.toList())),
                         ),
                       ],
                     ),

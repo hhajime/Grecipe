@@ -4,31 +4,35 @@ import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 
 class ImageRecognitionController extends GetxController {
-  File? _image;
-  double? _imageWidth, _imageHeight;
-  List? _recognitions;
-  bool? _busy;
+  XFile? _image;
+  RxDouble? _imageWidth, _imageHeight;
+  RxList? _recognitions;
+  RxBool? _busy;
   final picker = ImagePicker();
 
-  void ImageSize(ImageInfo info) {
-    _imageWidth = info.image.width.toDouble();
-    _imageHeight = info.image.height.toDouble();
+  ImageSize(ImageInfo info) {
+    _imageWidth = info.image.width.toDouble().obs;
+    _imageHeight = info.image.height.toDouble().obs;
+    update();
   }
 
   void Recognitions(List recognitions) {
-    _recognitions = recognitions;
+    _recognitions = recognitions.obs;
+    update();
   }
 
   void Busy(bool busy) {
-    _busy = true;
+    _busy = false.obs;
+    update();
   }
 
   void PickFile(pick) {
     if (pick != null) {
-      _image = File(pick.path);
+      _image = XFile(pick.path);
     } else {
       print("No image Selected");
     }
+    update();
   }
 
   @override

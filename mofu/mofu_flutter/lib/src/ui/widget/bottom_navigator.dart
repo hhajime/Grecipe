@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:mofu_flutter/src/data/list.dart';
 import 'package:mofu_flutter/src/ui/view/mypage_view/mypage_page.dart';
 import 'package:mofu_flutter/src/ui/view/home_view/home_page.dart';
-import 'package:mofu_flutter/src/ui/view/foodvision_view/foodvision_page.dart';
+import 'package:mofu_flutter/src/ui/widget/foodvision_page_getx.dart';
 import 'package:get/get.dart';
 
 final TextStyle unselectedLabelStyle = TextStyle(

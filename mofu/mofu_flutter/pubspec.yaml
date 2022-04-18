@@ -13,6 +13,7 @@ dependencies:
   get: ^4.6.1
   image_picker: ^0.8.4+11
   tflite: ^1.1.2
+  http: ^0.13.4
   camera: ^0.9.4+16
   carousel_slider: ^4.0.0
   flutter_signin_button: ^2.0.0
@@ -38,6 +39,7 @@ flutter:
     - assets/images/icons/expiration_icon/
     - assets/models/model.tflite
     - assets/models/label.txt
+    - assets/json/recipe.json
 
 fonts:
     - family: Roboto
