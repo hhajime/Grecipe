@@ -1,9 +1,7 @@
 import 'package:get/get.dart';
 
 class NeumorphismController extends GetxController {
-  var _isElevated = false.obs;
-  
-  update();
+  final RxBool _isElevated = false.obs;
   
 
   @override

@@ -3,12 +3,15 @@ import 'package:mofu_flutter/src/data/list.dart';
 import 'package:mofu_flutter/src/ui/view/home_view/home_page.dart';
 import 'package:get/get.dart';
 import 'package:mofu_flutter/src/ui/widget/landing_page.dart';
+import 'package:mofu_flutter/src/controller/neumorphism_controller.dart';
 
 class SignInPage extends StatelessWidget {
   const SignInPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+  final neumorphismController = Get.put(NeumorphismController(), permanent: false);
+    
     Color getColor(Set<MaterialState> states) {
       const Set<MaterialState> interactiveStates = <MaterialState>{
         MaterialState.pressed,
@@ -121,6 +124,11 @@ class SignInPage extends StatelessWidget {
                       padding: EdgeInsets.only(
                           left: displayWidth * 0.12, top: displayHeight * 0.01),
                     ),
+                    /**Obx(()=> GestureDetector(
+                      onTap: (){
+                        neumorphismController._isElevated = true.obs;
+                      },
+                    )),**/
                     Container(
                       alignment: Alignment.bottomRight,
                       padding: EdgeInsets.only(
