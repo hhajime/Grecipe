@@ -236,7 +236,7 @@ class HomePage extends StatelessWidget {
           if (snapshot.hasData) {
             recipeController.snapshots = snapshot;
             List<String> result = [];
-            for (int i = 0; i < 1358; i++) {
+            for (int i = 0; i < 1358; i++) {// 현재 재료를 레시피 데이터와 비교하여 동일한 레시피 찾기
               int count = 0;
               result = snapshot.data!.COOKRCP02.row
                   .elementAt(i)
@@ -245,8 +245,8 @@ class HomePage extends StatelessWidget {
               for (int j = 0; j < result.length; j++) {
                 for (int k = 0; k < ingResult.length; k++) {
                   if (result[j].contains(ingResult[k])) {
-                    // include로 변경
-                    count++;
+                    // 추후 every contains로 변경필요
+                  count++;
                   }
                 }
                 if (count == result.length) {

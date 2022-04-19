@@ -17,32 +17,34 @@ class RecipeController extends GetxController {
   late Future<Recipes> recipe;
   int elementat = 0;
   List<List> avaliableRecipe = <List>[].obs;
+  var all = [];
   bool overlap = false;
   late AsyncSnapshot<Recipes> snapshots = AsyncSnapshot.nothing();
   recipeListGenetator() {
-    print('here 1 ${avaliableRecipe.toString()}');
-    var firstListSet = avaliableRecipe.toSet();
-    var secondListSet = {
+    print('start ${overlap}');
+    var firstList = avaliableRecipe;
+    var secondList = [
       ['$elementat'],
       [(snapshots.data!.COOKRCP02.row.elementAt(elementat).RCPNM)],
       [(snapshots.data!.COOKRCP02.row.elementAt(elementat).RCPPARTSDTLS)],
       [(snapshots.data!.COOKRCP02.row.elementAt(elementat).MANUAL01)],
       [(snapshots.data!.COOKRCP02.row.elementAt(elementat).MANUALIMG01)]
-    }.toSet();
-    
-    if (firstListSet.intersection(secondListSet) == '') {
+    ];
+    all.add(firstList);
+    all.add(secondList);
+    for(int i = 0; i < firstList.length; i++){
+    if (all[i]
+        .every((item) => secondList.contains(item))) {
       overlap = true;
+      print('hello');
     }
-
-    if (secondListSet
-        .toList()
-        .every((item) => avaliableRecipe.contains(item))) {
-      overlap = true;
     }
     if (overlap == false) {
-      avaliableRecipe.add(secondListSet.toList());
+      avaliableRecipe.add(secondList);
       update();
     }
+    print('end ${overlap}');
+
   }
 
   @override

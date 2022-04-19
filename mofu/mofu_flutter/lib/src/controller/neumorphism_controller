@@ -1,0 +1,18 @@
+import 'package:get/get.dart';
+
+class NeumorphismController extends GetxController {
+  var _isElevated = false.obs;
+  
+  update();
+  
+
+  @override
+  void onInit() {
+    super.onInit();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+  }
+}
