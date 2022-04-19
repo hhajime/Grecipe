@@ -46,9 +46,9 @@ class LoginPage extends StatelessWidget {
                               enableInfiniteScroll: true,
                               viewportFraction: 0.3,
                               autoPlay: true,
-                              autoPlayInterval: const Duration(seconds: 1),
+                              autoPlayInterval: const Duration(milliseconds: 2000),
                               autoPlayAnimationDuration:
-                                  const Duration(milliseconds: 800),
+                                  const Duration(milliseconds: 2000),
                               enlargeCenterPage: true,
                               aspectRatio: 1.5,
                               onPageChanged: (index, reason) {

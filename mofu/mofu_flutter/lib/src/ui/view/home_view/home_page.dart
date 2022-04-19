@@ -3,8 +3,6 @@ import 'package:mofu_flutter/src/data/list.dart';
 import 'package:mofu_flutter/src/ui/view/home_view/ingredient_add_page.dart';
 import 'package:mofu_flutter/src/ui/view/home_view/ingredient_modify_page.dart';
 import 'package:mofu_flutter/src/ui/view/home_view/recipe_page.dart';
-import 'package:custom_radio_grouped_button/custom_radio_grouped_button.dart';
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:get/get.dart';
 import 'package:mofu_flutter/src/controller/shelf_life_index_controller.dart';
 import 'package:mofu_flutter/src/controller/mytabcontroller.dart';
@@ -17,15 +15,8 @@ class HomePage extends StatelessWidget {
       Get.put(ShelfLifeIndexController(), permanent: false);
   final MyTabController _tabx = Get.put(MyTabController());
   final List<String> entries = <String>['스팸 김치 볶음밥', '스팸 김치찌개'];
-  final List<List> avaliableRecipes = <List>[
-    [['인덱스'],
-    ['레시피 이름'],
-    [
-      '재료목록'
-    ],
-    ['메뉴얼'],
-    ['이미지링크']
-  ]];
+
+  HomePage({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -37,19 +28,20 @@ class HomePage extends StatelessWidget {
                   automaticallyImplyLeading: false,
                   title: Text(
                     '우리집 냉장고',
-                    style: TextStyle(color: Colors.black),
+                    style: TextStyle(
+                  fontWeight: FontWeight.bold, color: Colors.black, fontSize: displayHeight * 0.02),
                   ),
                   centerTitle: true,
                   backgroundColor: Colors.white,
+                  shadowColor: Colors.transparent,
+                  elevation: 0,
                 ),
                 body: SingleChildScrollView(
                     child: Container(
                   color: Colors.white,
                   child: Column(
                     children: [
-                      Container(
-                        child: Image.asset('assets/images/banners/temp.png'),
-                      ),
+                      Image.asset('assets/images/banners/temp.png'),
                       SizedBox(
                         height: displayHeight * 0.06,
                         child: Container(
@@ -77,22 +69,22 @@ class HomePage extends StatelessWidget {
                       Container(
                         width: displayWidth * 0.8,
                         height: displayHeight * 0.018,
-                        child: Container(
+                        child: SizedBox(
                             width: displayWidth * 0.6,
                             child: TabBar(
                                 unselectedLabelColor: mainColor,
                                 labelPadding:
-                                    EdgeInsets.only(left: 5, right: 5),
+                                    const EdgeInsets.only(left: 5, right: 5),
                                 indicator: BoxDecoration(
                                     borderRadius: BorderRadius.circular(20),
                                     color: mainColor),
-                                indicatorSize: TabBarIndicatorSize.label,
+                                indicatorSize: TabBarIndicatorSize.tab,
                                 isScrollable: false,
                                 controller: _tabx.controller,
                                 tabs: _tabx.myTabs)),
                         alignment: Alignment.bottomLeft,
                       ),
-                      Padding(padding: EdgeInsets.only(top: 5)),
+                      const Padding(padding: EdgeInsets.only(top: 5)),
                       Container(
                         height: 2,
                         width: displayWidth * 0.8,
@@ -128,13 +120,13 @@ class HomePage extends StatelessWidget {
                               fontSize: displayHeight * 0.02),
                         ),
                       ),
-                      RecipeList()
+                      recipeList()
                     ],
                   ),
                 )))));
   }
 
-  Condicon(index, life) {
+  condiCon(index, life) {
     if (index < ingResult.length) {
       return Column(children: [
         Stack(
@@ -142,9 +134,9 @@ class HomePage extends StatelessWidget {
             Container(
               height: displayHeight * 0.066,
               width: displayWidth * 0.16,
-              padding: EdgeInsets.all(5),
+              padding: const EdgeInsets.all(5),
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.all(Radius.circular(10)),
+                borderRadius: const BorderRadius.all(Radius.circular(10)),
                 color: subColor,
                 border: Border.all(color: mainColor, width: 2),
               ),
@@ -169,11 +161,12 @@ class HomePage extends StatelessWidget {
         ))
       ]);
     }
-    return Container(
+    return Column(children: [
+      Container(
       height: displayHeight * 0.066,
       width: displayWidth * 0.16,
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.all(Radius.circular(10)),
+        borderRadius: const BorderRadius.all(Radius.circular(10)),
         color: subColor,
         border: Border.all(color: mainColor, width: 2),
       ),
@@ -181,7 +174,11 @@ class HomePage extends StatelessWidget {
         Icons.add,
         color: mainColor,
       ),
-    );
+    ),Container(
+            child: FittedBox(
+          fit: BoxFit.fitWidth,
+          child: Text(' '),
+        ))]);
   }
 
   ingGridContainer(life) {
@@ -218,21 +215,21 @@ class HomePage extends StatelessWidget {
                   }
                 }
               },
-              child: Condicon(index, life),
+              child: condiCon(index, life),
             );
           }),
     );
   }
 
-  AvailRecipeIcons(ingredients) {
+  availRecipeIcons(ingredients) {
     return Image.asset(
-      "assets/images/icons/ingredient_icon/${ingredients}.png",
+      "assets/images/icons/ingredient_icon/$ingredients.png",
       height: 15,
       width: 15,
     );
   }
 
-  RecipeList() {
+  recipeList() {
     return FutureBuilder<Recipes>(
         future: recipeController.recipe,
         builder: (context, snapshot) {
@@ -253,8 +250,9 @@ class HomePage extends StatelessWidget {
                   }
                 }
                 if (count == result.length) {
-                  recipeController.elementat.value = i;
+                  recipeController.elementat = i;
                   recipeController.recipeListGenetator();
+                //print('this ${snapshot.toString()}');
                 }
               }
             }
@@ -280,13 +278,13 @@ class HomePage extends StatelessWidget {
                             Text(' check${recipeController.avaliableRecipe[index][1].toString()} '),
                             Container(
                                 child: Row(children: [
-                              AvailRecipeIcons('김치'),
-                              AvailRecipeIcons('쌀'),
-                              AvailRecipeIcons('양파'),
-                              AvailRecipeIcons('파'),
-                              AvailRecipeIcons('소시지')
+                              availRecipeIcons('김치'),
+                              availRecipeIcons('쌀'),
+                              availRecipeIcons('양파'),
+                              availRecipeIcons('파'),
+                              availRecipeIcons('소시지')
                             ])),
-                            Spacer(),
+                            const Spacer(),
                             IconButton(
                               onPressed: () {
                                 Get.to(() => RecipePage(),
@@ -302,7 +300,7 @@ class HomePage extends StatelessWidget {
           } else if (snapshot.hasError) {
             return Text("${snapshot.error}");
           }
-          return CircularProgressIndicator();
+          return const CircularProgressIndicator();
         });
   }
 }

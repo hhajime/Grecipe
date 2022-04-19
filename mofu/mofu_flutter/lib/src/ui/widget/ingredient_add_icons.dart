@@ -29,11 +29,11 @@ void ingredientAddIconsDialog() {
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 4,
                   crossAxisSpacing: displayWidth * 0.02,
-                  mainAxisExtent: displayHeight * 0.09,
+                  mainAxisExtent: displayHeight * 0.092,
                   mainAxisSpacing: displayHeight * 0.02),
               itemBuilder: (BuildContext context, int index) {
                 return InkResponse(
-                    child: Container(
+                    child: Column(children: [Container(
                   height: displayHeight * 0.066,
                   width: displayWidth * 0.16,
                   padding: EdgeInsets.all(5),
@@ -46,7 +46,12 @@ void ingredientAddIconsDialog() {
                     image: AssetImage(
                         'assets/images/icons/ingredient_icon/${ingredientList[index]}.png'),
                   ),
-                ));
+                ),
+                Container(
+            child: FittedBox(
+          fit: BoxFit.fitWidth,
+          child: Text('${ingredientList[index]}'),
+        ))]));
               }),
         )
       ],

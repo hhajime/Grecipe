@@ -9,47 +9,47 @@ double displayWidth = 0;
 double displayRatio = 1;
 
 List ingList_vegetable = [
-  'cabbage',
-  'carrot',
-  'garlic',
-  'green_onion',
-  'mushroom',
-  'onion',
-  'pepper',
-  'perilla_leaf',
-  'pimento',
-  'potato',
-  'sweet_potato'
+  '양배추',
+  '당근',
+  '마늘',
+  '파',
+  '버섯',
+  '양파',
+  '고추',
+  '깻잎',
+  '피망',
+  '감자',
+  '고구마'
 ]; //채소
-List ingList_fruit = ['corn', 'rice']; //과일,견과, 쌀
-List ingList_fisheries = ['tuna']; //수산, 해산, 건어물
-List ingList_meat = ['beef', 'chicken', 'egg', 'pork']; //축산물(정육, 계란)
+List ingList_fruit = ['옥수수', '쌀']; //과일,견과, 쌀
+List ingList_fisheries = ['참치']; //수산, 해산, 건어물
+List ingList_meat = ['소고기', '닭고기', '달걀', '돼지고기']; //축산물(정육, 계란)
 List ingList_seasoning = [
-  'olive_oil',
-  'salt',
-  'sugar',
-  'soy_sauce',
-  'vinegar'
+  '올리브유',
+  '소금',
+  '설탕',
+  '간장',
+  '식초'
 ]; //양념, 오일
 List ingList_processedfood = [
-  'bacon',
-  'bread',
-  'butter',
-  'cheese',
-  'fish_cake',
-  'ham',
-  'kimchi',
-  'milk',
-  'nori',
-  'pasta',
-  'ramen',
-  'sausage'
+  '베이컨',
+  '빵',
+  '버터',
+  '치즈',
+  '어묵',
+  '햄',
+  '김치',
+  '우유',
+  '김',
+  '파스타',
+  '라면',
+  '소시지'
 ]; //면, 가공식품
-List ingList_beverage = ['water']; //물
+List ingList_beverage = ['물']; //물
 
 final List<String> ingResult = <String>[
   '김치',
-  '베이컨',
+  '돼지고기',
   '양파',
   '쌀',
   '고추',

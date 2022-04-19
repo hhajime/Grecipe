@@ -12,7 +12,7 @@ class MyTabController extends GetxController
             alignment: Alignment.center,
             decoration: BoxDecoration(borderRadius: BorderRadius.circular(20),
                                 border: Border.all(color: mainColor)),
-            child: Text('ALL')))),
+            child: Text('      ALL      ')))),
     Tab(
         child: FittedBox(
           fit: BoxFit.fitWidth,
@@ -21,6 +21,7 @@ class MyTabController extends GetxController
                                 border: Border.all(color: mainColor)),
             child: Row(
       children: [
+        Padding(padding: EdgeInsets.only(left: 5)),
         Image.asset(
           "assets/images/icons/expiration_icon/good_1.png",
           height: 10,
@@ -28,6 +29,7 @@ class MyTabController extends GetxController
         ),
         Padding(padding: EdgeInsets.only(right: 5)),
         Text('10 items'),
+        Padding(padding: EdgeInsets.only(right: 5)),
       ],
     )))),
     Tab(
@@ -38,6 +40,7 @@ class MyTabController extends GetxController
                                 border: Border.all(color: mainColor)),
             child: Row(
       children: [
+        Padding(padding: EdgeInsets.only(left: 5)),
         Image.asset(
           "assets/images/icons/expiration_icon/fridged_1.png",
           height: 10,
@@ -45,6 +48,7 @@ class MyTabController extends GetxController
         ),
         Padding(padding: EdgeInsets.only(right: 5)),
         Text('10 items'),
+        Padding(padding: EdgeInsets.only(right: 5)),
       ],
     )))),
     Tab(
@@ -55,6 +59,7 @@ class MyTabController extends GetxController
                                border: Border.all(color: mainColor),),
             child: Row(
       children: [
+        Padding(padding: EdgeInsets.only(left: 5)),
         Image.asset(
           "assets/images/icons/expiration_icon/danger_1.png",
           height: 10,
@@ -62,6 +67,7 @@ class MyTabController extends GetxController
         ),
         Padding(padding: EdgeInsets.only(right: 5)),
         Text('10 items'),
+        Padding(padding: EdgeInsets.only(right: 5))
       ],
     )))),
   ];

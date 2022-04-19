@@ -23,8 +23,7 @@ class RecipePage extends StatelessWidget {
                 leading: BackButton(
                   color: mainColor,
                   onPressed: () {
-                    Get.to(() => LandingPage(),
-                        transition: Transition.cupertino);
+                    Get.back();
                   },
                 ),
                 centerTitle: true,
@@ -39,9 +38,7 @@ class RecipePage extends StatelessWidget {
                       ))
                 ],
               ),
-              Container(
-                child: SingleChildScrollView(child: Recipe(500)),
-              ),
+              SingleChildScrollView(child: recipes(500)),
             ]),
           ),
         ),
@@ -49,11 +46,7 @@ class RecipePage extends StatelessWidget {
     );
   }
 
-  Algorithm() {
-    int a = 0;
-  }
-
-  Recipe(index) {
+  recipes(index) {
     return FutureBuilder<Recipes>(
       future: recipeController.recipe,
       builder: (context, snapshot) {
@@ -74,13 +67,13 @@ class RecipePage extends StatelessWidget {
               }
               if (count == result.length) {
                 print(
-                    'here2 ${result}, ${result.length}, ${snapshot.data!.COOKRCP02.row.elementAt(i).RCPNM}');
+                    'here2 $result, ${result.length}, ${snapshot.data!.COOKRCP02.row.elementAt(i).RCPNM}');
               }
             }
           }
           return Column(
             children: [
-              Container(
+              SizedBox(
                 width: displayWidth,
                 height: displayHeight * 0.2,
                 child: FittedBox(
@@ -95,7 +88,7 @@ class RecipePage extends StatelessWidget {
                     borderRadius: BorderRadius.circular(20)),
                 child: Column(
                   children: [
-                    Padding(padding: EdgeInsets.only(bottom: 10)),
+                    const Padding(padding: EdgeInsets.only(bottom: 10)),
                     Text(recipeController.recipe.asStream().toString()),
                     Text(
                       snapshot.data!.COOKRCP02.row.elementAt(index).RCPNM,
@@ -103,11 +96,11 @@ class RecipePage extends StatelessWidget {
                           fontSize: displayHeight * 0.025,
                           fontWeight: FontWeight.bold),
                     ),
-                    Text("재료"),
+                    const Text("재료"),
                     Text(snapshot.data!.COOKRCP02.row
                         .elementAt(index)
                         .RCPPARTSDTLS),
-                    Text("조리순서"),
+                    const Text("조리순서"),
                     Text(
                         snapshot.data!.COOKRCP02.row.elementAt(index).MANUAL01),
                     Image.network(snapshot.data!.COOKRCP02.row
@@ -136,10 +129,8 @@ class RecipePage extends StatelessWidget {
         }
 
         // 기본적으로 로딩 Spinner를 보여줍니다.
-        return CircularProgressIndicator();
+        return const CircularProgressIndicator();
       },
     );
   }
 }
-
-RecipeAlgorithm() {}

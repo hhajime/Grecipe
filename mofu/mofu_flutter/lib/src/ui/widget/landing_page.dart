@@ -4,7 +4,6 @@ import 'package:mofu_flutter/src/controller/bottom_navigation_controller.dart';
 import 'package:mofu_flutter/src/data/list.dart';
 import 'package:mofu_flutter/src/ui/view/mypage_view/mypage_page.dart';
 import 'package:mofu_flutter/src/ui/view/home_view/home_page.dart';
-import 'package:mofu_flutter/src/ui/widget/foodvision_page_getx.dart';
 import 'package:mofu_flutter/src/ui/view/foodvision_view/food_vision_page.dart';
 
 class LandingPage extends StatelessWidget {
@@ -34,36 +33,36 @@ class LandingPage extends StatelessWidget {
             items: [
               BottomNavigationBarItem(
                 icon: Container(
-                  margin: EdgeInsets.only(bottom: 7),
-                  child: Icon(
+                  margin: const EdgeInsets.only(bottom: 7),
+                  child: const Icon(
                     Icons.home,
                     size: 20.0,
                   ),
                 ),
                 label: 'fridge',
-                backgroundColor: Color.fromRGBO(36, 54, 101, 1.0),
+                backgroundColor: const Color.fromRGBO(36, 54, 101, 1.0),
               ),
               BottomNavigationBarItem(
                 icon: Container(
-                  margin: EdgeInsets.only(bottom: 7),
-                  child: Icon(
+                  margin: const EdgeInsets.only(bottom: 7),
+                  child: const Icon(
                     Icons.remove_red_eye,
                     size: 20.0,
                   ),
                 ),
                 label: 'food vision',
-                backgroundColor: Color.fromRGBO(36, 54, 101, 1.0),
+                backgroundColor: const Color.fromRGBO(36, 54, 101, 1.0),
               ),
               BottomNavigationBarItem(
                 icon: Container(
-                  margin: EdgeInsets.only(bottom: 7),
-                  child: Icon(
+                  margin: const EdgeInsets.only(bottom: 7),
+                  child: const Icon(
                     Icons.location_history,
                     size: 20.0,
                   ),
                 ),
                 label: 'Places',
-                backgroundColor: Color.fromRGBO(36, 54, 101, 1.0),
+                backgroundColor: const Color.fromRGBO(36, 54, 101, 1.0),
               ),
             ],
           ),

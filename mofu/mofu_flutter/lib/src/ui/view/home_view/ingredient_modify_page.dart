@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mofu_flutter/src/controller/shelf_life_controller.dart';
 import 'package:mofu_flutter/src/data/list.dart';
-import 'package:mofu_flutter/src/ui/view/home_view/home_page.dart';
-import 'package:custom_radio_grouped_button/custom_radio_grouped_button.dart';
 import 'package:get/get.dart';
 import 'package:mofu_flutter/src/ui/widget/landing_page.dart';
 import 'package:mofu_flutter/src/ui/widget/ingredient_add_icons.dart';
@@ -22,8 +20,7 @@ class IngredientModifyPage extends StatelessWidget {
                 leading: BackButton(
                   color: mainColor,
                   onPressed: () {
-                    Get.to(() => LandingPage(),
-                        transition: Transition.cupertino);
+                    Get.back();
                   },
                 ),
                 centerTitle: true,
@@ -110,7 +107,7 @@ class IngredientModifyPage extends StatelessWidget {
                                             ),
                                             child: const Image(
                                               image: AssetImage(
-                                                  'assets/images/icons/ingredient_icon/bacon.png'),
+                                                  'assets/images/icons/ingredient_icon/간장.png'),
                                             ),
                                           ))
                                     ],

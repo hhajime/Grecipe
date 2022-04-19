@@ -22,8 +22,7 @@ class IngredientAddPage extends StatelessWidget {
                 leading: BackButton(
                   color: mainColor,
                   onPressed: () {
-                    Get.to(() => LandingPage(),
-                        transition: Transition.cupertino);
+                    Get.back();
                   },
                 ),
                 centerTitle: true,
@@ -110,7 +109,7 @@ class IngredientAddPage extends StatelessWidget {
                                             ),
                                             child: const Image(
                                               image: AssetImage(
-                                                  'assets/images/icons/ingredient_icon/bacon.png'),
+                                                  'assets/images/icons/ingredient_icon/간장.png'),
                                             ),
                                           ))
                                     ],
