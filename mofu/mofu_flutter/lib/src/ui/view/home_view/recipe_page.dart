@@ -83,24 +83,49 @@ class RecipePage extends StatelessWidget {
                         .ATTFILENOMAIN)),
               ),
               Container(
+                width: displayWidth * 0.8,
                 decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(20)),
                 child: Column(
                   children: [
-                    const Padding(padding: EdgeInsets.only(bottom: 10)),
-                    Text(recipeController.recipe.asStream().toString()),
-                    Text(
-                      snapshot.data!.COOKRCP02.row.elementAt(index).RCPNM,
-                      style: TextStyle(
-                          fontSize: displayHeight * 0.025,
-                          fontWeight: FontWeight.bold),
-                    ),
-                    const Text("재료"),
-                    Text(snapshot.data!.COOKRCP02.row
-                        .elementAt(index)
-                        .RCPPARTSDTLS),
-                    const Text("조리순서"),
+                    //Text(recipeController.recipe.asStream().toString()),
+                    Container(
+                        width: displayWidth * 0.8,
+                        alignment: Alignment.center,
+                        padding: const EdgeInsets.only(top: 10, bottom: 13),
+                        child: Text(
+                          snapshot.data!.COOKRCP02.row.elementAt(index).RCPNM,
+                          style: TextStyle(
+                              fontSize: displayHeight * 0.025,
+                              fontWeight: FontWeight.bold),
+                        )),
+                    Container(
+                        padding: const EdgeInsets.only(left: 10),
+                        alignment: Alignment.topLeft,
+                        child: Text(
+                          "재료",
+                          style: TextStyle(
+                              color: Colors.black54,
+                              fontSize: displayHeight * 0.02,
+                              fontWeight: FontWeight.bold),
+                        )),
+                    Container(
+                        alignment: Alignment.topLeft,
+                        padding: const EdgeInsets.only(left: 10),
+                        child: Text(snapshot.data!.COOKRCP02.row
+                            .elementAt(index)
+                            .RCPPARTSDTLS)),
+                    Container(
+                        padding: const EdgeInsets.only(top : 20, left: 10),
+                        alignment: Alignment.center,
+                        child: Text(
+                          "조리순서",
+                          style: TextStyle(
+                              color: Colors.black54,
+                              fontSize: displayHeight * 0.02,
+                              fontWeight: FontWeight.bold),
+                        )),
                     Text(
                         snapshot.data!.COOKRCP02.row.elementAt(index).MANUAL01),
                     Image.network(snapshot.data!.COOKRCP02.row
