@@ -33,10 +33,10 @@ class LandingPage extends StatelessWidget {
             items: [
               BottomNavigationBarItem(
                 icon: Container(
-                  margin: const EdgeInsets.only(bottom: 7),
-                  child: const Icon(
+                  margin: const EdgeInsets.only(bottom: 10),
+                  child: Icon(
                     Icons.home,
-                    size: 20.0,
+                    size: displayHeight * 0.02,
                   ),
                 ),
                 label: 'fridge',
@@ -44,10 +44,10 @@ class LandingPage extends StatelessWidget {
               ),
               BottomNavigationBarItem(
                 icon: Container(
-                  margin: const EdgeInsets.only(bottom: 7),
-                  child: const Icon(
+                  margin: const EdgeInsets.only(bottom: 10),
+                  child: Icon(
                     Icons.remove_red_eye,
-                    size: 20.0,
+                    size: displayHeight * 0.02,
                   ),
                 ),
                 label: 'food vision',
@@ -55,10 +55,10 @@ class LandingPage extends StatelessWidget {
               ),
               BottomNavigationBarItem(
                 icon: Container(
-                  margin: const EdgeInsets.only(bottom: 7),
-                  child: const Icon(
+                  margin: const EdgeInsets.only(bottom: 10),
+                  child: Icon(
                     Icons.location_history,
-                    size: 20.0,
+                    size: displayHeight * 0.02,
                   ),
                 ),
                 label: 'Places',
@@ -76,6 +76,7 @@ class LandingPage extends StatelessWidget {
     return Container(
         color: mainColor,
         child: SafeArea(
+          bottom: false,
             child: Scaffold(
           bottomNavigationBar:
               buildBottomNavigationMenu(context, landingPageController),

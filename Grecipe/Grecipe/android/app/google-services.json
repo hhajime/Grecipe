@@ -1,34 +1,49 @@
 {
   "project_info": {
-    "project_number": "450786072318",
-    "project_id": "grecipe-c96d0",
-    "storage_bucket": "grecipe-c96d0.appspot.com"
+    "project_number": "958753768803",
+    "project_id": "mofu-336105",
+    "storage_bucket": "mofu-336105.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:450786072318:android:fbb08f0922f6a25865f7af",
+        "mobilesdk_app_id": "1:958753768803:android:a7259a6aaec427db07ff56",
         "android_client_info": {
           "package_name": "com.dev.grecipe"
         }
       },
       "oauth_client": [
         {
-          "client_id": "450786072318-pmb8jtd4lrnkflve2cbu55iqe88f048r.apps.googleusercontent.com",
+          "client_id": "958753768803-4jdo9p094v0u2cp4ue90a2c9rlav3sp0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.dev.grecipe",
+            "certificate_hash": "607e5362923b4fe84ba674d80567f1345a46391d"
+          }
+        },
+        {
+          "client_id": "958753768803-34u253pja3c684pa492u2he3brlb5tdk.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAjjQOp4bz8BDEHZ2mpL4Y1UdPRHa2Zkho"
+          "current_key": "AIzaSyDnV-Na4PVuJk5LD9cLCi7b74wijDcX6Lw"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "450786072318-pmb8jtd4lrnkflve2cbu55iqe88f048r.apps.googleusercontent.com",
+              "client_id": "958753768803-34u253pja3c684pa492u2he3brlb5tdk.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "958753768803-6mj3b2fo91be3nacp3dhguj9ue5sffk3.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "mofu"
+              }
             }
           ]
         }
@@ -36,36 +51,59 @@
     },
     {
       "client_info": {
-        "mobilesdk_app_id": "1:450786072318:android:d0fb55f5810886c465f7af",
+        "mobilesdk_app_id": "1:958753768803:android:285371216598f24107ff56",
         "android_client_info": {
-          "package_name": "com.dev.grecipe.app"
+          "package_name": "com.example.mofu_flutter"
         }
       },
       "oauth_client": [
         {
-          "client_id": "450786072318-5j97lnu4uok2i61cjjfnv9rtqtb0n1cj.apps.googleusercontent.com",
+          "client_id": "958753768803-0anvr8676ck2u7onuo06eig0oa49i3un.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.dev.grecipe.app",
+            "package_name": "com.example.mofu_flutter",
+            "certificate_hash": "695688475cd9751ee9ef2a9f2d8c30eb334b6ace"
+          }
+        },
+        {
+          "client_id": "958753768803-k1fjlbh24f77ql4kl25u3qoid0nj6aqg.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.mofu_flutter",
+            "certificate_hash": "2e21248ae863d71cc218924c9e194e6e91117549"
+          }
+        },
+        {
+          "client_id": "958753768803-pic4os9o08kb9nak00ve1bhjtbn1m85b.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.mofu_flutter",
             "certificate_hash": "607e5362923b4fe84ba674d80567f1345a46391d"
           }
         },
         {
-          "client_id": "450786072318-pmb8jtd4lrnkflve2cbu55iqe88f048r.apps.googleusercontent.com",
+          "client_id": "958753768803-34u253pja3c684pa492u2he3brlb5tdk.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAjjQOp4bz8BDEHZ2mpL4Y1UdPRHa2Zkho"
+          "current_key": "AIzaSyDnV-Na4PVuJk5LD9cLCi7b74wijDcX6Lw"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "450786072318-pmb8jtd4lrnkflve2cbu55iqe88f048r.apps.googleusercontent.com",
+              "client_id": "958753768803-34u253pja3c684pa492u2he3brlb5tdk.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "958753768803-6mj3b2fo91be3nacp3dhguj9ue5sffk3.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "mofu"
+              }
             }
           ]
         }
