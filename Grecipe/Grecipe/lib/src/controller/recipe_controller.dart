@@ -46,10 +46,9 @@ class RecipeController extends GetxController {
     }
   }
 
-  recipeListGenetator() {
+  recipeListGenetator() {//avaliableRecipe에 존재하지 않는 레시피만 추가하기
     print('start ${overlap}');
     var firstList = avaliableRecipe;
-
     var secondList = [
       ['$elementat'],
       [(snapshots.data!.COOKRCP02.row.elementAt(elementat).RCPNM)],
