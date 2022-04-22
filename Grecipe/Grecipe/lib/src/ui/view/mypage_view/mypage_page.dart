@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mofu_flutter/src/data/list.dart';
+import 'package:grecipe/src/data/list.dart';
 import 'package:get/get.dart';
 
 class MyPage extends StatelessWidget {

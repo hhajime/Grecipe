@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:mofu_flutter/src/data/list.dart';
-import 'package:mofu_flutter/src/ui/view/home_view/home_page.dart';
+import 'package:grecipe/src/data/list.dart';
+import 'package:grecipe/src/ui/view/home_view/home_page.dart';
 import 'package:get/get.dart';
-import 'package:mofu_flutter/src/ui/widget/landing_page.dart';
-import 'package:mofu_flutter/src/controller/neumorphism_controller.dart';
+import 'package:grecipe/src/ui/widget/landing_page.dart';
+import 'package:grecipe/src/controller/neumorphism_controller.dart';
 
 class SignInPage extends StatelessWidget {
   const SignInPage({Key? key}) : super(key: key);

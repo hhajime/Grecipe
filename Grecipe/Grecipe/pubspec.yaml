@@ -1,4 +1,4 @@
-name: mofu_flutter
+name: grecipe
 description: A new Flutter project.
 publish_to: 'none'
 version: 1.0.0+1
@@ -8,6 +8,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  sqflite:
+  path:
   cupertino_icons: ^1.0.2
   device_preview: ^1.0.0
   get: ^4.6.1

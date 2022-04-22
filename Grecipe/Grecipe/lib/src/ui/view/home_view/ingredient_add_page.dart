@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:mofu_flutter/src/controller/shelf_life_controller.dart';
-import 'package:mofu_flutter/src/data/list.dart';
-import 'package:mofu_flutter/src/ui/view/home_view/home_page.dart';
+import 'package:grecipe/src/controller/shelf_life_controller.dart';
+import 'package:grecipe/src/data/list.dart';
+import 'package:grecipe/src/ui/view/home_view/home_page.dart';
 import 'package:custom_radio_grouped_button/custom_radio_grouped_button.dart';
 import 'package:get/get.dart';
-import 'package:mofu_flutter/src/ui/widget/landing_page.dart';
-import 'package:mofu_flutter/src/ui/widget/ingredient_add_icons.dart';
+import 'package:grecipe/src/ui/widget/landing_page.dart';
+import 'package:grecipe/src/ui/widget/ingredient_add_icons.dart';
 
 class IngredientAddPage extends StatelessWidget {
   final shelfLifeController = Get.put(ShelfLifeController(), permanent: false);

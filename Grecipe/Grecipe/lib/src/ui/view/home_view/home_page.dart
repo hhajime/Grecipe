@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:mofu_flutter/src/data/list.dart';
-import 'package:mofu_flutter/src/ui/view/home_view/ingredient_add_page.dart';
-import 'package:mofu_flutter/src/ui/view/home_view/ingredient_modify_page.dart';
-import 'package:mofu_flutter/src/ui/view/home_view/recipe_page.dart';
+import 'package:grecipe/src/data/list.dart';
+import 'package:grecipe/src/ui/view/home_view/ingredient_add_page.dart';
+import 'package:grecipe/src/ui/view/home_view/ingredient_modify_page.dart';
+import 'package:grecipe/src/ui/view/home_view/recipe_page.dart';
 import 'package:get/get.dart';
-import 'package:mofu_flutter/src/controller/shelf_life_index_controller.dart';
-import 'package:mofu_flutter/src/data/model/recipe_model.dart' hide Row;
-import 'package:mofu_flutter/src/controller/recipe_controller.dart';
+import 'package:grecipe/src/controller/shelf_life_index_controller.dart';
+import 'package:grecipe/src/data/model/recipe_model.dart' hide Row;
+import 'package:grecipe/src/controller/recipe_controller.dart';
 
 class HomePage extends StatelessWidget {
   final recipeController = Get.put(RecipeController(), permanent: false);

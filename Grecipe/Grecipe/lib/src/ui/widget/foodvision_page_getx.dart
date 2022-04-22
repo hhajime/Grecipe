@@ -1,7 +1,7 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
-import 'package:mofu_flutter/src/controller/image_recognition_controller.dart';
-import 'package:mofu_flutter/src/data/list.dart';
+import 'package:grecipe/src/controller/image_recognition_controller.dart';
+import 'package:grecipe/src/data/list.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:tflite/tflite.dart';
 import 'package:get/get.dart';

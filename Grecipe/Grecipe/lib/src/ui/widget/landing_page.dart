@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:mofu_flutter/src/controller/bottom_navigation_controller.dart';
-import 'package:mofu_flutter/src/data/list.dart';
-import 'package:mofu_flutter/src/ui/view/mypage_view/mypage_page.dart';
-import 'package:mofu_flutter/src/ui/view/home_view/home_page.dart';
-import 'package:mofu_flutter/src/ui/view/foodvision_view/food_vision_page.dart';
+import 'package:grecipe/src/controller/bottom_navigation_controller.dart';
+import 'package:grecipe/src/data/list.dart';
+import 'package:grecipe/src/ui/view/mypage_view/mypage_page.dart';
+import 'package:grecipe/src/ui/view/home_view/home_page.dart';
+import 'package:grecipe/src/ui/view/foodvision_view/food_vision_page.dart';
 
 class LandingPage extends StatelessWidget {
   final TextStyle unselectedLabelStyle = TextStyle(

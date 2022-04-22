@@ -3,9 +3,9 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:device_preview/device_preview.dart';
-import 'package:mofu_flutter/src/ui/view/intro_view/loading_page.dart';
-import 'package:mofu_flutter/src/ui/view/intro_view/signin_page.dart';
-import 'package:mofu_flutter/src/data/list.dart';
+import 'package:grecipe/src/ui/view/intro_view/loading_page.dart';
+import 'package:grecipe/src/ui/view/intro_view/signin_page.dart';
+import 'package:grecipe/src/data/list.dart';
 import 'package:camera/camera.dart';
 
 List<CameraDescription> cameras = [];

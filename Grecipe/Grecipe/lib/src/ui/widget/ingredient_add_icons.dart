@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:mofu_flutter/src/data/list.dart';
-import 'package:mofu_flutter/src/ui/widget/landing_page.dart';
+import 'package:grecipe/src/data/list.dart';
+import 'package:grecipe/src/ui/widget/landing_page.dart';
 
 void ingredientAddIconsDialog() {
   Color getColor(Set<MaterialState> states) {

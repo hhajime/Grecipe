@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
-import 'package:mofu_flutter/src/data/list.dart';
+import 'package:grecipe/src/data/list.dart';
 
 class ShelfLifeIndexController extends GetxController
     with GetSingleTickerProviderStateMixin {

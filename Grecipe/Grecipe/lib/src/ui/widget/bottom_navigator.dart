@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:mofu_flutter/src/data/list.dart';
-import 'package:mofu_flutter/src/ui/view/mypage_view/mypage_page.dart';
-import 'package:mofu_flutter/src/ui/view/home_view/home_page.dart';
-import 'package:mofu_flutter/src/ui/widget/foodvision_page_getx.dart';
+import 'package:grecipe/src/data/list.dart';
+import 'package:grecipe/src/ui/view/mypage_view/mypage_page.dart';
+import 'package:grecipe/src/ui/view/home_view/home_page.dart';
+import 'package:grecipe/src/ui/widget/foodvision_page_getx.dart';
 import 'package:get/get.dart';
 
 final TextStyle unselectedLabelStyle = TextStyle(

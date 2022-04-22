@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:mofu_flutter/src/data/list.dart';
+import 'package:grecipe/src/data/list.dart';
 import 'package:get/get.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter_signin_button/flutter_signin_button.dart';
-import 'package:mofu_flutter/src/getx/login_controller.dart';
+import 'package:grecipe/src/getx/login_controller.dart';
 
 class LoginPage extends StatelessWidget {
   LoginPage({Key? key}) : super(key: key);
