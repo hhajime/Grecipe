@@ -25,6 +25,7 @@ class RecipeController extends GetxController {
   late AsyncSnapshot<Recipes> snapshots = AsyncSnapshot.nothing();
 
   recipeFinder() {
+    avaliableRecipe.clear(); //page 이동시 중첩 발생 방지 임시 -> 개선필요
     for (int i = 0; i < 1358; i++) {
       // 현재 재료를 레시피 데이터와 비교하여 동일한 레시피 찾기
       int count = 0;
@@ -47,7 +48,6 @@ class RecipeController extends GetxController {
   }
 
   recipeListGenetator() {//avaliableRecipe에 존재하지 않는 레시피만 추가하기
-    print('start ${overlap}');
     var firstList = avaliableRecipe;
     var secondList = [
       ['$elementat'],
@@ -68,7 +68,6 @@ class RecipeController extends GetxController {
       avaliableRecipe.add(secondList);
       update();
     }
-    print('end ${overlap}');
   }
 
   @override

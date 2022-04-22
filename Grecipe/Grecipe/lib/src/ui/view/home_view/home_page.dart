@@ -257,7 +257,7 @@ class HomePage extends StatelessWidget {
                           ),
                           child: Row(children: [
                             Text(
-                                ' check${recipeController.avaliableRecipe[index][1].toString()} '),
+                                ' ${recipeController.avaliableRecipe[index][1].toString()} '),
                             Container(
                                 child: Row(children: [
                               availRecipeIcons('김치'),
