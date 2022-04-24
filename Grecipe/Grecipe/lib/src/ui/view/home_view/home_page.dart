@@ -150,7 +150,7 @@ class HomePage extends StatelessWidget {
                 alignment: Alignment.bottomRight,
                 child: Image(
                     image: AssetImage(
-                        'assets/images/icons/expiration_icon/${life}.png')))
+                        'assets/images/icons/expiration_icon/$life.png')))
           ],
         ),
         Container(
@@ -205,6 +205,8 @@ class HomePage extends StatelessWidget {
                 if (index < ingResult.length) {
                   print('item selected');
                   {
+                    selectedIcon = ingResult[index];
+                    print('$selectedIcon');
                     Get.to(() => IngredientModifyPage(),
                         transition: Transition.cupertino);
                   }

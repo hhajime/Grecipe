@@ -33,6 +33,10 @@ void ingredientAddIconsDialog() {
                   mainAxisSpacing: displayHeight * 0.02),
               itemBuilder: (BuildContext context, int index) {
                 return InkResponse(
+                  onTap:() {
+                    selectedIcon = ingredientList[index];
+                    print('selectedIcon : ${selectedIcon}');
+                  },
                     child: Column(children: [Container(
                   height: displayHeight * 0.066,
                   width: displayWidth * 0.16,

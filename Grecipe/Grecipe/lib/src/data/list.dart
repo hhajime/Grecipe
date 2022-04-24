@@ -7,7 +7,10 @@ Color inactiveColor = const Color(0xFFB88558);
 double displayHeight = 0;
 double displayWidth = 0;
 double displayRatio = 1;
-
+String selectedIcon = '';
+String userName = '';
+TextEditingController ingname = TextEditingController();
+TextEditingController ingmemo = TextEditingController();
 List ingList_vegetable = [
   '양배추',
   '당근',
@@ -48,22 +51,6 @@ List ingList_processedfood = [
 List ingList_beverage = ['물']; //물
 
 final List<String> ingResult = <String>[
-  '김치',
-  '돼지고기',
-  '양파',
-  '쌀',
-  '고추',
-  '달걀',
-  '올리브유',
-  '물',
-  '치즈',
-  '소시지',
-  '버터',
-  '설탕',
-  '소금',
-  '후추',
-  '식초',
-  '간장',
 ];
 
 final List<String> ingList_en = <String>[
