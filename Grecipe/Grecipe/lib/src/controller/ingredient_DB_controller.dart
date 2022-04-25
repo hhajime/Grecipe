@@ -16,16 +16,8 @@ class IngredientDBController extends GetxController {
             shelfLife: shelfLife,
             memo: ingmemo.text);
     dataBox.add(data);
-    /**dataBox.put(
-        'ingredient',
-        DataModel(
-            index: dataBox.length,
-            ingredientName: selectedIcon,
-            userSpecIngredientName: ingname.text,
-            shelfLife: shelfLife,
-            memo: ingmemo.text));**/
-    test = dataBox.get('ingredientName').toString();
-    print('db created $test');
+    print('db created ${dataBox.toMap().toString()}');
+    print('${dataBox.length}');
   }
 
   readIng() {
