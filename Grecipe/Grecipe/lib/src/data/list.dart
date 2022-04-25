@@ -9,6 +9,7 @@ double displayWidth = 0;
 double displayRatio = 1;
 String selectedIcon = '';
 String userName = '';
+String shelfLife = 'bad';
 TextEditingController ingname = TextEditingController();
 TextEditingController ingmemo = TextEditingController();
 List ingList_vegetable = [

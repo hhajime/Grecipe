@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:grecipe/src/data/list.dart';
 
 class ShelfLifeController extends GetxController {
 
@@ -11,6 +12,16 @@ class ShelfLifeController extends GetxController {
               isSelected[buttonIndex] = false;
             }
           }
+          if(index == 0){
+            shelfLife = 'bad';
+          }
+          if(index == 1){
+            shelfLife = 'good';
+          }
+          if(index == 2){
+            shelfLife = 'fridged';
+          }
+          print(shelfLife);
           update();
   }
 

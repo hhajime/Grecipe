@@ -143,7 +143,7 @@ class RecipePage extends StatelessWidget {
                         .MANUALIMG03),
                     Text(snapshot.data!.COOKRCP02.row
                         .elementAt(index)
-                        .MANUAL04), //이미지 없으면 표시되지 않게
+                        .MANUAL04), //이미지 없으면 표시되지 않게 / 추가 이미지 10개? 
                   ],
                 ),
               ),

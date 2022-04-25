@@ -6,21 +6,34 @@ import 'package:grecipe/src/data/model/ingredient.dart';
 
 class IngredientDBController extends GetxController {
   TextEditingController te = TextEditingController();
-  CreateIng() async {
-    var box = await Hive.openBox<Ingredients>('ingredient');
-    box.put(
-        'ingredient',
-        Ingredients(
-            index: index,
+    var dataBox = Hive.box<DataModel>('db');
+    String test = '';
+  createIng() {
+    DataModel data = DataModel(
+            index: dataBox.length,
             ingredientName: selectedIcon,
             userSpecIngredientName: ingname.text,
             shelfLife: shelfLife,
-            memo: ingmemo.text));
+            memo: ingmemo.text);
+    dataBox.add(data);
+    /**dataBox.put(
+        'ingredient',
+        DataModel(
+            index: dataBox.length,
+            ingredientName: selectedIcon,
+            userSpecIngredientName: ingname.text,
+            shelfLife: shelfLife,
+            memo: ingmemo.text));**/
+    test = dataBox.get('ingredientName').toString();
+    print('db created $test');
   }
 
-  ReadIng() async {}
-  UpdateIng() async {}
-  DeleteIng() async {}
+  readIng() {
+    test = dataBox.get('ingredientName').toString();
+    print('read db ingname is ${test}');
+  }
+  updateIng() async {}
+  deleteIng() async {}
 
   @override
   void onInit() {

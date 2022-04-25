@@ -2,7 +2,7 @@ import 'package:hive/hive.dart';
 part 'ingredient.g.dart';
 
 @HiveType(typeId: 1,adapterName: "IngredientAdapter")
-class Ingredients {
+class DataModel{
   @HiveField(0)
   int index;
 
@@ -18,8 +18,8 @@ class Ingredients {
   @HiveField(4)
   String memo;
 
-Ingredients({required this.index,required this.ingredientName,required this.userSpecIngredientName,required this.shelfLife,required this.memo});
-  Ingredients.fromJson(Map json)
+DataModel({required this.index,required this.ingredientName,required this.userSpecIngredientName,required this.shelfLife,required this.memo});
+  DataModel.fromJson(Map json)
       : index = json['index'],
         ingredientName = json['ingredientName'],
         userSpecIngredientName = json['userSpecIngredientName'],
