@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:grecipe/src/data/list.dart';
 import 'package:grecipe/src/ui/widget/landing_page.dart';
+import 'package:grecipe/src/controller/reactive_controller.dart';
 
 void ingredientAddIconsDialog() {
+  final reactiveController = Get.put(ReactiveController(), permanent: false);
   Color getColor(Set<MaterialState> states) {
     const Set<MaterialState> interactiveStates = <MaterialState>{
       MaterialState.pressed,
@@ -34,8 +36,8 @@ void ingredientAddIconsDialog() {
               itemBuilder: (BuildContext context, int index) {
                 return InkResponse(
                   onTap:() {
-                    selectedIcon = ingredientList[index];
-                    print('selectedIcon : ${selectedIcon}');
+                    reactiveController.selectedIcon.value = ingredientList[index];
+                    print('selectedIcon : ${reactiveController.selectedIcon}.');
                   },
                     child: Column(children: [Container(
                   height: displayHeight * 0.066,

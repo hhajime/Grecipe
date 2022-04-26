@@ -4,9 +4,11 @@ import 'package:grecipe/src/data/list.dart';
 import 'package:get/get.dart';
 import 'package:grecipe/src/ui/widget/landing_page.dart';
 import 'package:grecipe/src/ui/widget/ingredient_add_icons.dart';
+import 'package:grecipe/src/controller/reactive_controller.dart';
 
 class IngredientModifyPage extends StatelessWidget {
   final shelfLifeController = Get.put(ShelfLifeController(), permanent: false);
+  final reactiveController = Get.put(ReactiveController(), permanent: false);
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -106,10 +108,10 @@ class IngredientModifyPage extends StatelessWidget {
                                               border: Border.all(
                                                   color: mainColor, width: 2),
                                             ),
-                                            child: Image(
+                                            child: Obx(()=>Image(
                                               image: AssetImage(
-                                                  'assets/images/icons/ingredient_icon/$selectedIcon.png'),
-                                            ),
+                                                  'assets/images/icons/ingredient_icon/${reactiveController.selectedIcon}.png'),
+                                            )),
                                           ))
                                     ],
                                   ))

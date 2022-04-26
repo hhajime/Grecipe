@@ -3,19 +3,22 @@ import 'package:get/get.dart';
 import 'package:grecipe/src/data/list.dart';
 import 'package:hive/hive.dart';
 import 'package:grecipe/src/data/model/ingredient.dart';
+import 'package:grecipe/src/controller/reactive_controller.dart';
 
 class IngredientDBController extends GetxController {
+  final reactiveController = Get.put(ReactiveController(), permanent: false);
     var dataBox = Hive.box<DataModel>('db');
   createIng() {
     DataModel data = DataModel(
             index: dataBox.length,
-            ingredientName: selectedIcon,
+            ingredientName: reactiveController.selectedIcon.value,
             userSpecIngredientName: ingname.text,
             shelfLife: shelfLife,
             memo: ingmemo.text);
     dataBox.add(data);
     print('db added ${data.toJson()}');
     print('db length: ${dataBox.length}');
+    update();
   }
 
   readIng(index) {

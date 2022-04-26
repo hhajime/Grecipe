@@ -7,11 +7,13 @@ import 'package:get/get.dart';
 import 'package:grecipe/src/controller/shelf_life_index_controller.dart';
 import 'package:grecipe/src/data/model/recipe_model.dart' hide Row;
 import 'package:grecipe/src/controller/recipe_controller.dart';
+import 'package:grecipe/src/controller/reactive_controller.dart';
 
 class HomePage extends StatelessWidget {
   final recipeController = Get.put(RecipeController(), permanent: false);
   final ShelfLifeIndexController _tabx = Get.put(ShelfLifeIndexController());
   final List<String> entries = <String>['스팸 김치 볶음밥', '스팸 김치찌개'];
+  final reactiveController = Get.put(ReactiveController(), permanent: false);
 
   HomePage({Key? key}) : super(key: key);
   @override
@@ -126,7 +128,7 @@ class HomePage extends StatelessWidget {
   }
 
   condiCon(index, life) {
-    if (index < ingResult.length) {
+    if (index < dataBox.value.length) {
       return Column(children: [
         Stack(
           children: [
@@ -141,7 +143,7 @@ class HomePage extends StatelessWidget {
               ),
               child: Image(
                 image: AssetImage(
-                    'assets/images/icons/ingredient_icon/${ingResult[index]}.png'),
+                    'assets/images/icons/ingredient_icon/${dataBox.value.toMap()[index]?.toJson().toString().split(',')[1].substring(17)}.png'),
               ),
             ),
             Container(
@@ -156,7 +158,7 @@ class HomePage extends StatelessWidget {
         Container(
             child: FittedBox(
           fit: BoxFit.fitWidth,
-          child: Text(ingResult[index]),
+          child: Obx(()=>Text('${dataBox.value.toMap()[index]?.toJson().toString().split(',')[1].substring(17)}')),
         ))
       ]);
     }
@@ -192,8 +194,8 @@ class HomePage extends StatelessWidget {
           left: displayWidth * 0.02, right: displayWidth * 0.02),
       padding: EdgeInsets.only(top: displayHeight * 0.01),
       height: displayHeight * 0.2,
-      child: GridView.builder(
-          itemCount: ingResult.length + 1,
+      child: Obx(()=>GridView.builder(
+          itemCount: dataBox.value.length + 1,
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 5,
               crossAxisSpacing: displayWidth * 0.02,
@@ -202,17 +204,16 @@ class HomePage extends StatelessWidget {
           itemBuilder: (BuildContext context, int index) {
             return InkResponse(
               onTap: () {
-                
                 selectedIndex = index;
-                if (index < ingResult.length) {
+                if (index < dataBox.value.length) {
                   print('item selected');
                   {
-                    selectedIcon = ingResult[index];
-                    print('$selectedIcon');
+                    reactiveController.selectedIcon.value = '${dataBox.value.toMap()[index]?.toJson().toString().split(',')[1].substring(17)}';
+                    print('${reactiveController.selectedIcon.value}');
                     Get.to(() => IngredientModifyPage(),
                         transition: Transition.cupertino);
                   }
-                } else if (index == ingResult.length) {
+                } else if (index == dataBox.value.length) {
                   print('last item selected');
                   {
                     Get.to(() => IngredientAddPage(),
@@ -222,7 +223,7 @@ class HomePage extends StatelessWidget {
               },
               child: condiCon(index, life),
             );
-          }),
+          })),
     );
   }
 

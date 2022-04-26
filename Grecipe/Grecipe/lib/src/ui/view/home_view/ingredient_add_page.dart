@@ -9,9 +9,11 @@ import 'package:get/get.dart';
 import 'package:grecipe/src/ui/widget/landing_page.dart';
 import 'package:grecipe/src/ui/widget/ingredient_add_icons.dart';
 import 'package:hive/hive.dart';
+import 'package:grecipe/src/controller/reactive_controller.dart';
 
 class IngredientAddPage extends StatelessWidget {
   final shelfLifeController = Get.put(ShelfLifeController(), permanent: false);
+  final reactiveController = Get.put(ReactiveController(), permanent: false);
   final ingDbController = Get.put(IngredientDBController(), permanent: false);
   @override
   Widget build(BuildContext context) {
@@ -112,9 +114,9 @@ class IngredientAddPage extends StatelessWidget {
                                               border: Border.all(
                                                   color: mainColor, width: 2),
                                             ),
-                                            child: Image(
+                                            child: Obx(()=>Image(
                                               image: AssetImage(
-                                                  'assets/images/icons/ingredient_icon/$selectedIcon.png'),
+                                                  'assets/images/icons/ingredient_icon/${reactiveController.selectedIcon.value}.png')),
                                             ),
                                           ))
                                     ],

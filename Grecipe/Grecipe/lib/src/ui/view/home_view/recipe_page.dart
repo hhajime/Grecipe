@@ -59,7 +59,8 @@ class RecipePage extends StatelessWidget {
                 .RCPPARTSDTLS
                 .split(',');
             for (int j = 0; j < result.length; j++) {
-              for (int k = 0; k < ingResult.length; k++) {
+              for (int k = 0; k < dataBox.value.length; k++) {
+                if(k ==0){ingResult.add('${dataBox.value.toMap()[k]?.toJson().toString().split(',')[1].substring(17).toString()}');}
                 if (result[j].contains(ingResult[k])) {
                   // include로 변경
                   count++;
