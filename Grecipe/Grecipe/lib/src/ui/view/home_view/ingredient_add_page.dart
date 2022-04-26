@@ -74,6 +74,7 @@ class IngredientAddPage extends StatelessWidget {
                                             width: displayWidth * 0.34,
                                             height: displayHeight * 0.06,
                                             child: TextFormField(
+                                              controller: ingname,
                                               decoration: InputDecoration(
                                                 border: InputBorder.none,
                                                 hintText: '이름을 입력하세요.',
@@ -111,9 +112,9 @@ class IngredientAddPage extends StatelessWidget {
                                               border: Border.all(
                                                   color: mainColor, width: 2),
                                             ),
-                                            child: const Image(
+                                            child: Image(
                                               image: AssetImage(
-                                                  'assets/images/icons/ingredient_icon/간장.png'),
+                                                  'assets/images/icons/ingredient_icon/$selectedIcon.png'),
                                             ),
                                           ))
                                     ],
@@ -190,6 +191,7 @@ class IngredientAddPage extends StatelessWidget {
                             width: displayWidth * 0.8,
                             height: displayHeight * 0.2,
                             child: TextFormField(
+                              controller: ingmemo,
                               minLines: 1,
                               maxLines: 5,
                               keyboardType: TextInputType.multiline,
@@ -209,7 +211,7 @@ class IngredientAddPage extends StatelessWidget {
                           child: TextButton(
                               onPressed: () => {
                                 ingDbController.createIng(),
-                                ingDbController.readIng(),
+                                ingDbController.readIng(selectedIndex),
                                 Get.back()},
                               child: Text(
                                 '등록하기',

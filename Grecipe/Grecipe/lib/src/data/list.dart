@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:hive/hive.dart';
+import 'package:grecipe/src/data/model/ingredient.dart';
 
 Color mainColor = const Color(0xffFFBA7D);
 Color subColor = const Color(0xffFFFAF5);
@@ -7,11 +9,17 @@ Color inactiveColor = const Color(0xFFB88558);
 double displayHeight = 0;
 double displayWidth = 0;
 double displayRatio = 1;
-String selectedIcon = '';
+int selectedIndex = 0;
+String selectedIcon = '달걀';
 String userName = '';
 String shelfLife = 'bad';
 TextEditingController ingname = TextEditingController();
 TextEditingController ingmemo = TextEditingController();
+
+
+var dataBoxs = Hive.box<DataModel>('db');
+
+
 List ingList_vegetable = [
   '양배추',
   '당근',

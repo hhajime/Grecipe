@@ -5,9 +5,7 @@ import 'package:hive/hive.dart';
 import 'package:grecipe/src/data/model/ingredient.dart';
 
 class IngredientDBController extends GetxController {
-  TextEditingController te = TextEditingController();
     var dataBox = Hive.box<DataModel>('db');
-    String test = '';
   createIng() {
     DataModel data = DataModel(
             index: dataBox.length,
@@ -16,13 +14,17 @@ class IngredientDBController extends GetxController {
             shelfLife: shelfLife,
             memo: ingmemo.text);
     dataBox.add(data);
-    print('db created ${dataBox.toMap().toString()}');
-    print('${dataBox.length}');
+    print('db added ${data.toJson()}');
+    print('db length: ${dataBox.length}');
   }
 
-  readIng() {
-    test = dataBox.get('ingredientName').toString();
-    print('read db ingname is ${test}');
+  readIng(index) {
+    print('db created');
+    print('index = ${dataBox.toMap()[index]?.toJson().toString().split(',')[0].substring(7)}');
+    print('ingredientName = ${dataBox.toMap()[index]?.toJson().toString().split(',')[1].substring(17)}');
+    print('userSpecIngredientName = ${dataBox.toMap()[index]?.toJson().toString().split(',')[2].substring(24)}');
+    print('shelfLife = ${dataBox.toMap()[index]?.toJson().toString().split(',')[3].substring(11)}');
+    print('memo = ${dataBox.toMap()[index]?.toJson().toString().split(',')[4].substring(6)}');
   }
   updateIng() async {}
   deleteIng() async {}

@@ -19,6 +19,7 @@ class DataModel{
   String memo;
 
 DataModel({required this.index,required this.ingredientName,required this.userSpecIngredientName,required this.shelfLife,required this.memo});
+
   DataModel.fromJson(Map json)
       : index = json['index'],
         ingredientName = json['ingredientName'],

@@ -202,6 +202,8 @@ class HomePage extends StatelessWidget {
           itemBuilder: (BuildContext context, int index) {
             return InkResponse(
               onTap: () {
+                
+                selectedIndex = index;
                 if (index < ingResult.length) {
                   print('item selected');
                   {
