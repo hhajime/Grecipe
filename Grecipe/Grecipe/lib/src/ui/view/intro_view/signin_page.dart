@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:grecipe/src/data/list.dart';
+import 'package:grecipe/src/ui/view/home_view/home_page.dart';
 import 'package:get/get.dart';
 import 'package:grecipe/src/ui/widget/landing_page.dart';
 import 'package:grecipe/src/controller/neumorphism_controller.dart';
@@ -9,9 +10,8 @@ class SignInPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final neumorphismController =
-        Get.put(NeumorphismController(), permanent: false);
-    final userNameController = TextEditingController();
+  final neumorphismController = Get.put(NeumorphismController(), permanent: false);
+    
     Color getColor(Set<MaterialState> states) {
       const Set<MaterialState> interactiveStates = <MaterialState>{
         MaterialState.pressed,
@@ -80,7 +80,6 @@ class SignInPage extends StatelessWidget {
                             alignment: Alignment.bottomRight,
                           ),
                           TextFormField(
-                            controller: userNameController,
                             maxLength: 10,
                             decoration: InputDecoration(
                               focusedBorder: UnderlineInputBorder(
@@ -101,7 +100,7 @@ class SignInPage extends StatelessWidget {
                           left: displayWidth * 0.12,
                           right: displayWidth * 0.12),
                     ),
-                    /*Container(
+                    Container(
                       child: Text(
                         '사용 가능한 닉네임 입니다!',
                         style: TextStyle(
@@ -124,7 +123,7 @@ class SignInPage extends StatelessWidget {
                       alignment: Alignment.topLeft,
                       padding: EdgeInsets.only(
                           left: displayWidth * 0.12, top: displayHeight * 0.01),
-                    ),*/
+                    ),
                     /*
                     //Obx(()=> GestureDetector(
                       onTap: (){
@@ -137,10 +136,9 @@ class SignInPage extends StatelessWidget {
                       padding: EdgeInsets.only(
                           right: displayWidth * 0.1, top: displayHeight * 0.35),
                       child: ElevatedButton(
-                        onPressed: () async {
-                          userName = userNameController.text;
+                        onPressed: () => {
                           Get.to(() => LandingPage(),
-                              transition: Transition.cupertino);
+                              transition: Transition.cupertino)
                         },
                         style: ButtonStyle(
                           overlayColor: MaterialStateProperty.all(mainColor),

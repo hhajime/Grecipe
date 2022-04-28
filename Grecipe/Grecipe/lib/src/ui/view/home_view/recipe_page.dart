@@ -59,8 +59,7 @@ class RecipePage extends StatelessWidget {
                 .RCPPARTSDTLS
                 .split(',');
             for (int j = 0; j < result.length; j++) {
-              for (int k = 0; k < dataBox.value.length; k++) {
-                if(k ==0){ingResult.add('${dataBox.value.toMap()[k]?.toJson().toString().split(',')[1].substring(17).toString()}');}
+              for (int k = 0; k < ingResult.length; k++) {
                 if (result[j].contains(ingResult[k])) {
                   // include로 변경
                   count++;
@@ -144,7 +143,7 @@ class RecipePage extends StatelessWidget {
                         .MANUALIMG03),
                     Text(snapshot.data!.COOKRCP02.row
                         .elementAt(index)
-                        .MANUAL04), //이미지 없으면 표시되지 않게 / 추가 이미지 10개? 
+                        .MANUAL04), //이미지 없으면 표시되지 않게
                   ],
                 ),
               ),

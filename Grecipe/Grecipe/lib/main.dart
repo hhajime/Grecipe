@@ -4,19 +4,15 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:device_preview/device_preview.dart';
 import 'package:grecipe/src/ui/view/intro_view/loading_page.dart';
+import 'package:grecipe/src/ui/view/intro_view/signin_page.dart';
 import 'package:grecipe/src/data/list.dart';
 import 'package:camera/camera.dart';
-import 'package:hive_flutter/hive_flutter.dart';
-import 'package:grecipe/src/data/model/ingredient.dart';
 
 List<CameraDescription> cameras = [];
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   cameras = await availableCameras();
-  await Hive.initFlutter();
-  Hive.registerAdapter(DataModelAdapter());
-  await Hive.openBox<DataModel>('db'); // the name is totally up to you
   runApp(
     DevicePreview(
       enabled: !kReleaseMode,

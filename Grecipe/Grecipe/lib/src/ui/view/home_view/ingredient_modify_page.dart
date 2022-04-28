@@ -4,11 +4,9 @@ import 'package:grecipe/src/data/list.dart';
 import 'package:get/get.dart';
 import 'package:grecipe/src/ui/widget/landing_page.dart';
 import 'package:grecipe/src/ui/widget/ingredient_add_icons.dart';
-import 'package:grecipe/src/controller/reactive_controller.dart';
 
 class IngredientModifyPage extends StatelessWidget {
   final shelfLifeController = Get.put(ShelfLifeController(), permanent: false);
-  final reactiveController = Get.put(ReactiveController(), permanent: false);
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -70,7 +68,6 @@ class IngredientModifyPage extends StatelessWidget {
                                             width: displayWidth * 0.34,
                                             height: displayHeight * 0.06,
                                             child: TextFormField(
-                                              controller: ingname,
                                               decoration: InputDecoration(
                                                 border: InputBorder.none,
                                                 hintText: '이름을 입력하세요.',
@@ -108,10 +105,10 @@ class IngredientModifyPage extends StatelessWidget {
                                               border: Border.all(
                                                   color: mainColor, width: 2),
                                             ),
-                                            child: Obx(()=>Image(
+                                            child: const Image(
                                               image: AssetImage(
-                                                  'assets/images/icons/ingredient_icon/${reactiveController.selectedIcon}.png'),
-                                            )),
+                                                  'assets/images/icons/ingredient_icon/간장.png'),
+                                            ),
                                           ))
                                     ],
                                   ))
@@ -188,7 +185,6 @@ class IngredientModifyPage extends StatelessWidget {
                             width: displayWidth * 0.8,
                             height: displayHeight * 0.2,
                             child: TextFormField(
-                              controller: ingmemo,
                               minLines: 1,
                               maxLines: 5,
                               keyboardType: TextInputType.multiline,

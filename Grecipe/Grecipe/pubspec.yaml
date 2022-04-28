@@ -8,8 +8,6 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  hive: ^2.1.0
-  hive_flutter: ^1.1.0
   sqflite:
   path:
   cupertino_icons: ^1.0.2
@@ -33,8 +31,6 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^1.0.4
-  hive_generator: ^1.1.2
-  build_runner: ^2.1.10
 
 flutter:
   uses-material-design: true

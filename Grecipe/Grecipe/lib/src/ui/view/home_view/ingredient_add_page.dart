@@ -1,20 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:grecipe/src/controller/shelf_life_controller.dart';
-import 'package:grecipe/src/controller/ingredient_DB_controller.dart';
 import 'package:grecipe/src/data/list.dart';
-import 'package:grecipe/src/data/model/ingredient.dart';
 import 'package:grecipe/src/ui/view/home_view/home_page.dart';
 import 'package:custom_radio_grouped_button/custom_radio_grouped_button.dart';
 import 'package:get/get.dart';
 import 'package:grecipe/src/ui/widget/landing_page.dart';
 import 'package:grecipe/src/ui/widget/ingredient_add_icons.dart';
-import 'package:hive/hive.dart';
-import 'package:grecipe/src/controller/reactive_controller.dart';
 
 class IngredientAddPage extends StatelessWidget {
   final shelfLifeController = Get.put(ShelfLifeController(), permanent: false);
-  final reactiveController = Get.put(ReactiveController(), permanent: false);
-  final ingDbController = Get.put(IngredientDBController(), permanent: false);
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -76,7 +70,6 @@ class IngredientAddPage extends StatelessWidget {
                                             width: displayWidth * 0.34,
                                             height: displayHeight * 0.06,
                                             child: TextFormField(
-                                              controller: ingname,
                                               decoration: InputDecoration(
                                                 border: InputBorder.none,
                                                 hintText: '이름을 입력하세요.',
@@ -114,9 +107,9 @@ class IngredientAddPage extends StatelessWidget {
                                               border: Border.all(
                                                   color: mainColor, width: 2),
                                             ),
-                                            child: Obx(()=>Image(
+                                            child: const Image(
                                               image: AssetImage(
-                                                  'assets/images/icons/ingredient_icon/${reactiveController.selectedIcon.value}.png')),
+                                                  'assets/images/icons/ingredient_icon/간장.png'),
                                             ),
                                           ))
                                     ],
@@ -193,7 +186,6 @@ class IngredientAddPage extends StatelessWidget {
                             width: displayWidth * 0.8,
                             height: displayHeight * 0.2,
                             child: TextFormField(
-                              controller: ingmemo,
                               minLines: 1,
                               maxLines: 5,
                               keyboardType: TextInputType.multiline,
@@ -211,10 +203,7 @@ class IngredientAddPage extends StatelessWidget {
                   Center(
                       child: Container(
                           child: TextButton(
-                              onPressed: () => {
-                                ingDbController.createIng(),
-                                ingDbController.readIng(selectedIndex),
-                                Get.back()},
+                              onPressed: () => {Get.back()},
                               child: Text(
                                 '등록하기',
                                 style: TextStyle(
