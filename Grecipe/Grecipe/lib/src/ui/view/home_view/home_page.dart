@@ -7,6 +7,7 @@ import 'package:get/get.dart';
 import 'package:grecipe/src/controller/shelf_life_index_controller.dart';
 import 'package:grecipe/src/data/model/recipe_model.dart' hide Row;
 import 'package:grecipe/src/controller/recipe_controller.dart';
+import 'package:grecipe/src/controller/fi_db_controller.dart';
 
 class HomePage extends StatelessWidget {
   final recipeController = Get.put(RecipeController(), permanent: false);
