@@ -73,7 +73,8 @@ class IngredientAddPage extends StatelessWidget {
                                             width: displayWidth * 0.34,
                                             height: displayHeight * 0.06,
                                             child: TextFormField(
-                                              controller: fiDBController.usinController,
+                                              controller:
+                                                  fiDBController.usinController,
                                               decoration: InputDecoration(
                                                 border: InputBorder.none,
                                                 hintText: '이름을 입력하세요.',
@@ -134,7 +135,7 @@ class IngredientAddPage extends StatelessWidget {
                         Container(
                           padding:
                               EdgeInsets.only(bottom: displayHeight * 0.03),
-                          child: Obx(()=>ToggleButtons(
+                          child: Obx(() => ToggleButtons(
                               borderRadius: BorderRadius.circular(20),
                               borderWidth: 2,
                               borderColor: mainColor,
@@ -164,7 +165,8 @@ class IngredientAddPage extends StatelessWidget {
                               onPressed: (int index) {
                                 shelfLifeController.changeTabIndex(index);
                               },
-                              isSelected: shelfLifeController.isSelected.toList())),
+                              isSelected:
+                                  shelfLifeController.isSelected.toList())),
                         ),
                       ],
                     ),
@@ -209,15 +211,35 @@ class IngredientAddPage extends StatelessWidget {
                       child: Container(
                           child: TextButton(
                               onPressed: () => {
-                                fiDBController.insertFi(Fi(
-                                    ingName: fiDBController.ingIconName.toString(),
-                                    userSpecIngName: fiDBController.usinController.text,
-                                    shelfLife: shelfLifeController.shelflife.toString(),
-                                    ingMemo: fiDBController.inginfoController.text)),
-                                fiDBController.getAllFi().then((value) => value.forEach((element) {
-                                      print('${element.id}, ${element.ingName}, ${element.userSpecIngName}, ${element.shelfLife}, ${element.ingMemo}');
-                                    })),
-                                Get.back()},
+                                    fiDBController.insertFi(Fi(
+                                        ingName: fiDBController.ingIconName
+                                            .toString(),
+                                        userSpecIngName:
+                                            fiDBController.usinController.text,
+                                        shelfLife: shelfLifeController.shelflife
+                                            .toString(),
+                                        ingMemo: fiDBController
+                                            .inginfoController.text)),
+                                    fiDBController.getAllFi().then(
+                                        (value) => value.forEach((element) {
+                                              print(
+                                                  '${element.id}, ${element.ingName}, ${element.userSpecIngName}, ${element.shelfLife}, ${element.ingMemo}');
+                                            
+                                    print('here1 ${fiDBController.getAllFi().then((list) => print(list))}');
+                                            })),
+                                    fiDBController.getFi(1).then((value) {
+                                      if (value is List<Map<String, dynamic>>) {
+                                        value.forEach((element) {
+                                          element.forEach((key, value) {
+                                            print('$key: $value');
+                                          });
+                                        });
+                                      } else {
+                                        print('null');
+                                      }
+                                    }),
+                                    Get.back()
+                                  },
                               child: Text(
                                 '등록하기',
                                 style: TextStyle(

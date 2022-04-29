@@ -4,9 +4,11 @@ import 'package:grecipe/src/controller/recipe_controller.dart';
 import 'package:get/get.dart';
 import 'package:grecipe/src/data/list.dart';
 import 'package:grecipe/src/ui/widget/landing_page.dart';
+import 'package:grecipe/src/controller/fi_db_controller.dart';
 
 class RecipePage extends StatelessWidget {
   final recipeController = Get.put(RecipeController(), permanent: false);
+  final FiDBController fiDBController = Get.put(FiDBController());
 
   @override
   Widget build(BuildContext context) {
@@ -59,8 +61,8 @@ class RecipePage extends StatelessWidget {
                 .RCPPARTSDTLS
                 .split(',');
             for (int j = 0; j < result.length; j++) {
-              for (int k = 0; k < ingResult.length; k++) {
-                if (result[j].contains(ingResult[k])) {
+              for (int k = 0; k < fiDBController.getFiLength(); k++) {
+                if (result[j].contains(fiDBController.getFiIngName(k).toString())) {
                   // include로 변경
                   count++;
                 }

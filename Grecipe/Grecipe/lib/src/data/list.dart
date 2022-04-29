@@ -47,25 +47,6 @@ List ingList_processedfood = [
 ]; //면, 가공식품
 List ingList_beverage = ['물']; //물
 
-final List<String> ingResult = <String>[
-  '김치',
-  '돼지고기',
-  '양파',
-  '쌀',
-  '고추',
-  '달걀',
-  '올리브유',
-  '물',
-  '치즈',
-  '소시지',
-  '버터',
-  '설탕',
-  '소금',
-  '후추',
-  '식초',
-  '간장',
-];
-
 final List<String> ingList_en = <String>[
   'soy_sauce',
   'potato',

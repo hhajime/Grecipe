@@ -12,7 +12,7 @@ import 'package:grecipe/src/controller/fi_db_controller.dart';
 class HomePage extends StatelessWidget {
   final recipeController = Get.put(RecipeController(), permanent: false);
   final ShelfLifeIndexController _tabx = Get.put(ShelfLifeIndexController());
-  final List<String> entries = <String>['스팸 김치 볶음밥', '스팸 김치찌개'];
+  final FiDBController fiDBController = Get.put(FiDBController());
 
   HomePage({Key? key}) : super(key: key);
   @override
@@ -127,7 +127,7 @@ class HomePage extends StatelessWidget {
   }
 
   condiCon(index, life) {
-    if (index < ingResult.length) {
+    if (index < fiDBController.getFiLength()) {
       return Column(children: [
         Stack(
           children: [
@@ -142,7 +142,7 @@ class HomePage extends StatelessWidget {
               ),
               child: Image(
                 image: AssetImage(
-                    'assets/images/icons/ingredient_icon/${ingResult[index]}.png'),
+                    'assets/images/icons/ingredient_icon/${fiDBController.getFiIngName(index)}.png'),
               ),
             ),
             Container(
@@ -151,13 +151,13 @@ class HomePage extends StatelessWidget {
                 alignment: Alignment.bottomRight,
                 child: Image(
                     image: AssetImage(
-                        'assets/images/icons/expiration_icon/${life}.png')))
+                        'assets/images/icons/expiration_icon/${fiDBController.getFiShelflife(index)}.png')))
           ],
         ),
         Container(
             child: FittedBox(
           fit: BoxFit.fitWidth,
-          child: Text(ingResult[index]),
+          child: Text(fiDBController.getFiIngName(index).toString()),
         ))
       ]);
     }
@@ -194,7 +194,7 @@ class HomePage extends StatelessWidget {
       padding: EdgeInsets.only(top: displayHeight * 0.01),
       height: displayHeight * 0.2,
       child: GridView.builder(
-          itemCount: ingResult.length + 1,
+          itemCount: fiDBController.getFiLength() + 1,
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 5,
               crossAxisSpacing: displayWidth * 0.02,
@@ -203,13 +203,13 @@ class HomePage extends StatelessWidget {
           itemBuilder: (BuildContext context, int index) {
             return InkResponse(
               onTap: () {
-                if (index < ingResult.length) {
+                if (index < fiDBController.getFiLength()) {
                   print('item selected');
                   {
                     Get.to(() => IngredientModifyPage(),
                         transition: Transition.cupertino);
                   }
-                } else if (index == ingResult.length) {
+                } else if (index == fiDBController.getFiLength()) {
                   print('last item selected');
                   {
                     Get.to(() => IngredientAddPage(),

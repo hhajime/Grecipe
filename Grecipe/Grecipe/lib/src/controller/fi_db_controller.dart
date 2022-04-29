@@ -8,6 +8,7 @@ class FiDBController extends GetxController {
   final usinController = TextEditingController();
   final inginfoController = TextEditingController();
   RxString ingIconName = '달걀'.obs;
+  RxList ingResults2 = [].obs;
   var _db;
 
   Future<int?> getCount() async {
@@ -43,6 +44,19 @@ class FiDBController extends GetxController {
     );
   }
 
+//결과 전달
+
+  Future<dynamic> getFi(id) async {
+    final Database db = await database;  
+    final List<Map<String, dynamic>> maps = (await db.query(
+      'Fi',
+      where: 'id = ?',
+      whereArgs: [id],
+    ));
+
+    return maps.isNotEmpty ? maps : null;
+  }
+
   Future<List<Fi>> getAllFi() async {
     final Database db = await database;
     final List<Map<String, dynamic>> maps = await db.query('Fi');
@@ -56,6 +70,41 @@ class FiDBController extends GetxController {
       );
     });
   }
+
+  getFiLength(){
+    RxInt ingResultLength = 0.obs;
+    getAllFi().then((list){
+      ingResultLength++;
+    });
+    return ingResultLength.value;
+  }
+
+  getFiIngName(id){
+    RxString ingName1 = '달걀'.obs;
+    getAllFi().then((list){
+      ingName1.value = list[id].ingName;
+    });
+    return ingName1;
+  }
+
+  getFiUserSpecName(id){
+    RxString userSpecIngName1 = ''.obs;
+    getAllFi().then((list){
+      userSpecIngName1.value = list[id].userSpecIngName!;
+    });
+    return userSpecIngName1;
+  }
+
+
+  getFiShelflife(id){
+    RxString shelfLife1 = 'good'.obs;
+    getAllFi().then((list){
+      shelfLife1.value = list[id].shelfLife;
+    });
+    return shelfLife1;
+  }
+
+//update
 
   Future<void> updateFi(Fi fi) async {
     final db = await database;

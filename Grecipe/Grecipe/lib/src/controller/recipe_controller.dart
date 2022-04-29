@@ -5,8 +5,10 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:grecipe/src/data/model/recipe_model.dart';
 import 'package:http/http.dart' as http;
-
+import 'package:grecipe/src/controller/fi_db_controller.dart';
 import '../data/list.dart';
+
+final FiDBController fiDBController = Get.put(FiDBController());
 
 Future<Recipes> readJson() async {
   final String response =
@@ -32,8 +34,8 @@ class RecipeController extends GetxController {
       results =
           snapshots.data!.COOKRCP02.row.elementAt(i).RCPPARTSDTLS.split(',');
       for (int j = 0; j < results.length; j++) {
-        for (int k = 0; k < ingResult.length; k++) {
-          if (results[j].contains(ingResult[k])) {
+        for (int k = 0; k < fiDBController.getFiLength(); k++) {
+          if (results[j].contains(fiDBController.getFiIngName(k))) {
             // 추후 every contains로 변경필요
             count++;
           }
@@ -75,7 +77,7 @@ class RecipeController extends GetxController {
     super.onInit();
     recipe = readJson();
   }
-
+  
   @override
   void dispose() {
     super.dispose();

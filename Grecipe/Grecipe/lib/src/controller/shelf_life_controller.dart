@@ -14,7 +14,7 @@ class ShelfLifeController extends GetxController {
           }if(index == 0){
             shelflife.value = 'good';
           } else if(index == 1){
-            shelflife.value = 'bad';
+            shelflife.value = 'danger';
           } else {
             shelflife.value = 'expired';
           }
