@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:grecipe/src/data/list.dart';
 import 'package:get/get.dart';
+import 'package:hive/hive.dart';
 
 class MyPage extends StatelessWidget {
+  const MyPage({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     bool isSwitched = false;
@@ -38,7 +41,7 @@ class MyPage extends StatelessWidget {
                       ),
                       Container(
                         child: Text(
-                          'Developer 님',
+                          '$userName 님',
                           style: TextStyle(
                               color: Colors.white,
                               fontSize: displayHeight * 0.02,

@@ -4,11 +4,9 @@ import 'package:grecipe/src/controller/recipe_controller.dart';
 import 'package:get/get.dart';
 import 'package:grecipe/src/data/list.dart';
 import 'package:grecipe/src/ui/widget/landing_page.dart';
-import 'package:grecipe/src/controller/fi_db_controller.dart';
 
 class RecipePage extends StatelessWidget {
   final recipeController = Get.put(RecipeController(), permanent: false);
-  final FiDBController fiDBController = Get.put(FiDBController());
 
   @override
   Widget build(BuildContext context) {
@@ -61,8 +59,9 @@ class RecipePage extends StatelessWidget {
                 .RCPPARTSDTLS
                 .split(',');
             for (int j = 0; j < result.length; j++) {
-              for (int k = 0; k < fiDBController.getFiLength(); k++) {
-                if (result[j].contains(fiDBController.getFiIngName(k).toString())) {
+              for (int k = 0; k < dataBox.value.length; k++) {
+                if(k ==0){ingResult.add('${dataBox.value.toMap()[k]?.toJson().toString().split(',')[1].substring(17).toString()}');}
+                if (result[j].contains(ingResult[k])) {
                   // include로 변경
                   count++;
                 }
@@ -145,7 +144,7 @@ class RecipePage extends StatelessWidget {
                         .MANUALIMG03),
                     Text(snapshot.data!.COOKRCP02.row
                         .elementAt(index)
-                        .MANUAL04), //이미지 없으면 표시되지 않게
+                        .MANUAL04), //이미지 없으면 표시되지 않게 / 추가 이미지 10개? 
                   ],
                 ),
               ),

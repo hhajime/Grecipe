@@ -7,12 +7,12 @@ import 'package:get/get.dart';
 import 'package:grecipe/src/controller/shelf_life_index_controller.dart';
 import 'package:grecipe/src/data/model/recipe_model.dart' hide Row;
 import 'package:grecipe/src/controller/recipe_controller.dart';
-import 'package:grecipe/src/controller/fi_db_controller.dart';
+import 'package:grecipe/src/controller/ingredient_DB_controller.dart';
 
 class HomePage extends StatelessWidget {
   final recipeController = Get.put(RecipeController(), permanent: false);
   final ShelfLifeIndexController _tabx = Get.put(ShelfLifeIndexController());
-  final FiDBController fiDBController = Get.put(FiDBController());
+  final ingDbController = Get.put(IngredientDBController(), permanent: false);
 
   HomePage({Key? key}) : super(key: key);
   @override
@@ -126,8 +126,8 @@ class HomePage extends StatelessWidget {
                 )))));
   }
 
-  condiCon(index, life) {
-    if (index < fiDBController.getFiLength()) {
+  condiCon(index) {
+    if (index < dataBox.value.length) {
       return Column(children: [
         Stack(
           children: [
@@ -142,7 +142,7 @@ class HomePage extends StatelessWidget {
               ),
               child: Image(
                 image: AssetImage(
-                    'assets/images/icons/ingredient_icon/${fiDBController.getFiIngName(index)}.png'),
+                    'assets/images/icons/ingredient_icon/${dataBox.value.toMap()[index]?.toJson().toString().split(',')[1].substring(17)}.png'),
               ),
             ),
             Container(
@@ -151,13 +151,14 @@ class HomePage extends StatelessWidget {
                 alignment: Alignment.bottomRight,
                 child: Image(
                     image: AssetImage(
-                        'assets/images/icons/expiration_icon/${fiDBController.getFiShelflife(index)}.png')))
+                        'assets/images/icons/expiration_icon/${dataBox.value.toMap()[index]?.toJson().toString().split(',')[3].substring(12)}.png')))
           ],
         ),
         Container(
             child: FittedBox(
           fit: BoxFit.fitWidth,
-          child: Text(fiDBController.getFiIngName(index).toString()),
+          child:  Obx(()=>Text('${dataBox.value.toMap()[index]?.toJson().toString().split(',')[1].substring(17)}'))
+          //dataBox.value.toMap()[index]?.toJson().toString().split(',')[2].substring(24) == '' ? Obx(()=>Text('${dataBox.value.toMap()[index]?.toJson().toString().split(',')[1].substring(17)}')) : Obx(()=>Text('${dataBox.value.toMap()[index]?.toJson().toString().split(',')[2].substring(24)}')),
         ))
       ]);
     }
@@ -193,8 +194,8 @@ class HomePage extends StatelessWidget {
           left: displayWidth * 0.02, right: displayWidth * 0.02),
       padding: EdgeInsets.only(top: displayHeight * 0.01),
       height: displayHeight * 0.2,
-      child: GridView.builder(
-          itemCount: fiDBController.getFiLength() + 1,
+      child: Obx(()=>GridView.builder(
+          itemCount: dataBox.value.length + 1,
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 5,
               crossAxisSpacing: displayWidth * 0.02,
@@ -203,13 +204,16 @@ class HomePage extends StatelessWidget {
           itemBuilder: (BuildContext context, int index) {
             return InkResponse(
               onTap: () {
-                if (index < fiDBController.getFiLength()) {
+                selectedIndex = index;
+                if (index < dataBox.value.length) {
                   print('item selected');
                   {
+                    ingDbController.selectedIcon.value = '${dataBox.value.toMap()[index]?.toJson().toString().split(',')[1].substring(17)}';
+                    print('${ingDbController.selectedIcon.value}');
                     Get.to(() => IngredientModifyPage(),
                         transition: Transition.cupertino);
                   }
-                } else if (index == fiDBController.getFiLength()) {
+                } else if (index == dataBox.value.length) {
                   print('last item selected');
                   {
                     Get.to(() => IngredientAddPage(),
@@ -217,9 +221,9 @@ class HomePage extends StatelessWidget {
                   }
                 }
               },
-              child: condiCon(index, life),
+              child: condiCon(index),
             );
-          }),
+          })),
     );
   }
 

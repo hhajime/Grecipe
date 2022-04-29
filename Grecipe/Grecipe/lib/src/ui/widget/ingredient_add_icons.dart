@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:grecipe/src/controller/fi_db_controller.dart';
 import 'package:grecipe/src/data/list.dart';
 import 'package:grecipe/src/ui/widget/landing_page.dart';
+import 'package:grecipe/src/controller/ingredient_DB_controller.dart';
 
 void ingredientAddIconsDialog() {
-  final FiDBController fiDBController = Get.put(FiDBController());
+  final ingDbController = Get.put(IngredientDBController(), permanent: false);
   Color getColor(Set<MaterialState> states) {
     const Set<MaterialState> interactiveStates = <MaterialState>{
       MaterialState.pressed,
@@ -35,8 +35,9 @@ void ingredientAddIconsDialog() {
                   mainAxisSpacing: displayHeight * 0.02),
               itemBuilder: (BuildContext context, int index) {
                 return InkResponse(
-                  onTap: () => {
-                    fiDBController.ingIconName.value = ingredientList[index],
+                  onTap:() {
+                    ingDbController.selectedIcon.value = ingredientList[index];
+                    print('selectedIcon : ${ingDbController.selectedIcon}.');
                   },
                     child: Column(children: [Container(
                   height: displayHeight * 0.066,

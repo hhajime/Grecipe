@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:hive/hive.dart';
+import 'package:grecipe/src/data/model/ingredient.dart';
+import 'package:get/get.dart';
 
 Color mainColor = const Color(0xffFFBA7D);
 Color subColor = const Color(0xffFFFAF5);
@@ -7,6 +10,15 @@ Color inactiveColor = const Color(0xFFB88558);
 double displayHeight = 0;
 double displayWidth = 0;
 double displayRatio = 1;
+int selectedIndex = 0;
+String userName = '';
+String shelfLife = 'good';
+TextEditingController ingname = TextEditingController();
+TextEditingController ingmemo = TextEditingController();
+
+
+var dataBox = Hive.box<DataModel>('db').obs;
+
 
 List ingList_vegetable = [
   '양배추',
@@ -46,6 +58,9 @@ List ingList_processedfood = [
   '소시지'
 ]; //면, 가공식품
 List ingList_beverage = ['물']; //물
+
+final List<String> ingResult = <String>[
+];
 
 final List<String> ingList_en = <String>[
   'soy_sauce',
