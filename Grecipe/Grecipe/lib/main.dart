@@ -16,7 +16,7 @@ Future<void> main() async {
   cameras = await availableCameras();
   await Hive.initFlutter();
   Hive.registerAdapter(IngredientAdapter());
-  await Hive.openBox<DataModel>('db'); // the name is totally up to you
+  await Hive.openBox<DataModel>('dbs'); // the name is totally up to you
   runApp(
     DevicePreview(
       enabled: !kReleaseMode,

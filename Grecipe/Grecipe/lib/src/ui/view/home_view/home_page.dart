@@ -127,7 +127,7 @@ class HomePage extends StatelessWidget {
   }
 
   condiCon(index) {
-    if (index < dataBox.value.length) {
+    if (index < ingDbController.dataBox.length) {
       return Column(children: [
         Stack(
           children: [
@@ -195,7 +195,7 @@ class HomePage extends StatelessWidget {
       padding: EdgeInsets.only(top: displayHeight * 0.01),
       height: displayHeight * 0.2,
       child: Obx(()=>GridView.builder(
-          itemCount: dataBox.value.length + 1,
+          itemCount: ingDbController.dataBox.length + 1,
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 5,
               crossAxisSpacing: displayWidth * 0.02,
@@ -205,7 +205,7 @@ class HomePage extends StatelessWidget {
             return InkResponse(
               onTap: () {
                 selectedIndex = index;
-                if (index < dataBox.value.length) {
+                if (index < ingDbController.dataBox.length) {
                   print('item selected');
                   {
                     ingDbController.selectedIcon.value = ingDbController.dataBox.values.map((e) => e.ingredientName).toList()[index];
@@ -213,7 +213,7 @@ class HomePage extends StatelessWidget {
                     Get.to(() => IngredientModifyPage(),
                         transition: Transition.cupertino);
                   }
-                } else if (index == dataBox.value.length) {
+                } else if (index == ingDbController.dataBox.length) {
                   print('last item selected');
                   {
                     Get.to(() => IngredientAddPage(),

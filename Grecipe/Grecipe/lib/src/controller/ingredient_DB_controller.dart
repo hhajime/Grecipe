@@ -5,8 +5,8 @@ import 'package:hive/hive.dart';
 import 'package:grecipe/src/data/model/ingredient.dart';
 
 class IngredientDBController extends GetxController {
-    var dataBox = Hive.box<DataModel>('db');
-final List<String> ingResult = Hive.box<DataModel>('db').values.map((e) => e.ingredientName).toList();
+var dataBox = Hive.box<DataModel>('dbs');
+final List<String> ingResult = Hive.box<DataModel>('dbs').values.map((e) => e.ingredientName).toList();
 final List<String> ingResult1 = <String>[
    '간장',
   '감자',

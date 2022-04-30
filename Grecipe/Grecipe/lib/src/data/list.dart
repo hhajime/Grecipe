@@ -16,10 +16,6 @@ String shelfLife = 'good';
 TextEditingController ingname = TextEditingController();
 TextEditingController ingmemo = TextEditingController();
 
-
-var dataBox = Hive.box<DataModel>('db').obs;
-
-
 List ingList_vegetable = [
   '양배추',
   '당근',
