@@ -139,7 +139,7 @@ class SignInPage extends StatelessWidget {
                       child: ElevatedButton(
                         onPressed: () async {
                           userName = userNameController.text;
-                          Get.to(() => LandingPage(),
+                          Get.offAll(() => LandingPage(),
                               transition: Transition.cupertino);
                         },
                         style: ButtonStyle(

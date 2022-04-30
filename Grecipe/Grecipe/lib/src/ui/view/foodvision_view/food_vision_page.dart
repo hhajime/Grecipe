@@ -185,8 +185,8 @@ class _FoodVisionState extends State<FoodVision> {
                           itemCount: recgResult.length + 1,
                           gridDelegate:
                               SliverGridDelegateWithFixedCrossAxisCount(
-                                  crossAxisCount: 4,
-                                  mainAxisExtent: displayHeight * 0.1,
+                                  crossAxisCount: 5,
+                                  mainAxisExtent: displayHeight * 0.92,
                                   crossAxisSpacing: displayWidth * 0.02,
                                   mainAxisSpacing: displayHeight * 0.02),
                           itemBuilder: (BuildContext context, int index) {
@@ -291,8 +291,11 @@ class _FoodVisionState extends State<FoodVision> {
     if (index < recgResult.length) {
       return Column(children: [
         Container(
+          height: displayHeight * 0.066,
+          width: displayWidth * 0.16,
+          padding: const EdgeInsets.all(5),
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.all(Radius.circular(10)),
+            borderRadius: const BorderRadius.all(Radius.circular(10)),
             color: subColor,
             border: Border.all(color: mainColor, width: 2),
           ),
@@ -308,18 +311,26 @@ class _FoodVisionState extends State<FoodVision> {
         ))
       ]);
     }
-    return Container(
-      height: displayHeight * 0.06,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.all(Radius.circular(10)),
-        color: subColor,
-        border: Border.all(color: mainColor, width: 2),
+    return Column(children: [
+      Container(
+        height: displayHeight * 0.066,
+        width: displayWidth * 0.16,
+        decoration: BoxDecoration(
+          borderRadius: const BorderRadius.all(Radius.circular(10)),
+          color: subColor,
+          border: Border.all(color: mainColor, width: 2),
+        ),
+        child: Icon(
+          Icons.add,
+          color: mainColor,
+        ),
       ),
-      child: Icon(
-        Icons.add,
-        color: mainColor,
-      ),
-    );
+      Container(
+          child: FittedBox(
+        fit: BoxFit.fitWidth,
+        child: Text(' '),
+      ))
+    ]);
   }
 }
 

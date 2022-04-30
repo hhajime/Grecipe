@@ -156,10 +156,11 @@ class HomePage extends StatelessWidget {
         ),
         Container(
             child: FittedBox(
-          fit: BoxFit.fitWidth,
-          child:  Text('${ingDbController.dataBox.value.values.map((e) => e.ingredientName).toList()[index]}')
-          //dataBox.value.toMap()[index]?.toJson().toString().split(',')[2].substring(24) == '' ? Obx(()=>Text('${dataBox.value.toMap()[index]?.toJson().toString().split(',')[1].substring(17)}')) : Obx(()=>Text('${dataBox.value.toMap()[index]?.toJson().toString().split(',')[2].substring(24)}')),
-        ))
+                fit: BoxFit.fitWidth,
+                child: Text(
+                    '${ingDbController.dataBox.value.values.map((e) => e.ingredientName).toList()[index]}')
+                //dataBox.value.toMap()[index]?.toJson().toString().split(',')[2].substring(24) == '' ? Obx(()=>Text('${dataBox.value.toMap()[index]?.toJson().toString().split(',')[1].substring(17)}')) : Obx(()=>Text('${dataBox.value.toMap()[index]?.toJson().toString().split(',')[2].substring(24)}')),
+                ))
       ]);
     }
     return Column(children: [
@@ -194,7 +195,7 @@ class HomePage extends StatelessWidget {
           left: displayWidth * 0.02, right: displayWidth * 0.02),
       padding: EdgeInsets.only(top: displayHeight * 0.01),
       height: displayHeight * 0.2,
-      child: Obx(()=>GridView.builder(
+      child: Obx(() => GridView.builder(
           itemCount: ingDbController.dataBox.value.length + 1,
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 5,
@@ -208,7 +209,10 @@ class HomePage extends StatelessWidget {
                 if (index < ingDbController.dataBox.value.length) {
                   print('item selected');
                   {
-                    ingDbController.selectedIcon.value = ingDbController.dataBox.value.values.map((e) => e.ingredientName).toList()[index];
+                    ingDbController.selectedIcon.value = ingDbController
+                        .dataBox.value.values
+                        .map((e) => e.ingredientName)
+                        .toList()[index];
                     print('$ingDbController.selectedIcon.value');
                     Get.to(() => IngredientModifyPage(),
                         transition: Transition.cupertino);

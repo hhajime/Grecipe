@@ -6,7 +6,7 @@ import 'package:grecipe/src/data/model/ingredient.dart';
 
 class IngredientDBController extends GetxController {
 var dataBox = Hive.box<DataModel>('dbs').obs;
-final List<String> ingResult = Hive.box<DataModel>('dbs').values.map((e) => e.ingredientName).toList();
+List<String> ingResult = Hive.box<DataModel>('dbs').values.map((e) => e.ingredientName).toList();
 final List<String> ingResult1 = <String>[
    '간장',
   '감자',
@@ -59,9 +59,9 @@ final List<String> ingResult1 = <String>[
     //print('added data is ${data.index}, ${data.ingredientName}, ${data.userSpecIngredientName}, ${data.shelfLife}, ${data.memo}');
     //print('db length: ${dataBox.length}');
     //readAllIng();
+    ingResult =  Hive.box<DataModel>('dbs').values.map((e) => e.ingredientName).toList();
     print(ingResult);
     print(ingResult1);
-    var d = dataBox.value.values;
     update();
   }
 
