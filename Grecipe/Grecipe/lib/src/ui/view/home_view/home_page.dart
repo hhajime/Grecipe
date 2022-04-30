@@ -127,7 +127,7 @@ class HomePage extends StatelessWidget {
   }
 
   condiCon(index) {
-    if (index < ingDbController.dataBox.length) {
+    if (index < ingDbController.dataBox.value.length) {
       return Column(children: [
         Stack(
           children: [
@@ -142,7 +142,7 @@ class HomePage extends StatelessWidget {
               ),
               child: Image(
                 image: AssetImage(
-                    'assets/images/icons/ingredient_icon/${ingDbController.dataBox.values.map((e) => e.ingredientName).toList()[index]}.png'),
+                    'assets/images/icons/ingredient_icon/${ingDbController.dataBox.value.values.map((e) => e.ingredientName).toList()[index]}.png'),
               ),
             ),
             Container(
@@ -151,13 +151,13 @@ class HomePage extends StatelessWidget {
                 alignment: Alignment.bottomRight,
                 child: Image(
                     image: AssetImage(
-                        'assets/images/icons/expiration_icon/${ingDbController.dataBox.values.map((e) => e.shelfLife).toList()[index]}.png')))
+                        'assets/images/icons/expiration_icon/${ingDbController.dataBox.value.values.map((e) => e.shelfLife).toList()[index]}.png')))
           ],
         ),
         Container(
             child: FittedBox(
           fit: BoxFit.fitWidth,
-          child:  Text('${ingDbController.dataBox.values.map((e) => e.ingredientName).toList()[index]}')
+          child:  Text('${ingDbController.dataBox.value.values.map((e) => e.ingredientName).toList()[index]}')
           //dataBox.value.toMap()[index]?.toJson().toString().split(',')[2].substring(24) == '' ? Obx(()=>Text('${dataBox.value.toMap()[index]?.toJson().toString().split(',')[1].substring(17)}')) : Obx(()=>Text('${dataBox.value.toMap()[index]?.toJson().toString().split(',')[2].substring(24)}')),
         ))
       ]);
@@ -195,7 +195,7 @@ class HomePage extends StatelessWidget {
       padding: EdgeInsets.only(top: displayHeight * 0.01),
       height: displayHeight * 0.2,
       child: Obx(()=>GridView.builder(
-          itemCount: ingDbController.dataBox.length + 1,
+          itemCount: ingDbController.dataBox.value.length + 1,
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 5,
               crossAxisSpacing: displayWidth * 0.02,
@@ -205,15 +205,15 @@ class HomePage extends StatelessWidget {
             return InkResponse(
               onTap: () {
                 selectedIndex = index;
-                if (index < ingDbController.dataBox.length) {
+                if (index < ingDbController.dataBox.value.length) {
                   print('item selected');
                   {
-                    ingDbController.selectedIcon.value = ingDbController.dataBox.values.map((e) => e.ingredientName).toList()[index];
+                    ingDbController.selectedIcon.value = ingDbController.dataBox.value.values.map((e) => e.ingredientName).toList()[index];
                     print('$ingDbController.selectedIcon.value');
                     Get.to(() => IngredientModifyPage(),
                         transition: Transition.cupertino);
                   }
-                } else if (index == ingDbController.dataBox.length) {
+                } else if (index == ingDbController.dataBox.value.length) {
                   print('last item selected');
                   {
                     Get.to(() => IngredientAddPage(),

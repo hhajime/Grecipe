@@ -5,7 +5,7 @@ import 'package:hive/hive.dart';
 import 'package:grecipe/src/data/model/ingredient.dart';
 
 class IngredientDBController extends GetxController {
-var dataBox = Hive.box<DataModel>('dbs');
+var dataBox = Hive.box<DataModel>('dbs').obs;
 final List<String> ingResult = Hive.box<DataModel>('dbs').values.map((e) => e.ingredientName).toList();
 final List<String> ingResult1 = <String>[
    '간장',
@@ -50,28 +50,28 @@ final List<String> ingResult1 = <String>[
   RxString selectedIcon = '달걀'.obs;
   createIng() {
     DataModel data = DataModel(
-            index: dataBox.length,
+            index: dataBox.value.length,
             ingredientName: selectedIcon.value,
             userSpecIngredientName: ingname.text,
             shelfLife: shelfLife,
             memo: ingmemo.text);
-    dataBox.add(data);
+    dataBox.value.add(data);
     //print('added data is ${data.index}, ${data.ingredientName}, ${data.userSpecIngredientName}, ${data.shelfLife}, ${data.memo}');
     //print('db length: ${dataBox.length}');
     //readAllIng();
     print(ingResult);
     print(ingResult1);
-    var d = dataBox.values;
+    var d = dataBox.value.values;
     update();
   }
 
   readIng(index) {
     print('db created');
-    print('this ${dataBox.values.map((e) => e.index).toList()[index]}');
-    print('this ${dataBox.values.map((e) => e.ingredientName).toList()[index]}');
-    print('this ${dataBox.values.map((e) => e.userSpecIngredientName).toList()[index]}');
-    print('this ${dataBox.values.map((e) => e.shelfLife).toList()[index]}');
-    print('this ${dataBox.values.map((e) => e.memo).toList()[index]}');
+    print('this ${dataBox.value.values.map((e) => e.index).toList()[index]}');
+    print('this ${dataBox.value.values.map((e) => e.ingredientName).toList()[index]}');
+    print('this ${dataBox.value.values.map((e) => e.userSpecIngredientName).toList()[index]}');
+    print('this ${dataBox.value.values.map((e) => e.shelfLife).toList()[index]}');
+    print('this ${dataBox.value.values.map((e) => e.memo).toList()[index]}');
     /** 
     print('db created');
     print('index = ${dataBox.toMap()[index]?.toJson().toString().split(',')[0].substring(7)}');
@@ -83,7 +83,7 @@ final List<String> ingResult1 = <String>[
   }
 
   readAllIng(){
-    dataBox.values.forEach((element) { 
+    dataBox.value.values.forEach((element) { 
       print('all DB : ${element.index}, ${element.ingredientName}, ${element.userSpecIngredientName}, ${element.shelfLife}, ${element.memo}');
     });
   }
@@ -95,14 +95,14 @@ final List<String> ingResult1 = <String>[
             userSpecIngredientName: ingname.text,
             shelfLife: shelfLife,
             memo: ingmemo.text);
-    dataBox.putAt(index, data);
+    dataBox.value.putAt(index, data);
     print('db updated ${data}');
     //print('db length: ${dataBox.length}');
     update();
   }
 
   deleteIng(index) async {
-    dataBox.deleteAt(index);
+    dataBox.value.deleteAt(index);
     print('db deleted');
     dbSort();
     readAllIng();
@@ -113,7 +113,7 @@ final List<String> ingResult1 = <String>[
   }
 
   dbSort(){
-    dataBox.values.toList().sort((a,b){
+    dataBox.value.values.toList().sort((a,b){
       return a.ingredientName.compareTo(b.ingredientName);
     });
     update();
