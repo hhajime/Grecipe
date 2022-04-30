@@ -41,7 +41,8 @@ List ingList_seasoning = [
   '소금',
   '설탕',
   '간장',
-  '식초'
+  '식초',
+  '후추'
 ]; //양념, 오일
 List ingList_processedfood = [
   '베이컨',
@@ -58,9 +59,6 @@ List ingList_processedfood = [
   '소시지'
 ]; //면, 가공식품
 List ingList_beverage = ['물']; //물
-
-final List<String> ingResult = <String>[
-];
 
 final List<String> ingList_en = <String>[
   'soy_sauce',

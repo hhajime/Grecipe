@@ -6,6 +6,47 @@ import 'package:grecipe/src/data/model/ingredient.dart';
 
 class IngredientDBController extends GetxController {
     var dataBox = Hive.box<DataModel>('db');
+final List<String> ingResult = Hive.box<DataModel>('db').values.map((e) => e.ingredientName).toList();
+final List<String> ingResult1 = <String>[
+   '간장',
+  '감자',
+  '고구마',
+  '고추',
+  '김',
+  '김치',
+  '깻잎',
+  '달걀',
+  '닭고기',
+  '당근',
+  '돼지고기',
+  '라면',
+  '마늘',
+  '물',
+  '버섯',
+  '버터',
+  '베이컨',
+  '빵',
+  '설탕',
+  '소고기',
+  '소금',
+  '소시지',
+  '식초',
+  '쌀',
+  '양배추',
+  '양파',
+  '어묵',
+  '옥수수',
+  '올리브유',
+  '우유',
+  '참치',
+  '치즈',
+  '파',
+  '파스타',
+  '피망',
+  '햄',
+  '후추'
+];
+
   RxString selectedIcon = '달걀'.obs;
   createIng() {
     DataModel data = DataModel(
@@ -15,12 +56,11 @@ class IngredientDBController extends GetxController {
             shelfLife: shelfLife,
             memo: ingmemo.text);
     dataBox.add(data);
-    print('added data is ${data.index}, ${data.ingredientName}, ${data.userSpecIngredientName}, ${data.shelfLife}, ${data.memo}');
+    //print('added data is ${data.index}, ${data.ingredientName}, ${data.userSpecIngredientName}, ${data.shelfLife}, ${data.memo}');
     //print('db length: ${dataBox.length}');
-    dataBox.values.forEach((element) { 
-      print('all DB : ${element.index}, ${element.ingredientName}, ${element.userSpecIngredientName}, ${element.shelfLife}, ${element.memo}');
-    });
-    dbSort();
+    //readAllIng();
+    print(ingResult);
+    print(ingResult1);
     var d = dataBox.values;
     update();
   }
@@ -41,6 +81,12 @@ class IngredientDBController extends GetxController {
     print('memo = ${dataBox.toMap()[index]?.toJson().toString().split(',')[4].substring(6)}');
     **/
   }
+
+  readAllIng(){
+    dataBox.values.forEach((element) { 
+      print('all DB : ${element.index}, ${element.ingredientName}, ${element.userSpecIngredientName}, ${element.shelfLife}, ${element.memo}');
+    });
+  }
   
   updateIng(index) async {
     DataModel data = DataModel(
@@ -56,8 +102,10 @@ class IngredientDBController extends GetxController {
   }
 
   deleteIng(index) async {
-    dataBox.delete(index);
+    dataBox.deleteAt(index);
     print('db deleted');
+    dbSort();
+    readAllIng();
     //print('db length: ${dataBox.length}');
     //sorting
     //dbSort();
@@ -65,11 +113,8 @@ class IngredientDBController extends GetxController {
   }
 
   dbSort(){
-  }
-
-  dbSort2(){
     dataBox.values.toList().sort((a,b){
-      return a.index.compareTo(b.index);
+      return a.ingredientName.compareTo(b.ingredientName);
     });
     update();
   }

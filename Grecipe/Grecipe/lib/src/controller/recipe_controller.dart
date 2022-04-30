@@ -5,7 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:grecipe/src/data/model/recipe_model.dart';
 import 'package:http/http.dart' as http;
-
+import 'package:grecipe/src/controller/ingredient_DB_controller.dart';
 import '../data/list.dart';
 
 Future<Recipes> readJson() async {
@@ -16,6 +16,7 @@ Future<Recipes> readJson() async {
 }
 
 class RecipeController extends GetxController {
+  final ingDbController = Get.put(IngredientDBController(), permanent: false);
   late Future<Recipes> recipe;
   int elementat = 0;
   List<List> avaliableRecipe = <List>[].obs;
@@ -32,8 +33,8 @@ class RecipeController extends GetxController {
       results =
           snapshots.data!.COOKRCP02.row.elementAt(i).RCPPARTSDTLS.split(',');
       for (int j = 0; j < results.length; j++) {
-        for (int k = 0; k < ingResult.length; k++) {
-          if (results[j].contains(ingResult[k])) {
+        for (int k = 0; k < ingDbController.ingResult.length; k++) {
+          if (results[j].contains(ingDbController.ingResult[k])) {
             // 추후 every contains로 변경필요
             count++;
           }

@@ -4,9 +4,11 @@ import 'package:grecipe/src/controller/recipe_controller.dart';
 import 'package:get/get.dart';
 import 'package:grecipe/src/data/list.dart';
 import 'package:grecipe/src/ui/widget/landing_page.dart';
+import 'package:grecipe/src/controller/ingredient_DB_controller.dart';
 
 class RecipePage extends StatelessWidget {
   final recipeController = Get.put(RecipeController(), permanent: false);
+  final ingDbController = Get.put(IngredientDBController(), permanent: false);
 
   @override
   Widget build(BuildContext context) {
@@ -59,9 +61,9 @@ class RecipePage extends StatelessWidget {
                 .RCPPARTSDTLS
                 .split(',');
             for (int j = 0; j < result.length; j++) {
-              for (int k = 0; k < dataBox.value.length; k++) {
-                if(k ==0){ingResult.add('${dataBox.value.toMap()[k]?.toString().split(',')[1].substring(17).toString()}');}
-                if (result[j].contains(ingResult[k])) {
+              for (int k = 0; k < dataBox.value.length - 1; k++) {
+                //if(k ==0){ingDbController.ingResult.add('${dataBox.value.toMap()[k]?.toString().split(',')[1].substring(17).toString()}');}
+                if (result[j].contains(ingDbController.ingResult[k])) {
                   // include로 변경
                   count++;
                 }
