@@ -6,7 +6,7 @@ part of 'ingredient.dart';
 // TypeAdapterGenerator
 // **************************************************************************
 
-class DataModelAdapter extends TypeAdapter<DataModel> {
+class IngredientAdapter extends TypeAdapter<DataModel> {
   @override
   final int typeId = 1;
 
@@ -47,7 +47,7 @@ class DataModelAdapter extends TypeAdapter<DataModel> {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is DataModelAdapter &&
+      other is IngredientAdapter &&
           runtimeType == other.runtimeType &&
           typeId == other.typeId;
 }

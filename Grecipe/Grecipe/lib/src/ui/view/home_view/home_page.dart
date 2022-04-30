@@ -142,7 +142,7 @@ class HomePage extends StatelessWidget {
               ),
               child: Image(
                 image: AssetImage(
-                    'assets/images/icons/ingredient_icon/${dataBox.value.toMap()[index]?.toJson().toString().split(',')[1].substring(17)}.png'),
+                    'assets/images/icons/ingredient_icon/${ingDbController.dataBox.values.map((e) => e.ingredientName).toList()[index]}.png'),
               ),
             ),
             Container(
@@ -151,13 +151,13 @@ class HomePage extends StatelessWidget {
                 alignment: Alignment.bottomRight,
                 child: Image(
                     image: AssetImage(
-                        'assets/images/icons/expiration_icon/${dataBox.value.toMap()[index]?.toJson().toString().split(',')[3].substring(12)}.png')))
+                        'assets/images/icons/expiration_icon/${ingDbController.dataBox.values.map((e) => e.shelfLife).toList()[index]}.png')))
           ],
         ),
         Container(
             child: FittedBox(
           fit: BoxFit.fitWidth,
-          child:  Obx(()=>Text('${dataBox.value.toMap()[index]?.toJson().toString().split(',')[1].substring(17)}'))
+          child:  Text('${ingDbController.dataBox.values.map((e) => e.ingredientName).toList()[index]}')
           //dataBox.value.toMap()[index]?.toJson().toString().split(',')[2].substring(24) == '' ? Obx(()=>Text('${dataBox.value.toMap()[index]?.toJson().toString().split(',')[1].substring(17)}')) : Obx(()=>Text('${dataBox.value.toMap()[index]?.toJson().toString().split(',')[2].substring(24)}')),
         ))
       ]);
@@ -208,8 +208,8 @@ class HomePage extends StatelessWidget {
                 if (index < dataBox.value.length) {
                   print('item selected');
                   {
-                    ingDbController.selectedIcon.value = '${dataBox.value.toMap()[index]?.toJson().toString().split(',')[1].substring(17)}';
-                    print('${ingDbController.selectedIcon.value}');
+                    ingDbController.selectedIcon.value = ingDbController.dataBox.values.map((e) => e.ingredientName).toList()[index];
+                    print('$ingDbController.selectedIcon.value');
                     Get.to(() => IngredientModifyPage(),
                         transition: Transition.cupertino);
                   }

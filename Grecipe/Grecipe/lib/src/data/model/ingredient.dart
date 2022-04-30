@@ -19,21 +19,4 @@ class DataModel{
   String memo;
 
 DataModel({required this.index,required this.ingredientName,required this.userSpecIngredientName,required this.shelfLife,required this.memo});
-
-  DataModel.fromJson(Map json)
-      : index = json['index'],
-        ingredientName = json['ingredientName'],
-        userSpecIngredientName = json['userSpecIngredientName'],
-        shelfLife = json['shelfLife'],
-        memo = json['memo'];
-
-  toJson() {
-    return {
-      'index': index,
-      'ingredientName': ingredientName,
-      'userSpecIngredientName': userSpecIngredientName,
-      'shelfLife': shelfLife,
-      'memo': memo
-    };
-  }
 }
