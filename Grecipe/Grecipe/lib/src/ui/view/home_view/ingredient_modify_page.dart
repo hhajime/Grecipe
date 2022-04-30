@@ -213,7 +213,8 @@ class IngredientModifyPage extends StatelessWidget {
                                     child: TextButton(
                                         onPressed: () => {
                                           ingDbController.deleteIng(selectedIndex),
-                                          Get.back()},
+                                           Get.to(()=>LandingPage(),
+                                 transition: Transition.cupertino)},
                                         child: Text(
                                           '삭제하기',
                                           style: TextStyle(
@@ -224,7 +225,8 @@ class IngredientModifyPage extends StatelessWidget {
                                     child: TextButton(
                                         onPressed: () => {
                                           ingDbController.updateIng(selectedIndex),
-                                          Get.back()},
+                                           Get.to(()=>LandingPage(),
+                                 transition: Transition.cupertino)},
                                         child: Text(
                                           '등록하기',
                                           style: TextStyle(

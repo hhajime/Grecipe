@@ -212,7 +212,8 @@ class IngredientAddPage extends StatelessWidget {
                               onPressed: () => {
                                 ingDbController.createIng(),
                                 ingDbController.readIng(selectedIndex),
-                                Get.back()},
+                                Get.to(()=>LandingPage(),
+                                 transition: Transition.cupertino)},
                               child: Text(
                                 '등록하기',
                                 style: TextStyle(

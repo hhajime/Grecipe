@@ -244,8 +244,9 @@ class HomePage extends StatelessWidget {
         future: recipeController.recipe,
         builder: (context, snapshot) {
           if (snapshot.hasData) {
-            recipeController.snapshots = snapshot;
-            recipeController.recipeFinder();
+            recipeController.snapshots = snapshot; // ->> I need it to excute recipeFinder
+    recipeController.avaliableRecipe.clear(); //page 이동시 중첩 발생 방지 임시 -> 개선필요
+            recipeController.recipeFinder(); // --> Causing Error
             return Container(
                 width: displayWidth * 0.8,
                 height: displayHeight * 0.2,

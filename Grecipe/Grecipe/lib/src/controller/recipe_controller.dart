@@ -24,9 +24,8 @@ class RecipeController extends GetxController {
   var all = [];
   bool overlap = false;
   late AsyncSnapshot<Recipes> snapshots = AsyncSnapshot.nothing();
-
-  recipeFinder() {
-    avaliableRecipe.clear(); //page 이동시 중첩 발생 방지 임시 -> 개선필요
+  recipeFinder() async {
+    //avaliableRecipe.clear(); //page 이동시 중첩 발생 방지 임시 -> 개선필요
     for (int i = 0; i < 1358; i++) {
       // 현재 재료를 레시피 데이터와 비교하여 동일한 레시피 찾기
       int count = 0;
