@@ -245,12 +245,11 @@ class HomePage extends StatelessWidget {
         builder: (context, snapshot) {
           if (snapshot.hasData) {
             recipeController.snapshots = snapshot; // ->> I need it to excute recipeFinder
-    recipeController.avaliableRecipe.clear(); //page 이동시 중첩 발생 방지 임시 -> 개선필요
             recipeController.recipeFinder(); // --> Causing Error
             return Container(
                 width: displayWidth * 0.8,
                 height: displayHeight * 0.2,
-                child: Obx(() => ListView.builder(
+                child: ListView.builder(
                     scrollDirection: Axis.vertical,
                     shrinkWrap: true,
                     itemCount: recipeController.avaliableRecipe.length,
@@ -288,7 +287,7 @@ class HomePage extends StatelessWidget {
                               ),
                             )
                           ]));
-                    })));
+                    }));
           } else if (snapshot.hasError) {
             return Text("${snapshot.error}");
           }
