@@ -112,9 +112,10 @@ class IngredientAddPage extends StatelessWidget {
                                               border: Border.all(
                                                   color: mainColor, width: 2),
                                             ),
-                                            child: Obx(()=>Image(
-                                              image: AssetImage(
-                                                  'assets/images/icons/ingredient_icon/${ingDbController.selectedIcon.value}.png')),
+                                            child: Obx(
+                                              () => Image(
+                                                  image: AssetImage(
+                                                      'assets/images/icons/ingredient_icon/${ingDbController.selectedIcon.value}.png')),
                                             ),
                                           ))
                                     ],
@@ -133,9 +134,10 @@ class IngredientAddPage extends StatelessWidget {
                               EdgeInsets.only(bottom: displayHeight * 0.01),
                         ),
                         Container(
+                          height: displayHeight * 0.06,
                           padding:
                               EdgeInsets.only(bottom: displayHeight * 0.03),
-                          child: Obx(()=>ToggleButtons(
+                          child: Obx(() => ToggleButtons(
                               borderRadius: BorderRadius.circular(20),
                               borderWidth: 2,
                               borderColor: mainColor,
@@ -165,7 +167,8 @@ class IngredientAddPage extends StatelessWidget {
                               onPressed: (int index) {
                                 shelfLifeController.changeTabIndex(index);
                               },
-                              isSelected: shelfLifeController.isSelected.toList())),
+                              isSelected:
+                                  shelfLifeController.isSelected.toList())),
                         ),
                       ],
                     ),
@@ -210,10 +213,11 @@ class IngredientAddPage extends StatelessWidget {
                       child: Container(
                           child: TextButton(
                               onPressed: () => {
-                                ingDbController.createIng(),
-                                ingDbController.readIng(selectedIndex),
-                                Get.to(()=>LandingPage(),
-                                 transition: Transition.cupertino)},
+                                    ingDbController.createIng(),
+                                    ingDbController.readIng(selectedIndex),
+                                    Get.to(() => LandingPage(),
+                                        transition: Transition.cupertino)
+                                  },
                               child: Text(
                                 '등록하기',
                                 style: TextStyle(

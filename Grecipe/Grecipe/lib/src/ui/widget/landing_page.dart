@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:grecipe/src/controller/bottom_navigation_controller.dart';
 import 'package:grecipe/src/data/list.dart';
-import 'package:grecipe/src/ui/view/mypage_view/mypage_page.dart';
+import 'package:grecipe/src/ui/view/mypage_view/mypage.dart';
 import 'package:grecipe/src/ui/view/home_view/home_page.dart';
 import 'package:grecipe/src/ui/view/foodvision_view/food_vision_page.dart';
 
@@ -76,18 +76,18 @@ class LandingPage extends StatelessWidget {
     return Container(
         color: mainColor,
         child: SafeArea(
-          bottom: false,
+            bottom: false,
             child: Scaffold(
-          bottomNavigationBar:
-              buildBottomNavigationMenu(context, landingPageController),
-          body: Obx(() => IndexedStack(
-                index: landingPageController.tabIndex.value,
-                children: [
-                  HomePage(),
-                  FoodVision(),
-                  MyPage(),
-                ],
-              )),
-        )));
+              bottomNavigationBar:
+                  buildBottomNavigationMenu(context, landingPageController),
+              body: Obx(() => IndexedStack(
+                    index: landingPageController.tabIndex.value,
+                    children: [
+                      HomePage(),
+                      FoodVision(),
+                      MyPage(),
+                    ],
+                  )),
+            )));
   }
 }

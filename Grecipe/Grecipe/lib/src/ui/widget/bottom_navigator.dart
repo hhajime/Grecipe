@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:grecipe/src/data/list.dart';
-import 'package:grecipe/src/ui/view/mypage_view/mypage_page.dart';
+import 'package:grecipe/src/ui/view/mypage_view/mypage.dart';
 import 'package:grecipe/src/ui/view/home_view/home_page.dart';
 import 'package:grecipe/src/ui/widget/foodvision_page_getx.dart';
 import 'package:get/get.dart';

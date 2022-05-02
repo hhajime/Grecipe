@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:grecipe/src/ui/widget/recipe_list.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:grecipe/src/data/list.dart';
 import 'package:tflite/tflite.dart';
@@ -109,106 +110,115 @@ class _FoodVisionState extends State<FoodVision> {
     List<Widget> stackChildren = [];
 
     stackChildren.add(Positioned(
-      // using ternary operator
-      child: _image == null
-          ? Container(
-              padding: EdgeInsets.only(top: displayHeight * 0.3),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: <Widget>[
-                  Text(
-                    "아직 촬영한 기록이 없네요!",
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-                  ),
-                  Text("촬영하기를 눌러 시작하거나"),
-                  Text("저장된 사진을 업로드 해보세요 :)"),
-                ],
-              ),
-            )
-          : // if not null then
-          Column(
-              children: [
-                Container(
-                    padding: EdgeInsets.only(
-                        top: displayHeight * 0.01,
-                        bottom: displayHeight * 0.01),
-                    decoration: BoxDecoration(
-                        color: Colors.transparent,
-                        borderRadius: BorderRadius.all(Radius.circular(15)),
-                        border: Border.all(color: mainColor, width: 2)),
-                    height: displayHeight * 0.25,
-                    width: displayWidth * 0.8,
-                    child: Image.file(_image!)),
-                Padding(padding: EdgeInsets.only(top: displayHeight * 0.023)),
-                Stack(
-                  alignment: Alignment.center,
-                  children: [
-                    Container(
-                      decoration: BoxDecoration(
-                          color: Colors.transparent,
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(15),
-                          ),
-                          border: Border.all(color: mainColor, width: 2)),
-                      height: displayHeight * 0.27,
-                      width: displayWidth * 0.8,
+        // using ternary operator
+        child: _image == null
+            ? Container(
+                padding: EdgeInsets.only(top: displayHeight * 0.3),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: <Widget>[
+                    Text(
+                      "아직 촬영한 기록이 없네요!",
+                      style:
+                          TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
                     ),
-                    Container(
-                      padding: EdgeInsets.only(
-                          top: 2,
-                          bottom: 2,
-                          left: displayWidth * 0.02,
-                          right: displayWidth * 0.02),
-                      margin: EdgeInsets.only(
-                          right: displayWidth * 0.4,
-                          bottom: displayHeight * 0.28),
-                      decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(15),
-                          ),
-                          border: Border.all(color: mainColor, width: 2)),
-                      child: FittedBox(
-                          fit: BoxFit.fitWidth,
-                          child: Text(
-                            '${recgResult.length}건의 인식된 재료',
-                          )),
-                    ),
-                    Container(
-                      height: displayHeight * 0.2,
-                      width: displayWidth * 0.8,
-                      padding: EdgeInsets.only(
-                          left: displayWidth * 0.03,
-                          right: displayWidth * 0.04),
-                      child: GridView.builder(
-                          itemCount: recgResult.length + 1,
-                          gridDelegate:
-                              SliverGridDelegateWithFixedCrossAxisCount(
-                                  crossAxisCount: 5,
-                                  mainAxisExtent: displayHeight * 0.92,
-                                  crossAxisSpacing: displayWidth * 0.02,
-                                  mainAxisSpacing: displayHeight * 0.02),
-                          itemBuilder: (BuildContext context, int index) {
-                            return InkResponse(
-                                onTap: () {
-                                  if (index == recgResult.length + 1) {
-                                    print('last item selected');
-                                    {
-                                      //Get.to(() => IngredientAddPage(),
-                                      //transition: Transition.cupertino);
-                                    }
-                                  }
-                                },
-                                child: CondiCon(index));
-                          }),
-                    ),
-                    //Container(child:Text('${recgResult.map((e) => e["detectedClass"])}'))
+                    Text("촬영하기를 눌러 시작하거나"),
+                    Text("저장된 사진을 업로드 해보세요 :)"),
                   ],
                 ),
-              ],
-            ),
-    ));
+              )
+            : // if not null then
+            SingleChildScrollView(
+                child: Column(
+                  children: [
+                    Container(
+                        padding: EdgeInsets.only(
+                            top: displayHeight * 0.01,
+                            bottom: displayHeight * 0.01),
+                        decoration: BoxDecoration(
+                            color: Colors.transparent,
+                            borderRadius: BorderRadius.all(Radius.circular(15)),
+                            border: Border.all(color: mainColor, width: 2)),
+                        height: displayHeight * 0.25,
+                        width: displayWidth * 0.8,
+                        child: FittedBox(
+                            fit: BoxFit.fill,
+                            child: ClipRRect(
+                                borderRadius: BorderRadius.circular(20),
+                                child:
+                                    Image(image: Image.file(_image!).image)))),
+                    Padding(
+                        padding: EdgeInsets.only(top: displayHeight * 0.023)),
+                    Stack(
+                      alignment: Alignment.center,
+                      children: [
+                        Container(
+                          decoration: BoxDecoration(
+                              color: Colors.transparent,
+                              borderRadius: BorderRadius.all(
+                                Radius.circular(15),
+                              ),
+                              border: Border.all(color: mainColor, width: 2)),
+                          height: displayHeight * 0.22,
+                          width: displayWidth * 0.8,
+                        ),
+                        Container(
+                          padding: EdgeInsets.only(
+                              top: 2,
+                              bottom: 2,
+                              left: displayWidth * 0.02,
+                              right: displayWidth * 0.02),
+                          margin: EdgeInsets.only(
+                              right: displayWidth * 0.4,
+                              bottom: displayHeight * 0.23),
+                          decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.all(
+                                Radius.circular(15),
+                              ),
+                              border: Border.all(color: mainColor, width: 2)),
+                          child: FittedBox(
+                              fit: BoxFit.fitWidth,
+                              child: Text(
+                                '${recgResult.length}건의 인식된 재료',
+                              )),
+                        ),
+                        Container(
+                          height: displayHeight * 0.2,
+                          width: displayWidth * 0.8,
+                          padding: EdgeInsets.only(
+                              left: displayWidth * 0.03,
+                              right: displayWidth * 0.04),
+                          child: GridView.builder(
+                              itemCount: recgResult.length + 1,
+                              gridDelegate:
+                                  SliverGridDelegateWithFixedCrossAxisCount(
+                                      crossAxisCount: 5,
+                                      mainAxisExtent: displayHeight * 0.92,
+                                      crossAxisSpacing: displayWidth * 0.02,
+                                      mainAxisSpacing: displayHeight * 0.02),
+                              itemBuilder: (BuildContext context, int index) {
+                                return InkResponse(
+                                    onTap: () {
+                                      if (index == recgResult.length + 1) {
+                                        print('last item selected');
+                                        {
+                                          //Get.to(() => IngredientAddPage(),
+                                          //transition: Transition.cupertino);
+                                        }
+                                      }
+                                    },
+                                    child: CondiCon(index));
+                              }),
+                        ),
+                        //Container(child:Text('${recgResult.map((e) => e["detectedClass"])}'))
+                      ],
+                    ),
+                    recipeList()
+                  ],
+                ),
+              )));
 
     stackChildren.addAll(renderBoxes(size));
 

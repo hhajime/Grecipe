@@ -129,6 +129,7 @@ class IngredientModifyPage extends StatelessWidget {
                               EdgeInsets.only(bottom: displayHeight * 0.01),
                         ),
                         Container(
+                          height: displayHeight * 0.06,
                           padding:
                               EdgeInsets.only(bottom: displayHeight * 0.03),
                           child: Obx(() => ToggleButtons(
