@@ -40,7 +40,7 @@ class RecipePage extends StatelessWidget {
                       ))
                 ],
               ),
-              SingleChildScrollView(child: recipes(500)),
+              SingleChildScrollView(child: recipes(recipeController.elementat)),
             ]),
           ),
         ),
