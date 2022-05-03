@@ -40,7 +40,7 @@ class RecipePage extends StatelessWidget {
                       ))
                 ],
               ),
-              SingleChildScrollView(child: recipes(recipeController.elementat)),
+              SingleChildScrollView(child: recipes(recipeController.selectedRecipe.value)),
             ]),
           ),
         ),
@@ -129,9 +129,7 @@ class RecipePage extends StatelessWidget {
                               fontSize: displayHeight * 0.02,
                               fontWeight: FontWeight.bold),
                         )),
-                    Text(
-                        snapshot.data!.COOKRCP02.row.elementAt(index).MANUAL01),
-                    Image.network(snapshot.data!.COOKRCP02.row
+                        manual(snapshot, index, snapshot.data!.COOKRCP02.row.elementAt(index).MANUAL01, snapshot.data!.COOKRCP02.row
                         .elementAt(index)
                         .MANUALIMG01),
                     Text(
@@ -162,3 +160,14 @@ class RecipePage extends StatelessWidget {
     );
   }
 }
+
+manual(snapshot, index, a, b){
+  {if(a != null){
+    return
+    Column(children: [
+     Text(
+                    a),
+                    Image.network(b),
+  ],);
+  }
+}}

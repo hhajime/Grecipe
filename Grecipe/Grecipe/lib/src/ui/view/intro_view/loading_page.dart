@@ -10,7 +10,7 @@ class LoadingPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Timer(const Duration(seconds: 3),
+    Timer(const Duration(seconds: 2),
         () => Get.to(() => LoginPage(), transition: Transition.cupertino));
 
     return Container(

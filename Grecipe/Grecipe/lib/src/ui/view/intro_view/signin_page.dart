@@ -71,7 +71,7 @@ class SignInPage extends StatelessWidget {
                             child: TextButton(
                                 onPressed: () => {},
                                 child: Text(
-                                  '중복확인',
+                                  '',//중복확인
                                   style: TextStyle(
                                       fontSize: displayHeight * 0.014,
                                       fontWeight: FontWeight.bold,

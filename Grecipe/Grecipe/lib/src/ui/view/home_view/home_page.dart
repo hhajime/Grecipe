@@ -115,7 +115,7 @@ class HomePage extends StatelessWidget {
                             top: displayHeight * 0.03,
                             bottom: displayHeight * 0.02),
                         child: Text(
-                          '가능한 레시피 목록',
+                          '추천 레시피 목록',
                           style: TextStyle(
                               fontWeight: FontWeight.bold,
                               fontSize: displayHeight * 0.02),

@@ -49,7 +49,7 @@ recipeList() {
                               ])),
                           const Spacer(),
                           IconButton(
-                            onPressed: () {
+                            onPressed: () { recipeController.selectedRecipe.value = recipeController.selectedRecipeIndex[index];
                               Get.to(() => RecipePage(),
                                   transition: Transition.cupertino);
                             },
