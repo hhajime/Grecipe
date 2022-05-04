@@ -20,7 +20,7 @@ class LandingPage extends StatelessWidget {
         data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),
         child: SizedBox(
           height: displayHeight * 0.07,
-          child: BottomNavigationBar(
+          child: Wrap(children: [BottomNavigationBar(
             showUnselectedLabels: true,
             showSelectedLabels: true,
             onTap: landingPageController.changeTabIndex,
@@ -65,7 +65,7 @@ class LandingPage extends StatelessWidget {
                 backgroundColor: const Color.fromRGBO(36, 54, 101, 1.0),
               ),
             ],
-          ),
+          ),])
         )));
   }
 

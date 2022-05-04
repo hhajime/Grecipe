@@ -27,7 +27,8 @@ List ingList_vegetable = [
   '깻잎',
   '피망',
   '감자',
-  '고구마'
+  '고구마',
+  '콩나물'
 ]; //채소
 List ingList_fruit = ['옥수수', '쌀']; //과일,견과, 쌀
 List ingList_fisheries = ['참치']; //수산, 해산, 건어물
@@ -93,7 +94,8 @@ final List<String> ingList_en = <String>[
   'pasta',
   'pimento',
   'ham',
-  'black_pepper'
+  'black_pepper',
+  'sprouts'
 ];
 final List<String> ingList_ko = <String>[
   '간장',
@@ -132,5 +134,6 @@ final List<String> ingList_ko = <String>[
   '파스타',
   '피망',
   '햄',
-  '후추'
+  '후추',
+  '콩나물'
 ];

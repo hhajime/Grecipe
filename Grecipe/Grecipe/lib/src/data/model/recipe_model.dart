@@ -267,6 +267,17 @@ class Row {
     _data['MANUAL14'] = MANUAL14;
     return _data;
   }
+
+
+
+  dynamic get(String propertyName){
+    var _mapRep = toJson();
+    if(_mapRep.containsKey(propertyName)){
+      return _mapRep[propertyName];
+    }
+
+  }
+
 }
 
 class RESULT {

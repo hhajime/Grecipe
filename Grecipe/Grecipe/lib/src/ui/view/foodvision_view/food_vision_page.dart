@@ -136,10 +136,6 @@ class _FoodVisionState extends State<FoodVision> {
                         padding: EdgeInsets.only(
                             top: displayHeight * 0.01,
                             bottom: displayHeight * 0.01),
-                        decoration: BoxDecoration(
-                            color: Colors.transparent,
-                            borderRadius: BorderRadius.all(Radius.circular(15)),
-                            border: Border.all(color: mainColor, width: 2)),
                         height: displayHeight * 0.25,
                         width: displayWidth * 0.8,
                         child: FittedBox(
@@ -148,8 +144,19 @@ class _FoodVisionState extends State<FoodVision> {
                                 borderRadius: BorderRadius.circular(20),
                                 child:
                                     Image(image: Image.file(_image!).image)))),
-                    Padding(
-                        padding: EdgeInsets.only(top: displayHeight * 0.023)),
+                    Container(
+                      width: displayWidth * 0.8,
+                      alignment: Alignment.centerLeft,
+                      padding: EdgeInsets.only(
+                          top: displayHeight * 0.02,
+                          bottom: displayHeight * 0.01),
+                      child: Text(
+                        '${recgResult.length}건의 인식된 재료',
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: displayHeight * 0.02),
+                      ),
+                    ),
                     Stack(
                       alignment: Alignment.center,
                       children: [
@@ -160,34 +167,14 @@ class _FoodVisionState extends State<FoodVision> {
                                 Radius.circular(15),
                               ),
                               border: Border.all(color: mainColor, width: 2)),
-                          height: displayHeight * 0.22,
+                          height: displayHeight * 0.2,
                           width: displayWidth * 0.8,
-                        ),
-                        Container(
-                          padding: EdgeInsets.only(
-                              top: 2,
-                              bottom: 2,
-                              left: displayWidth * 0.02,
-                              right: displayWidth * 0.02),
-                          margin: EdgeInsets.only(
-                              right: displayWidth * 0.4,
-                              bottom: displayHeight * 0.23),
-                          decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.all(
-                                Radius.circular(15),
-                              ),
-                              border: Border.all(color: mainColor, width: 2)),
-                          child: FittedBox(
-                              fit: BoxFit.fitWidth,
-                              child: Text(
-                                '${recgResult.length}건의 인식된 재료',
-                              )),
                         ),
                         Container(
                           height: displayHeight * 0.2,
                           width: displayWidth * 0.8,
                           padding: EdgeInsets.only(
+                            top: displayHeight * 0.01,
                               left: displayWidth * 0.03,
                               right: displayWidth * 0.04),
                           child: GridView.builder(
@@ -195,7 +182,7 @@ class _FoodVisionState extends State<FoodVision> {
                               gridDelegate:
                                   SliverGridDelegateWithFixedCrossAxisCount(
                                       crossAxisCount: 5,
-                                      mainAxisExtent: displayHeight * 0.92,
+                                      mainAxisExtent: displayHeight * 0.092,
                                       crossAxisSpacing: displayWidth * 0.02,
                                       mainAxisSpacing: displayHeight * 0.02),
                               itemBuilder: (BuildContext context, int index) {
@@ -209,11 +196,24 @@ class _FoodVisionState extends State<FoodVision> {
                                         }
                                       }
                                     },
-                                    child: CondiCon(index));
+                                    child: condiCon(index));
                               }),
                         ),
                         //Container(child:Text('${recgResult.map((e) => e["detectedClass"])}'))
                       ],
+                    ),
+                    Container(
+                      width: displayWidth * 0.8,
+                      alignment: Alignment.centerLeft,
+                      padding: EdgeInsets.only(
+                          top: displayHeight * 0.03,
+                          bottom: displayHeight * 0.02),
+                      child: Text(
+                        '추천 레시피 목록',
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: displayHeight * 0.02),
+                      ),
                     ),
                     recipeList()
                   ],
@@ -249,7 +249,8 @@ class _FoodVisionState extends State<FoodVision> {
           ),
         ],
       ),
-      body: Column(children: [
+      body: SingleChildScrollView(child: Column(
+        children: [
         SizedBox(
           height: displayHeight * 0.06,
           child: Center(
@@ -267,7 +268,7 @@ class _FoodVisionState extends State<FoodVision> {
           ),
         )
       ]),
-    );
+    ));
   }
 
   // gets image from camera and runs detectObject
@@ -297,7 +298,7 @@ class _FoodVisionState extends State<FoodVision> {
     detectObject(_image!);
   }
 
-  CondiCon(index) {
+  condiCon(index) {
     if (index < recgResult.length) {
       return Column(children: [
         Container(

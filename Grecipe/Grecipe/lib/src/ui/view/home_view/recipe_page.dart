@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:grecipe/src/data/list.dart';
 import 'package:grecipe/src/ui/widget/landing_page.dart';
 import 'package:grecipe/src/controller/ingredient_DB_controller.dart';
+import 'package:hive/hive.dart';
 
 class RecipePage extends StatelessWidget {
   final recipeController = Get.put(RecipeController(), permanent: false);
@@ -40,7 +41,8 @@ class RecipePage extends StatelessWidget {
                       ))
                 ],
               ),
-              SingleChildScrollView(child: recipes(recipeController.selectedRecipe.value)),
+              SingleChildScrollView(
+                  child: recipes(recipeController.selectedRecipe.value)),
             ]),
           ),
         ),
@@ -61,7 +63,9 @@ class RecipePage extends StatelessWidget {
                 .RCPPARTSDTLS
                 .split(',');
             for (int j = 0; j < result.length; j++) {
-              for (int k = 0; k < ingDbController.dataBox.value.length - 1; k++) {
+              for (int k = 0;
+                  k < ingDbController.dataBox.value.length - 1;
+                  k++) {
                 //if(k ==0){ingDbController.ingResult.add('${dataBox.value.toMap()[k]?.toString().split(',')[1].substring(17).toString()}');}
                 if (result[j].contains(ingDbController.ingResult[k])) {
                   // include로 변경
@@ -120,7 +124,7 @@ class RecipePage extends StatelessWidget {
                             .elementAt(index)
                             .RCPPARTSDTLS)),
                     Container(
-                        padding: const EdgeInsets.only(top : 20, left: 10),
+                        padding: const EdgeInsets.only(top: 20, left: 10),
                         alignment: Alignment.center,
                         child: Text(
                           "조리순서",
@@ -129,22 +133,9 @@ class RecipePage extends StatelessWidget {
                               fontSize: displayHeight * 0.02,
                               fontWeight: FontWeight.bold),
                         )),
-                        manual(snapshot, index, snapshot.data!.COOKRCP02.row.elementAt(index).MANUAL01, snapshot.data!.COOKRCP02.row
-                        .elementAt(index)
-                        .MANUALIMG01),
-                    Text(
-                        snapshot.data!.COOKRCP02.row.elementAt(index).MANUAL02),
-                    Image.network(snapshot.data!.COOKRCP02.row
-                        .elementAt(index)
-                        .MANUALIMG02),
-                    Text(
-                        snapshot.data!.COOKRCP02.row.elementAt(index).MANUAL03),
-                    Image.network(snapshot.data!.COOKRCP02.row
-                        .elementAt(index)
-                        .MANUALIMG03),
-                    Text(snapshot.data!.COOKRCP02.row
-                        .elementAt(index)
-                        .MANUAL04), //이미지 없으면 표시되지 않게 / 추가 이미지 10개? 
+                    ...manualList(
+                        snapshot,
+                        index),
                   ],
                 ),
               ),
@@ -161,13 +152,29 @@ class RecipePage extends StatelessWidget {
   }
 }
 
-manual(snapshot, index, a, b){
-  {if(a != null){
-    return
-    Column(children: [
-     Text(
-                    a),
-                    Image.network(b),
-  ],);
-  }
-}}
+List<Widget> manualList(snapshot, index) {
+  var manualWigets = <Widget>[];
+    for (int i = 1; i <= 20; i++) {
+    String manual = 'MANUAL'+i.toString();
+    String manualImg = 'MANUAL_IMG'+i.toString();
+    if(i<10){
+      manual = 'MANUAL0'+i.toString();
+      manualImg = 'MANUAL_IMG0'+i.toString();
+    }
+    var a = snapshot.data!.COOKRCP02.row.elementAt(index).get(manual);
+    var b = snapshot.data!.COOKRCP02.row.elementAt(index).get(manualImg);
+      if (a != '' && b != '') {
+        manualWigets.add(Text(a));
+        manualWigets.add(SizedBox(
+          height: displayHeight * 0.05,
+        ));
+        manualWigets.add(Image.network(b)); 
+      } else if (a != '' && b == '') {
+        manualWigets.add(Text(a));
+        manualWigets.add(SizedBox(
+          height: displayHeight * 0.05,
+        ));
+      }
+    }
+    return manualWigets;
+}
