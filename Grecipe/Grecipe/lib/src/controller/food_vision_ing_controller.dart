@@ -3,24 +3,25 @@ import 'dart:io';
 
 class FoodVisionIngController extends GetxController {
   RxList recgResult = [].obs;
-  RxList IngResult = [].obs;
+  RxList ingResult = [].obs;
   RxString fvSelectedIcon = '달걀'.obs;
   RxInt fvSelectedIndex = 0.obs;
   File? fvImage;
 
   createFvIng() {
-    IngResult.add(fvSelectedIcon.value);
+    ingResult.add(fvSelectedIcon.value);
     update();
   }
 
-  updateFvIng(index){
-    IngResult[index] = fvSelectedIcon.value;
+  updateFvIng(index) {
+    ingResult[index] = fvSelectedIcon.value;
     update();
-    
   }
-  deleteFvIng(index){
-    IngResult.removeAt(index);
+
+  deleteFvIng(index) {
+    ingResult.removeAt(index);
   }
+
   @override
   void onInit() {
     super.onInit();

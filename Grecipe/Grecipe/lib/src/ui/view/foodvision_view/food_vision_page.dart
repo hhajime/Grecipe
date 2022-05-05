@@ -1,6 +1,6 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
-import 'package:grecipe/src/ui/widget/recipe_list.dart';
+import 'package:grecipe/src/ui/widget/fv_recipe_list.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:grecipe/src/data/list.dart';
 import 'package:tflite/tflite.dart';
@@ -15,7 +15,7 @@ class FoodVision extends StatefulWidget {
 }
 
 class _FoodVisionState extends State<FoodVision> {
-  final fvingController = Get.put(FoodVisionIngController(),permanent: false);
+  final fvingController = Get.put(FoodVisionIngController(), permanent: false);
   List? _recognitions;
   bool? _busy;
   double? _imageWidth, _imageHeight;
@@ -52,8 +52,8 @@ class _FoodVisionState extends State<FoodVision> {
     setState(() {
       _recognitions = recognitions!;
       fvingController.recgResult.value = _recognitions!;
-      for(int i = 0; i < _recognitions!.length; i++){
-      fvingController.IngResult.add(_recognitions![i]['detectedClass']);
+      for (int i = 0; i < _recognitions!.length; i++) {
+        fvingController.ingResult.add(_recognitions![i]['detectedClass']);
       }
     });
   }
@@ -148,8 +148,9 @@ class _FoodVisionState extends State<FoodVision> {
                             fit: BoxFit.fill,
                             child: ClipRRect(
                                 borderRadius: BorderRadius.circular(20),
-                                child:
-                                    Image(image: Image.file(fvingController.fvImage!).image)))),
+                                child: Image(
+                                    image: Image.file(fvingController.fvImage!)
+                                        .image)))),
                     Container(
                       width: displayWidth * 0.8,
                       alignment: Alignment.centerLeft,
@@ -157,7 +158,7 @@ class _FoodVisionState extends State<FoodVision> {
                           top: displayHeight * 0.02,
                           bottom: displayHeight * 0.01),
                       child: Text(
-                        '${fvingController.IngResult.length}건의 인식된 재료',
+                        '${fvingController.ingResult.length}건의 인식된 재료',
                         style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: displayHeight * 0.02),
@@ -180,11 +181,11 @@ class _FoodVisionState extends State<FoodVision> {
                           height: displayHeight * 0.2,
                           width: displayWidth * 0.8,
                           padding: EdgeInsets.only(
-                            top: displayHeight * 0.01,
+                              top: displayHeight * 0.01,
                               left: displayWidth * 0.03,
                               right: displayWidth * 0.04),
                           child: GridView.builder(
-                              itemCount: fvingController.IngResult.length + 1,
+                              itemCount: fvingController.ingResult.length + 1,
                               gridDelegate:
                                   SliverGridDelegateWithFixedCrossAxisCount(
                                       crossAxisCount: 5,
@@ -194,20 +195,26 @@ class _FoodVisionState extends State<FoodVision> {
                               itemBuilder: (BuildContext context, int index) {
                                 return InkResponse(
                                     onTap: () {
-                                      fvingController.fvSelectedIndex.value = index;
-                if (index < fvingController.IngResult.length) {
-                  fvingController.fvSelectedIcon.value = toKorean(fvingController.IngResult[index]);
-                  print('item selected');
-                  {
-                    print('$fvingController.fvSelectedIcon.value');
-                    Get.to(() => FvIngredientModifyPage(),
-                        transition: Transition.cupertino);
-                  }
-                } else if (index == fvingController.IngResult.length) {
+                                      fvingController.fvSelectedIndex.value =
+                                          index;
+                                      if (index <
+                                          fvingController.ingResult.length) {
+                                        fvingController.fvSelectedIcon.value =
+                                            toKorean(fvingController
+                                                .ingResult[index]);
+                                        print('item selected');
+                                        {
+                                          print(
+                                              '$fvingController.fvSelectedIcon.value');
+                                          Get.to(() => FvIngredientModifyPage(),
+                                              transition: Transition.cupertino);
+                                        }
+                                      } else if (index ==
+                                          fvingController.ingResult.length) {
                                         print('last item selected');
                                         {
                                           Get.to(() => FvIngredientAddPage(),
-                                          transition: Transition.cupertino);
+                                              transition: Transition.cupertino);
                                         }
                                       }
                                     },
@@ -230,7 +237,7 @@ class _FoodVisionState extends State<FoodVision> {
                             fontSize: displayHeight * 0.02),
                       ),
                     ),
-                    recipeList()
+                    fvrecipeList()
                   ],
                 ),
               )));
@@ -244,46 +251,47 @@ class _FoodVisionState extends State<FoodVision> {
     }
 
     return Scaffold(
-      floatingActionButton: Row(
-        mainAxisAlignment: MainAxisAlignment.end,
-        children: <Widget>[
-          FloatingActionButton(
-            backgroundColor: mainColor,
-            heroTag: "Fltbtn2",
-            child: const Icon(Icons.camera_alt),
-            onPressed: getImageFromCamera,
-          ),
-          const SizedBox(
-            width: 10,
-          ),
-          FloatingActionButton(
-            backgroundColor: mainColor,
-            heroTag: "Fltbtn1",
-            child: const Icon(Icons.photo),
-            onPressed: getImageFromGallery,
-          ),
-        ],
-      ),
-      body: SingleChildScrollView(child: Column(
-        children: [
-        SizedBox(
-          height: displayHeight * 0.06,
-          child: Center(
-            child: Text(
-              '푸드 비전',
-              style: TextStyle(
-                  fontWeight: FontWeight.bold, fontSize: displayHeight * 0.02),
+        floatingActionButton: Row(
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: <Widget>[
+            FloatingActionButton(
+              backgroundColor: mainColor,
+              heroTag: "Fltbtn2",
+              child: const Icon(Icons.camera_alt),
+              onPressed: getImageFromCamera,
             ),
-          ),
+            const SizedBox(
+              width: 10,
+            ),
+            FloatingActionButton(
+              backgroundColor: mainColor,
+              heroTag: "Fltbtn1",
+              child: const Icon(Icons.photo),
+              onPressed: getImageFromGallery,
+            ),
+          ],
         ),
-        Container(
-          alignment: Alignment.center,
-          child: Stack(
-            children: stackChildren,
-          ),
-        )
-      ]),
-    ));
+        body: SingleChildScrollView(
+          child: Column(children: [
+            SizedBox(
+              height: displayHeight * 0.06,
+              child: Center(
+                child: Text(
+                  '푸드 비전',
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: displayHeight * 0.02),
+                ),
+              ),
+            ),
+            Container(
+              alignment: Alignment.center,
+              child: Stack(
+                children: stackChildren,
+              ),
+            )
+          ]),
+        ));
   }
 
   // gets image from camera and runs detectObject
@@ -314,7 +322,7 @@ class _FoodVisionState extends State<FoodVision> {
   }
 
   condiCon(index) {
-    if (index < fvingController.IngResult.length) {
+    if (index < fvingController.ingResult.length) {
       return Column(children: [
         Container(
           height: displayHeight * 0.066,
@@ -327,13 +335,13 @@ class _FoodVisionState extends State<FoodVision> {
           ),
           child: Image(
             image: AssetImage(
-                'assets/images/icons/ingredient_icon/${toKorean(fvingController.IngResult[index])}.png'), //to Korean
+                'assets/images/icons/ingredient_icon/${toKorean(fvingController.ingResult[index])}.png'), //to Korean
           ),
         ),
         Container(
             child: FittedBox(
           fit: BoxFit.fitWidth,
-          child: Text('${toKorean(fvingController.IngResult[index])}'),
+          child: Text('${toKorean(fvingController.ingResult[index])}'),
         ))
       ]);
     }
