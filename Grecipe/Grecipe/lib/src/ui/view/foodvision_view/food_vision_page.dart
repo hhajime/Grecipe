@@ -52,6 +52,9 @@ class _FoodVisionState extends State<FoodVision> {
     setState(() {
       _recognitions = recognitions!;
       fvingController.recgResult.value = _recognitions!;
+      for(int i = 0; i < _recognitions!.length; i++){
+      fvingController.IngResult.add(_recognitions![i]['detectedClass']);
+      }
     });
   }
 
@@ -154,7 +157,7 @@ class _FoodVisionState extends State<FoodVision> {
                           top: displayHeight * 0.02,
                           bottom: displayHeight * 0.01),
                       child: Text(
-                        '${fvingController.recgResult.length}건의 인식된 재료',
+                        '${fvingController.IngResult.length}건의 인식된 재료',
                         style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: displayHeight * 0.02),
@@ -181,7 +184,7 @@ class _FoodVisionState extends State<FoodVision> {
                               left: displayWidth * 0.03,
                               right: displayWidth * 0.04),
                           child: GridView.builder(
-                              itemCount: fvingController.recgResult.length + 1,
+                              itemCount: fvingController.IngResult.length + 1,
                               gridDelegate:
                                   SliverGridDelegateWithFixedCrossAxisCount(
                                       crossAxisCount: 5,
@@ -192,15 +195,15 @@ class _FoodVisionState extends State<FoodVision> {
                                 return InkResponse(
                                     onTap: () {
                                       fvingController.fvSelectedIndex.value = index;
-                                      fvingController.fvSelectedIcon.value = toKorean(fvingController.recgResult[index]['detectedClass']);
-                if (index < fvingController.recgResult.length) {
+                if (index < fvingController.IngResult.length) {
+                  fvingController.fvSelectedIcon.value = toKorean(fvingController.IngResult[index]);
                   print('item selected');
                   {
                     print('$fvingController.fvSelectedIcon.value');
                     Get.to(() => FvIngredientModifyPage(),
                         transition: Transition.cupertino);
                   }
-                } else if (index == fvingController.recgResult.length) {
+                } else if (index == fvingController.IngResult.length) {
                                         print('last item selected');
                                         {
                                           Get.to(() => FvIngredientAddPage(),
@@ -311,7 +314,7 @@ class _FoodVisionState extends State<FoodVision> {
   }
 
   condiCon(index) {
-    if (index < fvingController.recgResult.length) {
+    if (index < fvingController.IngResult.length) {
       return Column(children: [
         Container(
           height: displayHeight * 0.066,
@@ -324,13 +327,13 @@ class _FoodVisionState extends State<FoodVision> {
           ),
           child: Image(
             image: AssetImage(
-                'assets/images/icons/ingredient_icon/${toKorean(fvingController.recgResult[index]['detectedClass'])}.png'), //to Korean
+                'assets/images/icons/ingredient_icon/${toKorean(fvingController.IngResult[index])}.png'), //to Korean
           ),
         ),
         Container(
             child: FittedBox(
           fit: BoxFit.fitWidth,
-          child: Text('${fvingController.recgResult[index]['detectedClass']}'),
+          child: Text('${toKorean(fvingController.IngResult[index])}'),
         ))
       ]);
     }

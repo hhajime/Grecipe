@@ -227,7 +227,6 @@ class FvIngredientModifyPage extends StatelessWidget {
                                     child: TextButton(
                                         onPressed: () => {
                                           fvingController.updateFvIng(fvingController.fvSelectedIndex.value),
-                                          print(fvingController.recgResult.toString()),
                                            Get.to(()=>LandingPage(),
                                  transition: Transition.cupertino)},
                                         child: Text(
