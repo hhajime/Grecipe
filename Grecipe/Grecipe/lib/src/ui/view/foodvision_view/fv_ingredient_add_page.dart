@@ -1,18 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:grecipe/src/controller/shelf_life_controller.dart';
-import 'package:grecipe/src/controller/ingredient_DB_controller.dart';
 import 'package:grecipe/src/data/list.dart';
-import 'package:grecipe/src/data/model/ingredient.dart';
-import 'package:grecipe/src/ui/view/home_view/home_page.dart';
-import 'package:custom_radio_grouped_button/custom_radio_grouped_button.dart';
 import 'package:get/get.dart';
+import 'package:grecipe/src/ui/view/foodvision_view/food_vision_page.dart';
 import 'package:grecipe/src/ui/widget/landing_page.dart';
 import 'package:grecipe/src/ui/widget/ingredient_add_icons.dart';
-import 'package:hive/hive.dart';
+import 'package:grecipe/src/controller/food_vision_ing_controller.dart';
 
-class IngredientAddPage extends StatelessWidget {
+class FvIngredientAddPage extends StatelessWidget {
   final shelfLifeController = Get.put(ShelfLifeController(), permanent: false);
-  final ingDbController = Get.put(IngredientDBController(), permanent: false);
+  final fvingController = Get.put(FoodVisionIngController(),permanent: false);
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -115,7 +112,7 @@ class IngredientAddPage extends StatelessWidget {
                                             child: Obx(
                                               () => Image(
                                                   image: AssetImage(
-                                                      'assets/images/icons/ingredient_icon/${ingDbController.selectedIcon.value}.png')),
+                                                      'assets/images/icons/ingredient_icon/${toKorean(fvingController.fvSelectedIcon.value)}.png')),
                                             ),
                                           ))
                                     ],
@@ -213,8 +210,7 @@ class IngredientAddPage extends StatelessWidget {
                       child: Container(
                           child: TextButton(
                               onPressed: () => {
-                                    ingDbController.createIng(),
-                                    ingDbController.readIng(selectedIndex),
+                                    fvingController.createFvIng(),
                                     Get.to(() => LandingPage(),
                                         transition: Transition.cupertino)
                                   },

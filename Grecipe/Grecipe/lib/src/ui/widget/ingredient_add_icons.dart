@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:grecipe/src/data/list.dart';
-import 'package:grecipe/src/ui/widget/landing_page.dart';
 import 'package:grecipe/src/controller/ingredient_DB_controller.dart';
+import 'package:grecipe/src/controller/food_vision_ing_controller.dart';
+import 'package:grecipe/src/ui/view/foodvision_view/food_vision_page.dart';
 
 void ingredientAddIconsDialog() {
   final ingDbController = Get.put(IngredientDBController(), permanent: false);
+  final fvingController = Get.put(FoodVisionIngController(),permanent: false);
   Color getColor(Set<MaterialState> states) {
     const Set<MaterialState> interactiveStates = <MaterialState>{
       MaterialState.pressed,
@@ -36,7 +38,9 @@ void ingredientAddIconsDialog() {
               itemBuilder: (BuildContext context, int index) {
                 return InkResponse(
                   onTap:() {
+                    fvingController.fvSelectedIcon.value = ingredientList[index];
                     ingDbController.selectedIcon.value = ingredientList[index];
+                    print('${toKorean(fvingController.fvSelectedIcon.value)}');
                     print('selectedIcon : ${ingDbController.selectedIcon}.');
                   },
                     child: Column(children: [Container(

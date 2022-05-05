@@ -2,13 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:grecipe/src/controller/shelf_life_controller.dart';
 import 'package:grecipe/src/data/list.dart';
 import 'package:get/get.dart';
+import 'package:grecipe/src/ui/view/foodvision_view/food_vision_page.dart';
 import 'package:grecipe/src/ui/widget/landing_page.dart';
 import 'package:grecipe/src/ui/widget/ingredient_add_icons.dart';
-import 'package:grecipe/src/controller/ingredient_DB_controller.dart';
+import 'package:grecipe/src/controller/food_vision_ing_controller.dart';
 
-class IngredientModifyPage extends StatelessWidget {
+class FvIngredientModifyPage extends StatelessWidget {
   final shelfLifeController = Get.put(ShelfLifeController(), permanent: false);
-  final ingDbController = Get.put(IngredientDBController(), permanent: false);
+  final fvingController = Get.put(FoodVisionIngController(),permanent: false);
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -110,7 +111,7 @@ class IngredientModifyPage extends StatelessWidget {
                                             ),
                                             child: Obx(()=>Image(
                                               image: AssetImage(
-                                                  'assets/images/icons/ingredient_icon/${ingDbController.selectedIcon}.png'),
+                                                  'assets/images/icons/ingredient_icon/${toKorean(fvingController.fvSelectedIcon.value)}.png'),
                                             )),
                                           ))
                                     ],
@@ -124,7 +125,7 @@ class IngredientModifyPage extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Container(
-                          child: Text('유통기한 설정'),
+                          child: const Text('유통기한 설정'),
                           padding:
                               EdgeInsets.only(bottom: displayHeight * 0.01),
                         ),
@@ -213,7 +214,7 @@ class IngredientModifyPage extends StatelessWidget {
                                 Container(
                                     child: TextButton(
                                         onPressed: () => {
-                                          ingDbController.deleteIng(selectedIndex),
+                                          fvingController.deleteFvIng(fvingController.fvSelectedIndex.value),
                                            Get.to(()=>LandingPage(),
                                  transition: Transition.cupertino)},
                                         child: Text(
@@ -225,7 +226,8 @@ class IngredientModifyPage extends StatelessWidget {
                                 Container(
                                     child: TextButton(
                                         onPressed: () => {
-                                          ingDbController.updateIng(selectedIndex),
+                                          fvingController.updateFvIng(fvingController.fvSelectedIndex.value),
+                                          print(fvingController.recgResult.toString()),
                                            Get.to(()=>LandingPage(),
                                  transition: Transition.cupertino)},
                                         child: Text(

@@ -4,6 +4,10 @@ import 'package:grecipe/src/ui/widget/recipe_list.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:grecipe/src/data/list.dart';
 import 'package:tflite/tflite.dart';
+import 'package:grecipe/src/controller/food_vision_ing_controller.dart';
+import 'package:get/get.dart';
+import 'package:grecipe/src/ui/view/foodvision_view/fv_ingredient_add_page.dart';
+import 'package:grecipe/src/ui/view/foodvision_view/fv_ingredient_modify_page.dart';
 
 class FoodVision extends StatefulWidget {
   @override
@@ -11,11 +15,10 @@ class FoodVision extends StatefulWidget {
 }
 
 class _FoodVisionState extends State<FoodVision> {
-  File? _image;
+  final fvingController = Get.put(FoodVisionIngController(),permanent: false);
   List? _recognitions;
   bool? _busy;
   double? _imageWidth, _imageHeight;
-  List<dynamic> recgResult = [];
 
   final picker = ImagePicker();
 
@@ -48,7 +51,7 @@ class _FoodVisionState extends State<FoodVision> {
         })));
     setState(() {
       _recognitions = recognitions!;
-      recgResult = _recognitions!;
+      fvingController.recgResult.value = _recognitions!;
     });
   }
 
@@ -111,7 +114,7 @@ class _FoodVisionState extends State<FoodVision> {
 
     stackChildren.add(Positioned(
         // using ternary operator
-        child: _image == null
+        child: fvingController.fvImage == null
             ? Container(
                 padding: EdgeInsets.only(top: displayHeight * 0.3),
                 child: Column(
@@ -143,7 +146,7 @@ class _FoodVisionState extends State<FoodVision> {
                             child: ClipRRect(
                                 borderRadius: BorderRadius.circular(20),
                                 child:
-                                    Image(image: Image.file(_image!).image)))),
+                                    Image(image: Image.file(fvingController.fvImage!).image)))),
                     Container(
                       width: displayWidth * 0.8,
                       alignment: Alignment.centerLeft,
@@ -151,7 +154,7 @@ class _FoodVisionState extends State<FoodVision> {
                           top: displayHeight * 0.02,
                           bottom: displayHeight * 0.01),
                       child: Text(
-                        '${recgResult.length}건의 인식된 재료',
+                        '${fvingController.recgResult.length}건의 인식된 재료',
                         style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: displayHeight * 0.02),
@@ -178,7 +181,7 @@ class _FoodVisionState extends State<FoodVision> {
                               left: displayWidth * 0.03,
                               right: displayWidth * 0.04),
                           child: GridView.builder(
-                              itemCount: recgResult.length + 1,
+                              itemCount: fvingController.recgResult.length + 1,
                               gridDelegate:
                                   SliverGridDelegateWithFixedCrossAxisCount(
                                       crossAxisCount: 5,
@@ -188,11 +191,20 @@ class _FoodVisionState extends State<FoodVision> {
                               itemBuilder: (BuildContext context, int index) {
                                 return InkResponse(
                                     onTap: () {
-                                      if (index == recgResult.length + 1) {
+                                      fvingController.fvSelectedIndex.value = index;
+                                      fvingController.fvSelectedIcon.value = toKorean(fvingController.recgResult[index]['detectedClass']);
+                if (index < fvingController.recgResult.length) {
+                  print('item selected');
+                  {
+                    print('$fvingController.fvSelectedIcon.value');
+                    Get.to(() => FvIngredientModifyPage(),
+                        transition: Transition.cupertino);
+                  }
+                } else if (index == fvingController.recgResult.length) {
                                         print('last item selected');
                                         {
-                                          //Get.to(() => IngredientAddPage(),
-                                          //transition: Transition.cupertino);
+                                          Get.to(() => FvIngredientAddPage(),
+                                          transition: Transition.cupertino);
                                         }
                                       }
                                     },
@@ -277,12 +289,12 @@ class _FoodVisionState extends State<FoodVision> {
 
     setState(() {
       if (pickedFile != null) {
-        _image = File(pickedFile.path);
+        fvingController.fvImage = File(pickedFile.path);
       } else {
         print("No image Selected");
       }
     });
-    detectObject(_image!);
+    detectObject(fvingController.fvImage!);
   }
 
   // gets image from gallery and runs detectObject
@@ -290,16 +302,16 @@ class _FoodVisionState extends State<FoodVision> {
     final pickedFile = await picker.getImage(source: ImageSource.gallery);
     setState(() {
       if (pickedFile != null) {
-        _image = File(pickedFile.path);
+        fvingController.fvImage = File(pickedFile.path);
       } else {
         print("No image Selected");
       }
     });
-    detectObject(_image!);
+    detectObject(fvingController.fvImage!);
   }
 
   condiCon(index) {
-    if (index < recgResult.length) {
+    if (index < fvingController.recgResult.length) {
       return Column(children: [
         Container(
           height: displayHeight * 0.066,
@@ -312,13 +324,13 @@ class _FoodVisionState extends State<FoodVision> {
           ),
           child: Image(
             image: AssetImage(
-                'assets/images/icons/ingredient_icon/${toKorean(recgResult[index]['detectedClass'])}.png'), //to Korean
+                'assets/images/icons/ingredient_icon/${toKorean(fvingController.recgResult[index]['detectedClass'])}.png'), //to Korean
           ),
         ),
         Container(
             child: FittedBox(
           fit: BoxFit.fitWidth,
-          child: Text('${recgResult[index]['detectedClass']}'),
+          child: Text('${fvingController.recgResult[index]['detectedClass']}'),
         ))
       ]);
     }
