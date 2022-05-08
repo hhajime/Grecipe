@@ -25,7 +25,7 @@ class FoodVisionRecipeController extends GetxController {
   recipeFinder() async {
     fvavaliableRecipe.clear();
     fvselectedRecipeIndex.clear();
-    for (int i = 0; i < 1358; i++) {
+    for (int i = 0; i < 1719; i++) {
       // 현재 재료를 레시피 데이터와 비교하여 동일한 레시피 찾기
       int count = 0;
       results =
@@ -39,8 +39,7 @@ class FoodVisionRecipeController extends GetxController {
             //print('intresult : ' + fvingController.ingResult[k] +'  result length : '+ results.length.toString() +'  count: '+ count.toString());
           }
         }
-        if (count == results.length - 1) {
-          // 레시피 단위 조정(1개 없어도 되도록)
+        if (count == (results.length)) {
           elementat = i;
           fvselectedRecipeIndex.add(elementat);
           fvavaliableRecipe.add([
@@ -55,6 +54,7 @@ class FoodVisionRecipeController extends GetxController {
         }
       }
     }
+    print(fvavaliableRecipe);
   }
 
   @override

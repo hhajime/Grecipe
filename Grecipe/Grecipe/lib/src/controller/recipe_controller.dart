@@ -27,7 +27,7 @@ class RecipeController extends GetxController {
   recipeFinder() async {
     avaliableRecipe.clear(); 
     selectedRecipeIndex.clear();
-    for (int i = 0; i < 1358; i++) {
+    for (int i = 0; i < 1719; i++) {
       // 현재 재료를 레시피 데이터와 비교하여 동일한 레시피 찾기
       int count = 0;
       results =

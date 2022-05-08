@@ -53,29 +53,6 @@ class RecipePage extends StatelessWidget {
       future: recipeController.recipe,
       builder: (context, snapshot) {
         if (snapshot.hasData) {
-          List<String> result = [];
-          for (int i = 0; i < 1358; i++) {
-            int count = 0;
-            result = snapshot.data!.COOKRCP02.row
-                .elementAt(i)
-                .RCPPARTSDTLS
-                .split(',');
-            for (int j = 0; j < result.length; j++) {
-              for (int k = 0;
-                  k < ingDbController.dataBox.value.length - 1;
-                  k++) {
-                //if(k ==0){ingDbController.ingResult.add('${dataBox.value.toMap()[k]?.toString().split(',')[1].substring(17).toString()}');}
-                if (result[j].contains(ingDbController.ingResult[k])) {
-                  // include로 변경
-                  count++;
-                }
-              }
-              if (count == result.length) {
-                print(
-                    'here2 $result, ${result.length}, ${snapshot.data!.COOKRCP02.row.elementAt(i).RCPNM}');
-              }
-            }
-          }
           return Column(
             children: [
               SizedBox(
@@ -88,7 +65,7 @@ class RecipePage extends StatelessWidget {
                         .ATTFILENOMAIN)),
               ),
               Container(
-                width: displayWidth * 1,
+                width: displayWidth * 0.9,
                 decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(30)),

@@ -25,9 +25,9 @@ class LandingPage extends StatelessWidget {
             showSelectedLabels: true,
             onTap: landingPageController.changeTabIndex,
             currentIndex: landingPageController.tabIndex.value,
-            backgroundColor: mainColor,
-            unselectedItemColor: Colors.white.withOpacity(0.5),
-            selectedItemColor: Colors.white,
+            backgroundColor: Colors.white,
+            unselectedItemColor: mainColor.withOpacity(0.5),
+            selectedItemColor: mainColor,
             unselectedLabelStyle: unselectedLabelStyle,
             selectedLabelStyle: selectedLabelStyle,
             items: [

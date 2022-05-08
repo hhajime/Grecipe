@@ -15,10 +15,10 @@ fvrecipeList() {
           fvrecipeController.snapshots =
               snapshot; // ->> I need it to excute recipeFinder
           fvrecipeController.recipeFinder(); // --> Causing Error
-          print('hasdata');
+          //print('here ${fvrecipeController.fvavaliableRecipe}');
           return Container(
               width: displayWidth * 0.8,
-              height: displayHeight * 0.17,
+              height: displayHeight * 0.3,
               child: ListView.builder(
                   scrollDirection: Axis.vertical,
                   shrinkWrap: true,

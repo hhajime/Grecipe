@@ -94,7 +94,7 @@ class HomePage extends StatelessWidget {
                       ),
                       SizedBox(
                           width: displayWidth * 0.8,
-                          height: displayHeight * 0.3,
+                          height: displayHeight * 0.35,
                           child: TabBarView(
                               controller: _tabx.controller,
                               children: [

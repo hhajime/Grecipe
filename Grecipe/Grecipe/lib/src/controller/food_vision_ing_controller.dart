@@ -23,6 +23,8 @@ class FoodVisionIngController extends GetxController {
     update();
   }
 
+
+
   @override
   void onInit() {
     super.onInit();

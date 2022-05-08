@@ -54,7 +54,7 @@ class _FoodVisionState extends State<FoodVision> {
       _recognitions = recognitions!;
       fvingController.recgResult.value = _recognitions!;
       for (int i = 0; i < _recognitions!.length; i++) {
-        fvingController.fvingResult.add(_recognitions![i]['detectedClass']);
+        fvingController.fvingResult.add(toKorean(_recognitions![i]['detectedClass']));
       }
     });
   }
