@@ -16,7 +16,7 @@ recipeList() {
           recipeController.recipeFinder(); // --> Causing Error
           return Container(
               width: displayWidth * 0.8,
-              height: displayHeight * 0.17,
+              height: displayHeight * 0.2,
               child: ListView.builder(
                   scrollDirection: Axis.vertical,
                   shrinkWrap: true,

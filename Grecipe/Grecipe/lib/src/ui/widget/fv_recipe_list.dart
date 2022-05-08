@@ -22,7 +22,7 @@ fvrecipeList() {
               child: ListView.builder(
                   scrollDirection: Axis.vertical,
                   shrinkWrap: true,
-                  itemCount: fvrecipeController.avaliableRecipe.length,
+                  itemCount: fvrecipeController.fvavaliableRecipe.length,
                   itemBuilder: (BuildContext context, int index) {
                     return Container(
                         width: displayWidth * 0.1,
@@ -38,13 +38,13 @@ fvrecipeList() {
                           SizedBox(
                             width: displayWidth * 0.6,
                             child: Text(
-                                ' ${fvrecipeController.avaliableRecipe[index][1][0]}'),
+                                ' ${fvrecipeController.fvavaliableRecipe[index][1][0]}'),
                           ),
                           const Spacer(),
                           IconButton(
                             onPressed: () {
-                              fvrecipeController.selectedRecipe.value =
-                                  fvrecipeController.selectedRecipeIndex[index];
+                              fvrecipeController.fvselectedRecipe.value =
+                                  fvrecipeController.fvselectedRecipeIndex[index];
                               Get.to(() => foodVisionRecipePage(),
                                   transition: Transition.cupertino);
                             },

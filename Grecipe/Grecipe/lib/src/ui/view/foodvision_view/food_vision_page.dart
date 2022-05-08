@@ -32,7 +32,7 @@ class _FoodVisionState extends State<FoodVision> {
 
   // this function detects the objects on the image
   detectObject(File image) async {
-    fvingController.ingResult.clear();
+    fvingController.fvingResult.clear();
     var recognitions = await Tflite.detectObjectOnImage(
         path: image.path, // required
         model: "SSDMobileNet",
@@ -54,7 +54,7 @@ class _FoodVisionState extends State<FoodVision> {
       _recognitions = recognitions!;
       fvingController.recgResult.value = _recognitions!;
       for (int i = 0; i < _recognitions!.length; i++) {
-        fvingController.ingResult.add(_recognitions![i]['detectedClass']);
+        fvingController.fvingResult.add(_recognitions![i]['detectedClass']);
       }
     });
   }
@@ -159,7 +159,7 @@ class _FoodVisionState extends State<FoodVision> {
                           top: displayHeight * 0.02,
                           bottom: displayHeight * 0.01),
                       child: Text(
-                        '${fvingController.ingResult.length}건의 인식된 재료',
+                        '${fvingController.fvingResult.length}건의 인식된 재료',
                         style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: displayHeight * 0.02),
@@ -186,7 +186,7 @@ class _FoodVisionState extends State<FoodVision> {
                               left: displayWidth * 0.03,
                               right: displayWidth * 0.04),
                           child: GridView.builder(
-                              itemCount: fvingController.ingResult.length + 1,
+                              itemCount: fvingController.fvingResult.length + 1,
                               gridDelegate:
                                   SliverGridDelegateWithFixedCrossAxisCount(
                                       crossAxisCount: 5,
@@ -199,10 +199,10 @@ class _FoodVisionState extends State<FoodVision> {
                                       fvingController.fvSelectedIndex.value =
                                           index;
                                       if (index <
-                                          fvingController.ingResult.length) {
+                                          fvingController.fvingResult.length) {
                                         fvingController.fvSelectedIcon.value =
                                             toKorean(fvingController
-                                                .ingResult[index]);
+                                                .fvingResult[index]);
                                         print('item selected');
                                         {
                                           print(
@@ -211,7 +211,7 @@ class _FoodVisionState extends State<FoodVision> {
                                               transition: Transition.cupertino);
                                         }
                                       } else if (index ==
-                                          fvingController.ingResult.length) {
+                                          fvingController.fvingResult.length) {
                                         print('last item selected');
                                         {
                                           Get.to(() => FvIngredientAddPage(),
@@ -323,7 +323,7 @@ class _FoodVisionState extends State<FoodVision> {
   }
 
   condiCon(index) {
-    if (index < fvingController.ingResult.length) {
+    if (index < fvingController.fvingResult.length) {
       return Column(children: [
         Container(
           height: displayHeight * 0.066,
@@ -336,13 +336,13 @@ class _FoodVisionState extends State<FoodVision> {
           ),
           child: Image(
             image: AssetImage(
-                'assets/images/icons/ingredient_icon/${toKorean(fvingController.ingResult[index])}.png'), //to Korean
+                'assets/images/icons/ingredient_icon/${toKorean(fvingController.fvingResult[index])}.png'), //to Korean
           ),
         ),
         Container(
             child: FittedBox(
           fit: BoxFit.fitWidth,
-          child: Text('${toKorean(fvingController.ingResult[index])}'),
+          child: Text('${toKorean(fvingController.fvingResult[index])}'),
         ))
       ]);
     }

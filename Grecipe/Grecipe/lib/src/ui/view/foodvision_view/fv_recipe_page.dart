@@ -42,7 +42,7 @@ class foodVisionRecipePage extends StatelessWidget {
                 ],
               ),
               SingleChildScrollView(
-                  child: recipes(fvRecipeController.selectedRecipe.value)),
+                  child: recipes(fvRecipeController.fvselectedRecipe.value)),
             ]),
           ),
         ),
@@ -63,9 +63,9 @@ class foodVisionRecipePage extends StatelessWidget {
                 .RCPPARTSDTLS
                 .split(',');
             for (int j = 0; j < result.length; j++) {
-              for (int k = 0; k < fvingController.ingResult.length - 1; k++) {
+              for (int k = 0; k < fvingController.fvingResult.length; k++) {
                 //if(k ==0){ingDbController.ingResult.add('${dataBox.value.toMap()[k]?.toString().split(',')[1].substring(17).toString()}');}
-                if (result[j].contains(fvingController.ingResult[k])) {
+                if (result[j].contains(fvingController.fvingResult[k])) {
                   // include로 변경
                   count++;
                 }
