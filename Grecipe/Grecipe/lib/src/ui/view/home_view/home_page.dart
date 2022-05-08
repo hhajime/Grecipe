@@ -1,3 +1,4 @@
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:grecipe/src/data/list.dart';
 import 'package:grecipe/src/ui/view/home_view/ingredient_add_page.dart';
@@ -39,11 +40,29 @@ class HomePage extends StatelessWidget {
                 ),
                 body: SingleChildScrollView(
                     child: Container(
-                      alignment: Alignment.center,
+                  alignment: Alignment.center,
                   color: Colors.white,
                   child: Column(
                     children: [
-                      Image.asset('assets/images/banners/temp3.png'),
+                      Container(
+                        height: displayHeight * 0.07,
+                        width: displayWidth,
+                        color: const Color(0xFFF1E7DB),
+                        child: CarouselSlider(
+                          options: CarouselOptions(
+                              height: displayHeight * 0.2, autoPlay: true, viewportFraction: 0.9),
+                          items: ['temp3', 'temp4'].map((i) {
+                            return Builder(
+                              builder: (BuildContext context) {
+                                return FittedBox(
+                                    fit: BoxFit.fill,
+                                    child: Image.asset(
+                                        'assets/images/banners/$i.png'));
+                              },
+                            );
+                          }).toList(),
+                        ),
+                      ),
                       SizedBox(
                         height: displayHeight * 0.06,
                         child: Container(
