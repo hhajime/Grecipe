@@ -21,8 +21,7 @@ class RecipePage extends StatelessWidget {
           color: Colors.white,
           child: Scaffold(
             extendBodyBehindAppBar: true,
-            body: Stack(children: [
-              AppBar(
+            appBar: AppBar(
                 leading: BackButton(
                   color: mainColor,
                   onPressed: () {
@@ -41,9 +40,8 @@ class RecipePage extends StatelessWidget {
                       ))
                 ],
               ),
-              SingleChildScrollView(
+            body: SingleChildScrollView(
                   child: recipes(recipeController.selectedRecipe.value)),
-            ]),
           ),
         ),
       ),
@@ -90,10 +88,10 @@ class RecipePage extends StatelessWidget {
                         .ATTFILENOMAIN)),
               ),
               Container(
-                width: displayWidth * 0.8,
+                width: displayWidth * 1,
                 decoration: BoxDecoration(
                     color: Colors.white,
-                    borderRadius: BorderRadius.circular(20)),
+                    borderRadius: BorderRadius.circular(30)),
                 child: Column(
                   children: [
                     //Text(recipeController.recipe.asStream().toString()),
@@ -136,6 +134,7 @@ class RecipePage extends StatelessWidget {
                     ...manualList(
                         snapshot,
                         index),
+                    Container(height: 20,)
                   ],
                 ),
               ),

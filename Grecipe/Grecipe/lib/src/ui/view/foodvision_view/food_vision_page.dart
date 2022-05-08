@@ -32,6 +32,7 @@ class _FoodVisionState extends State<FoodVision> {
 
   // this function detects the objects on the image
   detectObject(File image) async {
+    fvingController.ingResult.clear();
     var recognitions = await Tflite.detectObjectOnImage(
         path: image.path, // required
         model: "SSDMobileNet",

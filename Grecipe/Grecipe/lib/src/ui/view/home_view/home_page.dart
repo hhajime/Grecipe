@@ -39,10 +39,11 @@ class HomePage extends StatelessWidget {
                 ),
                 body: SingleChildScrollView(
                     child: Container(
+                      alignment: Alignment.center,
                   color: Colors.white,
                   child: Column(
                     children: [
-                      Image.asset('assets/images/banners/home_banner_1.png'),
+                      Image.asset('assets/images/banners/temp3.png'),
                       SizedBox(
                         height: displayHeight * 0.06,
                         child: Container(
@@ -93,7 +94,7 @@ class HomePage extends StatelessWidget {
                       ),
                       SizedBox(
                           width: displayWidth * 0.8,
-                          height: displayHeight * 0.2,
+                          height: displayHeight * 0.3,
                           child: TabBarView(
                               controller: _tabx.controller,
                               children: [

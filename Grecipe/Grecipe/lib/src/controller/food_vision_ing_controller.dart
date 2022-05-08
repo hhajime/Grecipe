@@ -20,6 +20,7 @@ class FoodVisionIngController extends GetxController {
 
   deleteFvIng(index) {
     ingResult.removeAt(index);
+    update();
   }
 
   @override

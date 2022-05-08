@@ -36,19 +36,10 @@ fvrecipeList() {
                         ),
                         child: Row(children: [
                           SizedBox(
-                            width: displayWidth * 0.35,
+                            width: displayWidth * 0.6,
                             child: Text(
-                                ' ${fvrecipeController.avaliableRecipe[index][1]}'),
+                                ' ${fvrecipeController.avaliableRecipe[index][1][0]}'),
                           ),
-                          SizedBox(
-                              width: displayWidth * 0.3,
-                              height: 15,
-                              child: Row(children: [
-                                availRecipeIcons('김치'),
-                                availRecipeIcons('쌀'),
-                                availRecipeIcons('양파'),
-                                availRecipeIcons('파'),
-                              ])),
                           const Spacer(),
                           IconButton(
                             onPressed: () {

@@ -16,6 +16,14 @@ String shelfLife = 'good';
 TextEditingController ingname = TextEditingController();
 TextEditingController ingmemo = TextEditingController();
 
+BoxShadow mainColorShadow = 
+      BoxShadow(
+        color: mainColor.withOpacity(0.5),
+        spreadRadius: 3,
+        blurRadius: 5,
+        offset: Offset(0, 3), // changes position of shadow
+      );
+
 List ingList_vegetable = [
   '양배추',
   '당근',

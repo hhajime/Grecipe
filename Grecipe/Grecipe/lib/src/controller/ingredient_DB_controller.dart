@@ -96,6 +96,7 @@ final List<String> ingResult1 = <String>[
             shelfLife: shelfLife,
             memo: ingmemo.text);
     dataBox.value.putAt(index, data);
+    ingResult =  Hive.box<DataModel>('dbs').values.map((e) => e.ingredientName).toList();
     print('db updated ${data}');
     //print('db length: ${dataBox.length}');
     update();
@@ -104,8 +105,7 @@ final List<String> ingResult1 = <String>[
   deleteIng(index) async {
     dataBox.value.deleteAt(index);
     print('db deleted');
-    dbSort();
-    readAllIng();
+    ingResult =  Hive.box<DataModel>('dbs').values.map((e) => e.ingredientName).toList();
     //print('db length: ${dataBox.length}');
     //sorting
     //dbSort();

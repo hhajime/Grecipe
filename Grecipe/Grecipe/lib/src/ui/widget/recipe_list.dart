@@ -22,7 +22,11 @@ recipeList() {
                   shrinkWrap: true,
                   itemCount: recipeController.avaliableRecipe.length,
                   itemBuilder: (BuildContext context, int index) {
-                    return Container(
+                    return InkResponse(
+                    onTap: () {recipeController.selectedRecipe.value = recipeController.selectedRecipeIndex[index];
+                              Get.to(() => RecipePage(),
+                                  transition: Transition.cupertino);},
+                    child: Container(
                         width: displayWidth * 0.1,
                         height: displayHeight * 0.05,
                         margin: EdgeInsets.only(bottom: displayHeight * 0.01),
@@ -34,31 +38,26 @@ recipeList() {
                         ),
                         child: Row(children: [
                           SizedBox(
-                            width: displayWidth * 0.35,
+                            width: displayWidth * 0.65,
                             child: Text(
-                                ' ${recipeController.avaliableRecipe[index][1]}'),
+                                ' ${recipeController.avaliableRecipe[index][1][0]}',style: TextStyle(fontSize: displayHeight * 0.015),),
                           ),
-                          SizedBox(
-                              width: displayWidth * 0.3,
-                              height: 15,
-                              child: Row(children: [
-                                availRecipeIcons('김치'),
-                                availRecipeIcons('쌀'),
-                                availRecipeIcons('양파'),
-                                availRecipeIcons('파'),
-                              ])),
+                          // SizedBox( 
+                          //     width: displayWidth * 0.3,
+                          //     height: 15,
+                          //     child: Row(children: [
+                          //       availRecipeIcons('김치'),
+                          //       availRecipeIcons('쌀'),
+                          //       availRecipeIcons('양파'),
+                          //       availRecipeIcons('파'),
+                          //     ])),
                           const Spacer(),
-                          IconButton(
-                            onPressed: () { recipeController.selectedRecipe.value = recipeController.selectedRecipeIndex[index];
-                              Get.to(() => RecipePage(),
-                                  transition: Transition.cupertino);
-                            },
-                            icon: Icon(
+                            Icon(
                               Icons.arrow_forward_rounded,
                               color: mainColor,
+                              size: displayHeight * 0.03,
                             ),
-                          )
-                        ]));
+                        ])));
                   }));
         } else if (snapshot.hasError) {
           return Text("${snapshot.error}");
