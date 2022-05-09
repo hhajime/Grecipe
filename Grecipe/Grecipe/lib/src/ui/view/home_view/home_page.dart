@@ -50,7 +50,9 @@ class HomePage extends StatelessWidget {
                         color: const Color(0xFFF1E7DB),
                         child: CarouselSlider(
                           options: CarouselOptions(
-                              height: displayHeight * 0.2, autoPlay: true, viewportFraction: 0.9),
+                              height: displayHeight * 0.2,
+                              autoPlay: true,
+                              viewportFraction: 0.9),
                           items: ['temp3', 'temp4'].map((i) {
                             return Builder(
                               builder: (BuildContext context) {

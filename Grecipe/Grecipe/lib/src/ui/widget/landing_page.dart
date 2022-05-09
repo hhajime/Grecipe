@@ -20,12 +20,12 @@ class LandingPage extends StatelessWidget {
         data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),
         child: SizedBox(
           height: displayHeight * 0.07,
-          child: Wrap(children: [BottomNavigationBar(
+          child: BottomNavigationBar(
             showUnselectedLabels: true,
             showSelectedLabels: true,
             onTap: landingPageController.changeTabIndex,
             currentIndex: landingPageController.tabIndex.value,
-            backgroundColor: Colors.white,
+            backgroundColor: subColor,
             unselectedItemColor: mainColor.withOpacity(0.5),
             selectedItemColor: mainColor,
             unselectedLabelStyle: unselectedLabelStyle,
@@ -65,7 +65,7 @@ class LandingPage extends StatelessWidget {
                 backgroundColor: const Color.fromRGBO(36, 54, 101, 1.0),
               ),
             ],
-          ),])
+          ),
         )));
   }
 
