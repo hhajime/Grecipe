@@ -19,7 +19,7 @@ class LandingPage extends StatelessWidget {
     return Obx(() => MediaQuery(
         data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),
         child: SizedBox(
-          height: displayHeight * 0.07,
+          height: displayHeight * 0.06,
           child: BottomNavigationBar(
             showUnselectedLabels: true,
             showSelectedLabels: true,
@@ -33,7 +33,7 @@ class LandingPage extends StatelessWidget {
             items: [
               BottomNavigationBarItem(
                 icon: Container(
-                  margin: const EdgeInsets.only(bottom: 10),
+                  margin: const EdgeInsets.only(bottom: 5),
                   child: Icon(
                     Icons.home,
                     size: displayHeight * 0.02,
@@ -44,7 +44,7 @@ class LandingPage extends StatelessWidget {
               ),
               BottomNavigationBarItem(
                 icon: Container(
-                  margin: const EdgeInsets.only(bottom: 10),
+                  margin: const EdgeInsets.only(bottom: 5),
                   child: Icon(
                     Icons.remove_red_eye,
                     size: displayHeight * 0.02,
@@ -55,7 +55,7 @@ class LandingPage extends StatelessWidget {
               ),
               BottomNavigationBarItem(
                 icon: Container(
-                  margin: const EdgeInsets.only(bottom: 10),
+                  margin: const EdgeInsets.only(bottom: 5),
                   child: Icon(
                     Icons.location_history,
                     size: displayHeight * 0.02,
