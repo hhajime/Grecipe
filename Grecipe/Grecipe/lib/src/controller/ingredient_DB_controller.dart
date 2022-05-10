@@ -61,7 +61,6 @@ final List<String> ingResult1 = <String>[
     //readAllIng();
     ingResult =  Hive.box<DataModel>('dbs').values.map((e) => e.ingredientName).toList();
     print(ingResult);
-    print(ingResult1);
     update();
   }
 
@@ -72,14 +71,6 @@ final List<String> ingResult1 = <String>[
     print('this ${dataBox.value.values.map((e) => e.userSpecIngredientName).toList()[index]}');
     print('this ${dataBox.value.values.map((e) => e.shelfLife).toList()[index]}');
     print('this ${dataBox.value.values.map((e) => e.memo).toList()[index]}');
-    /** 
-    print('db created');
-    print('index = ${dataBox.toMap()[index]?.toJson().toString().split(',')[0].substring(7)}');
-    print('ingredientName = ${dataBox.toMap()[index]?.toJson().toString().split(',')[1].substring(17)}');
-    print('userSpecIngredientName = ${dataBox.toMap()[index]?.toJson().toString().split(',')[2].substring(24)}');
-    print('shelfLife = ${dataBox.toMap()[index]?.toJson().toString().split(',')[3].substring(11)}');
-    print('memo = ${dataBox.toMap()[index]?.toJson().toString().split(',')[4].substring(6)}');
-    **/
   }
 
   readAllIng(){
@@ -97,7 +88,7 @@ final List<String> ingResult1 = <String>[
             memo: ingmemo.text);
     dataBox.value.putAt(index, data);
     ingResult =  Hive.box<DataModel>('dbs').values.map((e) => e.ingredientName).toList();
-    print('db updated ${data}');
+    print('db updated $data');
     //print('db length: ${dataBox.length}');
     update();
   }
