@@ -128,22 +128,19 @@ class HomePage extends StatelessWidget {
                         width: displayWidth * 0.8,
                         color: mainColor,
                       ),
-                      Row(children: [
-                        Container(
-                          width: displayWidth * 0.8,
-                          alignment: Alignment.centerLeft,
-                          padding: EdgeInsets.only(
-                              top: displayHeight * 0.03,
-                              bottom: displayHeight * 0.02),
-                          child: Text(
-                            '추천 레시피 목록',
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: displayHeight * 0.02),
-                          ),
+                      Container(
+                        width: displayWidth * 0.8,
+                        alignment: Alignment.centerLeft,
+                        padding: EdgeInsets.only(
+                            top: displayHeight * 0.03,
+                            bottom: displayHeight * 0.02),
+                        child: Text(
+                          '추천 레시피 목록',
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: displayHeight * 0.02),
                         ),
-                        Container(child: const Text('레시피 추가하기'),)
-                      ]),
+                      ),
                       recipeList()
                     ],
                   ),
@@ -181,8 +178,9 @@ class HomePage extends StatelessWidget {
         Container(
             child: FittedBox(
                 fit: BoxFit.fitWidth,
-                child: Text(
-                    ingDbController.dataBox.value.values.map((e) => e.ingredientName).toList()[index])
+                child: Text(ingDbController.dataBox.value.values
+                    .map((e) => e.ingredientName)
+                    .toList()[index])
                 //dataBox.value.toMap()[index]?.toJson().toString().split(',')[2].substring(24) == '' ? Obx(()=>Text('${dataBox.value.toMap()[index]?.toJson().toString().split(',')[1].substring(17)}')) : Obx(()=>Text('${dataBox.value.toMap()[index]?.toJson().toString().split(',')[2].substring(24)}')),
                 ))
       ]);

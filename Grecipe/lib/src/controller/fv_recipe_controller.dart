@@ -54,7 +54,7 @@ class FoodVisionRecipeController extends GetxController {
         }
       }
     }
-    print(fvavaliableRecipe);
+    //print(fvavaliableRecipe);
   }
 
   @override
@@ -62,5 +62,4 @@ class FoodVisionRecipeController extends GetxController {
     super.onInit();
     recipe = readJson();
   }
-
 }
