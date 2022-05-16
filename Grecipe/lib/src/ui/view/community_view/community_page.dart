@@ -69,11 +69,11 @@ class CommunityPage extends StatelessWidget {
                           Container(
                             color: mainColor,
                             height: displayHeight * 0.25,
-                            child: CarouselSlider.builder(
+                            /*child: CarouselSlider.builder(
                                 itemCount: itemCount,
                                 itemBuilder: TrendyRecipeBuilder(
                                     BuildContext(context), itemCount),
-                                options: CarouselOptions()),
+                                options: CarouselOptions()),*/
                           ),
                         ],
                       ))),
