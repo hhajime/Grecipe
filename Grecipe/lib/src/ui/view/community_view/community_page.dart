@@ -1,4 +1,3 @@
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:grecipe/src/data/list.dart';
 
@@ -52,14 +51,15 @@ class CommunityPage extends StatelessWidget {
           SliverList(
             delegate: SliverChildListDelegate([
               Center(
-                  child: Container(
+                  child: SizedBox(
                       height: displayHeight * 0.35,
                       width: displayWidth * 0.8,
                       child: Column(
                         children: [
                           Container(
                               alignment: Alignment.centerLeft,
-                              padding: EdgeInsets.only(top: 20, bottom: 20),
+                              padding:
+                                  const EdgeInsets.only(top: 20, bottom: 20),
                               child: Text(
                                 'Trendy Recipes',
                                 style: TextStyle(
@@ -76,6 +76,17 @@ class CommunityPage extends StatelessWidget {
                                 options: CarouselOptions()),*/
                           ),
                         ],
+                      ))),
+              Center(
+                  child: Container(
+                      width: displayWidth * 0.8,
+                      alignment: Alignment.centerLeft,
+                      padding: const EdgeInsets.only(top: 20, bottom: 20),
+                      child: Text(
+                        'Recent',
+                        style: TextStyle(
+                            fontSize: displayHeight * 0.02,
+                            fontWeight: FontWeight.bold),
                       ))),
               Center(
                   child: Container(

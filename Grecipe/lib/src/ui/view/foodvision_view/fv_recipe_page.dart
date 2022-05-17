@@ -20,29 +20,27 @@ class foodVisionRecipePage extends StatelessWidget {
           color: Colors.white,
           child: Scaffold(
             extendBodyBehindAppBar: true,
-            body: Stack(children: [
-              AppBar(
-                leading: BackButton(
-                  color: mainColor,
-                  onPressed: () {
-                    Get.back();
-                  },
-                ),
-                centerTitle: true,
-                backgroundColor: Colors.transparent,
-                elevation: 0,
-                actions: [
-                  IconButton(
-                      onPressed: () {},
-                      icon: Icon(
-                        Icons.star_border_outlined,
-                        color: mainColor,
-                      ))
-                ],
+            appBar: AppBar(
+              leading: BackButton(
+                color: mainColor,
+                onPressed: () {
+                  Get.back();
+                },
               ),
-              SingleChildScrollView(
-                  child: recipes(fvRecipeController.fvselectedRecipe.value)),
-            ]),
+              centerTitle: true,
+              backgroundColor: Colors.transparent,
+              elevation: 0,
+              actions: [
+                IconButton(
+                    onPressed: () {},
+                    icon: Icon(
+                      Icons.star_border_outlined,
+                      color: mainColor,
+                    ))
+              ],
+            ),
+            body: SingleChildScrollView(
+                child: recipes(fvRecipeController.fvselectedRecipe.value)),
           ),
         ),
       ),

@@ -54,8 +54,8 @@ class HomePage extends StatelessWidget {
                           items: ['temp3', 'temp4'].map((i) {
                             return Builder(
                               builder: (BuildContext context) {
-                                return FittedBox(
-                                    fit: BoxFit.fill,
+                                return SizedBox(
+                                    width: displayWidth,
                                     child: Image.asset(
                                         'assets/images/banners/$i.png'));
                               },

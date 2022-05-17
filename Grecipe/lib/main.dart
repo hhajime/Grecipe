@@ -27,12 +27,19 @@ class MyApp extends StatelessWidget {
     displayHeight = Get.height;
     displayRatio = displayHeight / displayWidth;
 
-    return GetMaterialApp(
-      debugShowCheckedModeBanner: false,
-      useInheritedMediaQuery: true,
-      title: 'Flutter Demo',
-      theme: ThemeData(fontFamily: 'Roboto'),
-      home: const LoadingPage(),
-    );
+    return GestureDetector(
+        onTap: () {
+          FocusScopeNode currentFocus = FocusScope.of(context);
+          if (!currentFocus.hasPrimaryFocus) {
+            currentFocus.unfocus();
+          }
+        },
+        child: GetMaterialApp(
+          debugShowCheckedModeBanner: false,
+          useInheritedMediaQuery: true,
+          title: 'Flutter Demo',
+          theme: ThemeData(fontFamily: 'Roboto'),
+          home: const LoadingPage(),
+        ));
   }
 }
