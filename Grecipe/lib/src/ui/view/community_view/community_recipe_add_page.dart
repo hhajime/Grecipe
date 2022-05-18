@@ -1,11 +1,14 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:grecipe/src/data/list.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:grecipe/src/controller/community_recipe_add_controller.dart';
 
 class CommunityRecipeAddPage extends StatelessWidget {
-  const CommunityRecipeAddPage({Key? key}) : super(key: key);
+  final rcpAddController = CommunityRecipeAddController();
 
+  CommunityRecipeAddPage({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -16,10 +19,16 @@ class CommunityRecipeAddPage extends StatelessWidget {
         stretch: true,
         expandedHeight: 200,
         flexibleSpace: FlexibleSpaceBar(
-            title: const Text('탭하여 이미지 추가하기'),
-            background: _image == null
-                ? Text('No image Selected')
-                : Image.file(File(_image!.path))),
+            background: rcpAddController.titleImage == null
+                ? InkWell(
+                    onTap: () {
+                      rcpAddController.pickImage();
+                    },
+                    child: const Text(
+                      'No image Selected',
+                      style: TextStyle(fontSize: 50),
+                    ))
+                : Image.file(File(rcpAddController.titleImage!.path))),
       ),
       SliverList(
           delegate: SliverChildListDelegate(
@@ -35,13 +44,5 @@ class CommunityRecipeAddPage extends StatelessWidget {
         ],
       ))
     ]));
-  }
-
-  Future getImageFromGallary() async {
-    var image =
-        await ImagePicker.platform.pickImage(source: ImageSource.gallery);
-    setState(() {
-      _image = image;
-    });
   }
 }

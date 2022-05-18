@@ -57,7 +57,7 @@ class CommunityPage extends StatelessWidget {
                               icon:
                                   Icon(Icons.add_box_rounded, color: mainColor),
                               onPressed: () {
-                                Get.to(() => const CommunityRecipeAddPage());
+                                Get.to(() => CommunityRecipeAddPage());
                               },
                             )),
                       ),
