@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:grecipe/src/data/list.dart';
+import 'package:get/get.dart';
+import 'package:grecipe/src/ui/view/community_view/community_recipe_add_page.dart';
+import 'package:grecipe/src/ui/view/mypage_view/mypage.dart';
 
 class CommunityPage extends StatelessWidget {
   const CommunityPage({Key? key}) : super(key: key);
@@ -32,7 +35,9 @@ class CommunityPage extends StatelessWidget {
                 actions: [
                   IconButton(
                     icon: const Icon(Icons.location_history),
-                    onPressed: () {},
+                    onPressed: () {
+                      Get.to(() => const MyPage());
+                    },
                   ),
                 ],
                 bottom: AppBar(
@@ -48,8 +53,13 @@ class CommunityPage extends StatelessWidget {
                         decoration: InputDecoration(
                             hintText: 'Search for recipe',
                             prefixIcon: Icon(Icons.search, color: mainColor),
-                            suffixIcon:
-                                Icon(Icons.add_box_rounded, color: mainColor)),
+                            suffixIcon: IconButton(
+                              icon:
+                                  Icon(Icons.add_box_rounded, color: mainColor),
+                              onPressed: () {
+                                Get.to(() => const CommunityRecipeAddPage());
+                              },
+                            )),
                       ),
                     ),
                   ),
