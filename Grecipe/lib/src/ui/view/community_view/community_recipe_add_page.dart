@@ -11,38 +11,63 @@ class CommunityRecipeAddPage extends StatelessWidget {
   CommunityRecipeAddPage({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        body: CustomScrollView(slivers: [
-      SliverAppBar(
-        automaticallyImplyLeading: false,
-        backgroundColor: Colors.black12,
-        stretch: true,
-        expandedHeight: 200,
-        flexibleSpace: FlexibleSpaceBar(
-            background: rcpAddController.titleImage == null
-                ? InkWell(
-                    onTap: () {
-                      rcpAddController.pickImage();
-                    },
-                    child: const Text(
-                      'No image Selected',
-                      style: TextStyle(fontSize: 50),
-                    ))
-                : Image.file(File(rcpAddController.titleImage!.path))),
-      ),
-      SliverList(
-          delegate: SliverChildListDelegate(
-        [
-          Container(
-            height: 500,
-            color: Colors.white,
+    return GestureDetector(
+        onTap: () {
+          FocusScopeNode currentFocus = FocusScope.of(context);
+          if (!currentFocus.hasPrimaryFocus) {
+            currentFocus.unfocus();
+          }
+        },
+        child: Scaffold(
+            body: CustomScrollView(slivers: [
+          SliverAppBar(
+            automaticallyImplyLeading: false,
+            backgroundColor: Colors.black12,
+            stretch: true,
+            expandedHeight: 200,
+            flexibleSpace: FlexibleSpaceBar(
+                background: Obx(() =>
+                    rcpAddController.selectedImagePath.value == ''
+                        ? InkWell(
+                            onTap: () {
+                              rcpAddController.pickImage(ImageSource.gallery);
+                            },
+                            child: const Text(
+                              'No image Selected',
+                              style: TextStyle(fontSize: 50),
+                            ))
+                        : Image.file(
+                            File(rcpAddController.selectedImagePath.value)))),
           ),
-          Container(
-            height: 500,
-            color: Colors.red,
-          )
-        ],
-      ))
-    ]));
+          SliverList(
+              delegate: SliverChildListDelegate(
+            [
+              Container(
+                height: 500,
+                color: Colors.white,
+                child: Column(
+                  children: [
+                    Container(
+                      child: TextField(
+                        decoration: InputDecoration(
+                            border: OutlineInputBorder(),
+                            labelText: 'Title',
+                            labelStyle: TextStyle(color: Colors.black)),
+                        onChanged: (value) {
+                          rcpAddController.title.value = value;
+                        },
+                      ),
+                    ),
+                    Container()
+                  ],
+                ),
+              ),
+              Container(
+                height: 500,
+                color: Colors.red,
+              )
+            ],
+          ))
+        ])));
   }
 }
