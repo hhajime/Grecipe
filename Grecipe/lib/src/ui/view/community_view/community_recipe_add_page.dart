@@ -94,6 +94,7 @@ class CommunityRecipeAddPage extends StatelessWidget {
                         child: Row(
                           children: [
                             Container(
+                                height: displayHeight * 0.1,
                                 width: displayWidth * 0.2,
                                 child: Text('요리 소개',
                                     style: TextStyle(
@@ -126,6 +127,106 @@ class CommunityRecipeAddPage extends StatelessWidget {
                                               ' ex) 요리 레시피 ep1 입니다. 쉽고 빠르게 맛있는 요리를 조리해보세요!',
                                           border: InputBorder.none,
                                         ))))
+                          ],
+                        )),
+                    Container(
+                        padding: const EdgeInsets.only(top: 10),
+                        width: displayWidth * 0.8,
+                        alignment: Alignment.center,
+                        child: Row(
+                          children: [
+                            SizedBox(
+                                width: displayWidth * 0.2,
+                                child: Text('요리 제목',
+                                    style: TextStyle(
+                                        fontSize: displayHeight * 0.02,
+                                        fontWeight: FontWeight.bold))),
+                            Container(
+                                width: displayWidth * 0.59,
+                                height: displayHeight * 0.05,
+                                decoration: BoxDecoration(
+                                    borderRadius: const BorderRadius.all(
+                                        Radius.circular(10)),
+                                    color: subColor,
+                                    boxShadow: const [
+                                      BoxShadow(
+                                          offset: Offset(5, 5),
+                                          color: Colors.black12,
+                                          blurRadius: 10,
+                                          spreadRadius: 5)
+                                    ],
+                                    border:
+                                        Border.all(color: mainColor, width: 2)),
+                                child: Container(
+                                    padding: const EdgeInsets.only(left: 10),
+                                    child: const TextField(
+                                        decoration: InputDecoration(
+                                      hintText: ' ex) 김치 볶음밥',
+                                      border: InputBorder.none,
+                                    ))))
+                          ],
+                        )),
+                    Container(
+                        padding: const EdgeInsets.only(top: 10),
+                        width: displayWidth * 0.8,
+                        alignment: Alignment.center,
+                        child: Row(
+                          children: [
+                            SizedBox(
+                                width: displayWidth * 0.2,
+                                child: Text('재료 추가',
+                                    style: TextStyle(
+                                        fontSize: displayHeight * 0.02,
+                                        fontWeight: FontWeight.bold))),
+                            Container(
+                                width: displayWidth * 0.29,
+                                height: displayHeight * 0.05,
+                                decoration: BoxDecoration(
+                                    borderRadius: const BorderRadius.all(
+                                        Radius.circular(10)),
+                                    color: subColor,
+                                    boxShadow: const [
+                                      BoxShadow(
+                                          offset: Offset(5, 5),
+                                          color: Colors.black12,
+                                          blurRadius: 10,
+                                          spreadRadius: 5)
+                                    ],
+                                    border:
+                                        Border.all(color: mainColor, width: 2)),
+                                child: Container(
+                                    padding: const EdgeInsets.only(left: 10),
+                                    child: const TextField(
+                                        decoration: InputDecoration(
+                                      hintText: ' ex) 김치',
+                                      border: InputBorder.none,
+                                    )))),
+                            Padding(
+                                padding:
+                                    EdgeInsets.only(left: displayWidth * 0.01)),
+                            Container(
+                                width: displayWidth * 0.29,
+                                height: displayHeight * 0.05,
+                                decoration: BoxDecoration(
+                                    borderRadius: const BorderRadius.all(
+                                        Radius.circular(10)),
+                                    color: subColor,
+                                    boxShadow: const [
+                                      BoxShadow(
+                                          offset: Offset(5, 5),
+                                          color: Colors.black12,
+                                          blurRadius: 10,
+                                          spreadRadius: 5)
+                                    ],
+                                    border:
+                                        Border.all(color: mainColor, width: 2)),
+                                child: Container(
+                                    padding: const EdgeInsets.only(left: 10),
+                                    child: const TextField(
+                                        decoration: InputDecoration(
+                                      hintText: ' ex) 150g',
+                                      border: InputBorder.none,
+                                    )))),
                           ],
                         )),
                   ],
