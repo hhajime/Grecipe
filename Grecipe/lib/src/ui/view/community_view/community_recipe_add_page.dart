@@ -229,6 +229,229 @@ class CommunityRecipeAddPage extends StatelessWidget {
                                     )))),
                           ],
                         )),
+                    //AddRcpParts(),
+                    const Padding(padding: EdgeInsets.only(top: 10)),
+                    SizedBox(
+                      width: displayWidth * 0.8,
+                      child: Row(
+                        children: [
+                          SizedBox(
+                            width: displayWidth * 0.2,
+                          ),
+                          Container(
+                              width: displayWidth * 0.59,
+                              height: displayHeight * 0.05,
+                              decoration: BoxDecoration(
+                                  borderRadius: const BorderRadius.all(
+                                      Radius.circular(10)),
+                                  color: subColor,
+                                  boxShadow: const [
+                                    BoxShadow(
+                                        offset: Offset(5, 5),
+                                        color: Colors.black12,
+                                        blurRadius: 10,
+                                        spreadRadius: 5)
+                                  ],
+                                  border:
+                                      Border.all(color: mainColor, width: 2)),
+                              child: ElevatedButton(
+                                onPressed: () => {},
+                                style: ButtonStyle(
+                                  backgroundColor:
+                                      MaterialStateProperty.all(mainColor),
+                                ),
+                                child: Text('+',
+                                    style: TextStyle(
+                                        fontSize: displayHeight * 0.02,
+                                        fontWeight: FontWeight.bold)),
+                              )),
+                        ],
+                      ),
+                    ),
+                    Container(
+                        padding: const EdgeInsets.only(top: 10),
+                        width: displayWidth * 0.8,
+                        alignment: Alignment.center,
+                        child: Row(
+                          children: [
+                            SizedBox(
+                                width: displayWidth * 0.2,
+                                child: Text('양념 추가',
+                                    style: TextStyle(
+                                        fontSize: displayHeight * 0.02,
+                                        fontWeight: FontWeight.bold))),
+                            Container(
+                                width: displayWidth * 0.29,
+                                height: displayHeight * 0.05,
+                                decoration: BoxDecoration(
+                                    borderRadius: const BorderRadius.all(
+                                        Radius.circular(10)),
+                                    color: subColor,
+                                    boxShadow: const [
+                                      BoxShadow(
+                                          offset: Offset(5, 5),
+                                          color: Colors.black12,
+                                          blurRadius: 10,
+                                          spreadRadius: 5)
+                                    ],
+                                    border:
+                                        Border.all(color: mainColor, width: 2)),
+                                child: Container(
+                                    padding: const EdgeInsets.only(left: 10),
+                                    child: const TextField(
+                                        decoration: InputDecoration(
+                                      hintText: ' ex) 간장',
+                                      border: InputBorder.none,
+                                    )))),
+                            Padding(
+                                padding:
+                                    EdgeInsets.only(left: displayWidth * 0.01)),
+                            Container(
+                                width: displayWidth * 0.29,
+                                height: displayHeight * 0.05,
+                                decoration: BoxDecoration(
+                                    borderRadius: const BorderRadius.all(
+                                        Radius.circular(10)),
+                                    color: subColor,
+                                    boxShadow: const [
+                                      BoxShadow(
+                                          offset: Offset(5, 5),
+                                          color: Colors.black12,
+                                          blurRadius: 10,
+                                          spreadRadius: 5)
+                                    ],
+                                    border:
+                                        Border.all(color: mainColor, width: 2)),
+                                child: Container(
+                                    padding: const EdgeInsets.only(left: 10),
+                                    child: const TextField(
+                                        decoration: InputDecoration(
+                                      hintText: ' ex) 1/2T',
+                                      border: InputBorder.none,
+                                    )))),
+                          ],
+                        )),
+                    //AddRcpSources(),
+                    const Padding(padding: EdgeInsets.only(top: 10)),
+                    SizedBox(
+                      width: displayWidth * 0.8,
+                      child: Row(
+                        children: [
+                          SizedBox(
+                            width: displayWidth * 0.2,
+                          ),
+                          Container(
+                              width: displayWidth * 0.59,
+                              height: displayHeight * 0.05,
+                              decoration: BoxDecoration(
+                                  borderRadius: const BorderRadius.all(
+                                      Radius.circular(10)),
+                                  color: subColor,
+                                  boxShadow: const [
+                                    BoxShadow(
+                                        offset: Offset(5, 5),
+                                        color: Colors.black12,
+                                        blurRadius: 10,
+                                        spreadRadius: 5)
+                                  ],
+                                  border:
+                                      Border.all(color: mainColor, width: 2)),
+                              child: ElevatedButton(
+                                onPressed: () => {},
+                                style: ButtonStyle(
+                                  backgroundColor:
+                                      MaterialStateProperty.all(mainColor),
+                                ),
+                                child: Text('+',
+                                    style: TextStyle(
+                                        fontSize: displayHeight * 0.02,
+                                        fontWeight: FontWeight.bold)),
+                              )),
+                        ],
+                      ),
+                    ),
+                    Container(
+                      width: displayWidth * 0.8,
+                      alignment: Alignment.topLeft,
+                      padding: const EdgeInsets.only(top: 10, bottom: 10),
+                      child: Text('레시피 추가',
+                          style: TextStyle(
+                              fontSize: displayHeight * 0.02,
+                              fontWeight: FontWeight.bold)),
+                    ),
+                    Container(
+                        width: displayWidth * 0.8,
+                        height: displayHeight * 0.1,
+                        decoration: BoxDecoration(
+                            borderRadius:
+                                const BorderRadius.all(Radius.circular(10)),
+                            boxShadow: const [
+                              BoxShadow(
+                                  offset: Offset(5, 5),
+                                  color: Colors.white,
+                                  blurRadius: 10,
+                                  spreadRadius: 5)
+                            ],
+                            border: Border.all(color: mainColor, width: 2)),
+                        child: Row(
+                          children: [
+                            const Padding(padding: EdgeInsets.only(left: 5)),
+                            Container(
+                              width: displayHeight * 0.08,
+                              height: displayHeight * 0.08,
+                              decoration:
+                                  const BoxDecoration(color: Colors.black12),
+                              child: Center(
+                                  child: Text(
+                                '+',
+                                style: TextStyle(
+                                    fontSize: displayHeight * 0.05,
+                                    color: Colors.white),
+                              )),
+                            ),
+                            const Padding(padding: EdgeInsets.only(left: 6)),
+                            Container(
+                              padding: const EdgeInsets.only(top: 5),
+                              width: displayWidth * 0.55,
+                              height: displayHeight * 0.08,
+                              child: const TextField(
+                                  minLines: 1,
+                                  maxLines: 5,
+                                  keyboardType: TextInputType.multiline,
+                                  decoration: InputDecoration(
+                                    hintText: ' ex) 김치를 쫑쫑 썰어 넣고 밥을 준비해주세요',
+                                    border: InputBorder.none,
+                                  )),
+                            )
+                          ],
+                        )),
+                    const Padding(padding: EdgeInsets.only(top: 10)),
+                    Container(
+                      width: displayWidth * 0.8,
+                      height: displayHeight * 0.05,
+                      decoration: BoxDecoration(
+                          borderRadius:
+                              const BorderRadius.all(Radius.circular(10)),
+                          color: subColor,
+                          boxShadow: const [
+                            BoxShadow(
+                                offset: Offset(5, 5),
+                                color: Colors.black12,
+                                blurRadius: 10,
+                                spreadRadius: 5)
+                          ],
+                          border: Border.all(color: mainColor, width: 2)),
+                      child: ElevatedButton(
+                        onPressed: () => {},
+                        style: ButtonStyle(
+                          backgroundColor: MaterialStateProperty.all(mainColor),
+                        ),
+                        child: Text('+',
+                            style: TextStyle(
+                                fontSize: displayHeight * 0.02,
+                                fontWeight: FontWeight.bold)),
+                      ),
+                    )
                   ],
                 ),
               ),
