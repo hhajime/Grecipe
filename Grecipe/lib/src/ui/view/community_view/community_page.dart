@@ -3,9 +3,11 @@ import 'package:grecipe/src/data/list.dart';
 import 'package:get/get.dart';
 import 'package:grecipe/src/ui/view/community_view/community_recipe_add_page.dart';
 import 'package:grecipe/src/ui/view/mypage_view/mypage.dart';
+import 'package:grecipe/src/controller/firebase_controller.dart';
 
 class CommunityPage extends StatelessWidget {
-  const CommunityPage({Key? key}) : super(key: key);
+  final firebaseController = Get.put(FirebaseCloudFireStoreController());
+  CommunityPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

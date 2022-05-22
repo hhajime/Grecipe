@@ -89,7 +89,7 @@ class LandingPage extends StatelessWidget {
                     children: [
                       HomePage(),
                       FoodVision(),
-                      const CommunityPage(),
+                      CommunityPage(),
                       const MyPage()
                     ],
                   )),
