@@ -87,8 +87,20 @@ class CommunityPage extends StatelessWidget {
                                         fontWeight: FontWeight.bold),
                                   )),
                               Container(
-                                color: mainColor,
                                 height: displayHeight * 0.25,
+                                decoration: BoxDecoration(
+                                    borderRadius: const BorderRadius.all(
+                                        Radius.circular(10)),
+                                    color: subColor,
+                                    boxShadow: const [
+                                      BoxShadow(
+                                          offset: Offset(3, 3),
+                                          color: Colors.black12,
+                                          blurRadius: 5,
+                                          spreadRadius: 1)
+                                    ],
+                                    border:
+                                        Border.all(color: mainColor, width: 2)),
                                 /*child: CarouselSlider.builder(
                                 itemCount: itemCount,
                                 itemBuilder: TrendyRecipeBuilder(
@@ -113,7 +125,18 @@ class CommunityPage extends StatelessWidget {
                       child: Container(
                     height: displayHeight * 1.5,
                     width: displayWidth * 0.8,
-                    color: Colors.pink,
+                    decoration: BoxDecoration(
+                        borderRadius:
+                            const BorderRadius.all(Radius.circular(10)),
+                        color: subColor,
+                        boxShadow: const [
+                          BoxShadow(
+                              offset: Offset(3, 3),
+                              color: Colors.black12,
+                              blurRadius: 5,
+                              spreadRadius: 1)
+                        ],
+                        border: Border.all(color: mainColor, width: 2)),
                   )),
                 ]),
               ),
