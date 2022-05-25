@@ -121,7 +121,8 @@ class CommunityPage extends StatelessWidget {
                                 fontWeight: FontWeight.bold),
                           ))),
                   Center(
-                      // 한무 스크롤 가능하게
+
+                      /// 한무 스크롤 가능하게
                       child: Container(
                     height: displayHeight * 1.5,
                     width: displayWidth * 0.8,
