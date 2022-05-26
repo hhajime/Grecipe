@@ -105,7 +105,7 @@ class CommunityPage extends StatelessWidget {
                                 itemCount: itemCount,
                                 itemBuilder: TrendyRecipeBuilder(
                                     BuildContext(context), itemCount),
-                                options: CarouselOptions()),*/
+                                options: CarouselOptions())*/
                               ),
                             ],
                           ))),
