@@ -144,7 +144,9 @@ class CommunityPage extends StatelessWidget {
                                   color: Colors.green,
                                   child: Row(
                                     children: [
-                                      Container(),
+                                      Container(
+                                        child: Text('hello'),
+                                      ),
                                       Container(
                                         child: Column(),
                                       )
