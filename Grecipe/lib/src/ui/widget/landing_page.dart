@@ -22,6 +22,7 @@ class LandingPage extends StatelessWidget {
         child: SizedBox(
           height: displayHeight * 0.06,
           child: BottomNavigationBar(
+            type: BottomNavigationBarType.fixed,
             showUnselectedLabels: true,
             showSelectedLabels: true,
             onTap: landingPageController.changeTabIndex,
