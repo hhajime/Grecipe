@@ -9,6 +9,8 @@ import 'package:grecipe/src/controller/firebase_controller.dart';
 
 class CommunityPage extends StatelessWidget {
   final firebaseController = Get.put(FirebaseCloudFireStoreController());
+  int _current = 0;
+  final CarouselController _controller = CarouselController();
   CommunityPage({Key? key}) : super(key: key);
 
   @override
@@ -103,7 +105,7 @@ class CommunityPage extends StatelessWidget {
                                       ],
                                       border: Border.all(
                                           color: mainColor, width: 2)),
-                                  child: fireStoreOut()),
+                                  child: fireStoreOut('고구마죽')),
                             ],
                           ))),
                   Center(
@@ -157,7 +159,7 @@ class CommunityPage extends StatelessWidget {
         ));
   }
 
-  FutureBuilder fireStoreOut() {
+  FutureBuilder fireStoreOut(rcpName) {
     //추후 carousel slider, on tap적용
     return FutureBuilder(
         future: firebaseController.readData(),
@@ -172,7 +174,7 @@ class CommunityPage extends StatelessWidget {
                       child: Container(
                           width: displayWidth * 0.8,
                           child: Image.network(
-                            snapShot.data[0].data()['COOKRCP']['고구마죽']
+                            snapShot.data[0].data()['COOKRCP'][rcpName]
                                 ['RCPMAINIMAGE'],
                             fit: BoxFit.cover,
                           ))),
@@ -190,12 +192,12 @@ class CommunityPage extends StatelessWidget {
                             ),
                             child: Column(children: [
                               Text(
-                                '고구마죽',
+                                rcpName,
                                 style: TextStyle(
                                     fontSize: displayHeight * 0.02,
                                     fontWeight: FontWeight.bold),
                               ),
-                              Text(snapShot.data[0].data()['COOKRCP']['고구마죽']
+                              Text(snapShot.data[0].data()['COOKRCP'][rcpName]
                                   ['RCP_INTRO'])
                             ]),
                           ))),
