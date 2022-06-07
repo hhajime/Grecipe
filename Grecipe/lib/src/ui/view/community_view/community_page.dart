@@ -90,7 +90,26 @@ class CommunityPage extends StatelessWidget {
                                         fontSize: displayHeight * 0.02,
                                         fontWeight: FontWeight.bold),
                                   )),
-                              Container(
+                              CarouselSlider(
+                                  items: imageSliders,
+                                  carouselController: _controller,
+                                  options: CarouselOptions(
+                                      scrollDirection: Axis.horizontal,
+                                      enableInfiniteScroll: true,
+                                      viewportFraction: 0.6,
+                                      autoPlay: true,
+                                      autoPlayInterval:
+                                          const Duration(milliseconds: 2000),
+                                      autoPlayAnimationDuration:
+                                          const Duration(milliseconds: 1000),
+                                      enlargeCenterPage: true,
+                                      aspectRatio: 1.5,
+                                      onPageChanged: (index, reason) {
+                                        _current = index;
+                                      }))
+
+                              /** 
+                               Container( // Data from firebase
                                   height: displayHeight * 0.25,
                                   decoration: BoxDecoration(
                                       borderRadius: const BorderRadius.all(
@@ -106,13 +125,14 @@ class CommunityPage extends StatelessWidget {
                                       border: Border.all(
                                           color: mainColor, width: 2)),
                                   child: fireStoreOut('고구마죽')),
+                                  **/
                             ],
                           ))),
                   Center(
                       child: Container(
                           width: displayWidth * 0.8,
                           alignment: Alignment.centerLeft,
-                          padding: const EdgeInsets.only(top: 20, bottom: 20),
+                          padding: const EdgeInsets.only(bottom: 20),
                           child: Text(
                             'Recent Recipes',
                             style: TextStyle(
@@ -123,7 +143,7 @@ class CommunityPage extends StatelessWidget {
 
                       /// 한무 스크롤 가능하게
                       child: Container(
-                          height: displayHeight * 0.3,
+                          height: displayHeight * 0.4,
                           width: displayWidth * 0.8,
                           child: ListView(
                             physics: BouncingScrollPhysics(),
@@ -273,11 +293,14 @@ class CommunityPage extends StatelessWidget {
                     Text(
                       view,
                       style: TextStyle(
-                          fontSize: displayHeight * 0.02,
+                          fontSize: displayHeight * 0.018,
                           fontWeight: FontWeight.bold,
                           color: Colors.black54),
                     ),
-                    Text('views')
+                    Text(
+                      'views',
+                      style: TextStyle(fontSize: displayHeight * 0.013),
+                    )
                   ],
                 ),
               ),
@@ -286,3 +309,58 @@ class CommunityPage extends StatelessWidget {
         ));
   }
 }
+
+final List<List> imgList = [
+  [
+    'http://www.foodsafetykorea.go.kr/uploadimg/cook/10_00017_2.png',
+    '고구마죽',
+    '칼륨 듬뿍 고구마죽'
+  ],
+  [
+    'http://www.foodsafetykorea.go.kr/uploadimg/cook/10_00482_2.png',
+    '냉파스타',
+    '무더운 여름은 이걸로 끝'
+  ],
+  [
+    'http://www.foodsafetykorea.go.kr/uploadimg/cook/10_00290_2.png',
+    '샤브된장국',
+    '10분안에 조리 가능'
+  ]
+];
+
+final List<Widget> imageSliders = imgList
+    .map(
+      (item) => Container(
+        margin: const EdgeInsets.all(1.0),
+        child: ClipRRect(
+            borderRadius: const BorderRadius.all(Radius.circular(20.0)),
+            child: Stack(
+              children: <Widget>[
+                Image.network(item[0], fit: BoxFit.fitHeight),
+                Positioned.fill(
+                    child: Align(
+                        alignment: Alignment.bottomCenter,
+                        child: Container(
+                          height: displayHeight * 0.08,
+                          width: displayWidth * 0.6,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.only(
+                                topLeft: Radius.circular(10),
+                                topRight: Radius.circular(10)),
+                            color: Colors.white.withOpacity(0.7),
+                          ),
+                          child: Column(children: [
+                            Text(
+                              item[1],
+                              style: TextStyle(
+                                  fontSize: displayHeight * 0.02,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                            Text(item[2])
+                          ]),
+                        ))),
+              ],
+            )),
+      ),
+    )
+    .toList();

@@ -20,7 +20,7 @@ class LandingPage extends StatelessWidget {
     return Obx(() => MediaQuery(
         data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),
         child: SizedBox(
-          height: displayHeight * 0.06,
+          height: displayHeight * 0.08,
           child: BottomNavigationBar(
             type: BottomNavigationBarType.fixed,
             showUnselectedLabels: true,
