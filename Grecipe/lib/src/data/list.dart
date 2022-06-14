@@ -13,13 +13,12 @@ String shelfLife = 'good';
 TextEditingController ingname = TextEditingController();
 TextEditingController ingmemo = TextEditingController();
 
-BoxShadow mainColorShadow = 
-      BoxShadow(
-        color: mainColor.withOpacity(0.5),
-        spreadRadius: 3,
-        blurRadius: 5,
-        offset: const Offset(0, 3), // changes position of shadow
-      );
+BoxShadow mainColorShadow = BoxShadow(
+  color: mainColor.withOpacity(0.5),
+  spreadRadius: 3,
+  blurRadius: 5,
+  offset: const Offset(0, 3), // changes position of shadow
+);
 
 List ingList_vegetable = [
   '양배추',
@@ -38,14 +37,7 @@ List ingList_vegetable = [
 List ingList_fruit = ['옥수수', '쌀']; //과일,견과, 쌀
 List ingList_fisheries = ['참치']; //수산, 해산, 건어물
 List ingList_meat = ['소고기', '닭고기', '달걀', '돼지고기']; //축산물(정육, 계란)
-List ingList_seasoning = [
-  '올리브유',
-  '소금',
-  '설탕',
-  '간장',
-  '식초',
-  '후추'
-]; //양념, 오일
+List ingList_seasoning = ['올리브유', '소금', '설탕', '간장', '식초', '후추']; //양념, 오일
 List ingList_processedfood = [
   '베이컨',
   '빵',
@@ -58,7 +50,8 @@ List ingList_processedfood = [
   '김',
   '파스타',
   '라면',
-  '소시지'
+  '소시지',
+  '두부'
 ]; //면, 가공식품
 List ingList_beverage = ['물']; //물
 
@@ -100,7 +93,8 @@ final List<String> ingList_en = <String>[
   'pimento',
   'ham',
   'black_pepper',
-  'sprouts'
+  'sprouts',
+  'tofu'
 ];
 final List<String> ingList_ko = <String>[
   '간장',
@@ -140,5 +134,6 @@ final List<String> ingList_ko = <String>[
   '피망',
   '햄',
   '후추',
-  '콩나물'
+  '콩나물',
+  '두부'
 ];
