@@ -2,8 +2,8 @@
     "inferenceType": "QUANTIZED_UINT8",
     "inputShape": [
         1,
-        320,
-        320,
+        512,
+        512,
         3
     ],
     "inputTensor": "normalized_input_image_tensor",
