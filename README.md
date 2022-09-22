@@ -7,3 +7,5 @@ Flutter project for food ingredients recongnition
 ## Software Architecture
 ![Group 4](https://user-images.githubusercontent.com/36729917/166480287-94ff0edd-11b3-4b8e-ae62-d3aadcab9369.png)
 .
+
+academic papers : https://www.dbpia.co.kr/journal/articleDetail?nodeId=NODE11108370
